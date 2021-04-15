@@ -106,7 +106,7 @@ FUPSTREAM_REPO_BRANCH = os.environ.get("FUPSTREAM_REPO_BRANCH") or "dragon"
 ###
 KOUPSTREAM_REPO_URL = (os.environ.get("KOUPSTREAM_REPO_URL")
                      or "https://github.com/KenHV/KensurBot.git")
-KOUPSTREAM_REPO_BRANCH = os.environ.get("KOUPSTREAM_REPO_BRANCH") or "sql-extended"
+KOUPSTREAM_REPO_BRANCH = os.environ.get("KOUPSTREAM_REPO_BRANCH") or "master"
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get(
     "CONSOLE_LOGGER_VERBOSE") or "False")
