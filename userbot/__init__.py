@@ -297,7 +297,7 @@ output = (
     f"•`Python         : v{python_version()} `\n"
     f"•`User           : {DEFAULTUSER} `\n"
     f"•`Running on     : {repo.active_branch.name} `\n"
-    f"•`Loaded modules : 106 `\n"
+    f"•`Loaded modules : 107 `\n"
     f"•`Fizilion       : {USERBOT_VERSION} `\n"
     f"•`Bot started at : {uptime} `\n" 
 )
