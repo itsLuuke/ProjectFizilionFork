@@ -103,6 +103,10 @@ UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH") or "Demon"
 FUPSTREAM_REPO_URL = (os.environ.get("FPSTREAM_REPO_URL")
                      or "https://github.com/Elytra8/ProjectFizilion.git")
 FUPSTREAM_REPO_BRANCH = os.environ.get("FPSTREAM_REPO_BRANCH") or "dragon"
+###
+KUPDATER_ALIAS = "KensurBot"
+KOUPSTREAM_REPO_BRANCH = "master"
+KOUPSTREAM_REPO_URL = "https://github.com/KenHV/KensurBot.git"
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get(
     "CONSOLE_LOGGER_VERBOSE") or "False")
