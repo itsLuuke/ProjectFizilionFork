@@ -100,13 +100,13 @@ UPSTREAM_REPO_URL = (os.environ.get("UPSTREAM_REPO_URL")
                      or "https://github.com/PrajjuS/ProjectFizilion.git")
 UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH") or "Demon"
 ###
-FUPSTREAM_REPO_URL = (os.environ.get("FPSTREAM_REPO_URL")
+FUPSTREAM_REPO_URL = (os.environ.get("FUPSTREAM_REPO_URL")
                      or "https://github.com/Elytra8/ProjectFizilion.git")
-FUPSTREAM_REPO_BRANCH = os.environ.get("FPSTREAM_REPO_BRANCH") or "dragon"
+FUPSTREAM_REPO_BRANCH = os.environ.get("FUPSTREAM_REPO_BRANCH") or "dragon"
 ###
-KUPDATER_ALIAS = "KensurBot"
-KOUPSTREAM_REPO_BRANCH = "master"
-KOUPSTREAM_REPO_URL = "https://github.com/KenHV/KensurBot.git"
+KOUPSTREAM_REPO_URL = (os.environ.get("KOUPSTREAM_REPO_URL")
+                     or "https://github.com/KenHV/KensurBot.git")
+KOUPSTREAM_REPO_BRANCH = os.environ.get("KOUPSTREAM_REPO_BRANCH") or "master"
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get(
     "CONSOLE_LOGGER_VERBOSE") or "False")
@@ -156,6 +156,7 @@ USER_TERM_ALIAS = os.environ.get("USER_TERM_ALIAS") or "dem0n"
 
 # Updater alias
 UPDATER_ALIAS = os.environ.get("UPDATER_ALIAS") or "Fizilion"
+KUPDATER_ALIAS = os.environ.get("UPDATER_ALIAS") or "KensurBot"
 
 # Zipfile module
 ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY") or "./zips"
