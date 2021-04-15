@@ -125,7 +125,7 @@ async def update(event, repo, ups_rem, ac_br):
     return
 
 
-@register(outgoing=True, pattern=r"^.kota(?: |$)(deploy1)?")
+@register(outgoing=True, pattern=r"^.kota(?: |$)(deploy)?")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     await event.edit("`Checking for updates in official Kensur, please wait....`")
@@ -198,7 +198,7 @@ async def upstream(event):
             remove("output.txt")
         else:
             await event.edit(changelog_str)
-        return await event.respond('`do ".kota deploy1" to force update and shift to Kensur`')
+        return await event.respond('`do ".kota deploy" to force update and shift to Kensur`')
 
     if force_update:
         await event.edit(
@@ -210,3 +210,11 @@ async def upstream(event):
         await deploy(event, repo, ups_rem, ac_br, txt)
     return
 
+CMD_HELP.update(
+    {
+        "kota": ".kota"
+        "\nUsage: Checks if the Kensur userbot repository has any updates and shows a changelog if so."
+        "\n\n.kota deploy"
+        "\nUsage: Shift your userbot to official Kensur."
+    }
+)
