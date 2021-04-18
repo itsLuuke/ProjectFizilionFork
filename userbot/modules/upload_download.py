@@ -125,7 +125,7 @@ async def download(target_file):
                                 t,
                                 target_file,
                                 c_time,
-                                "**[Download]**",
+                                "**Download**",
                                 input_str,
                             )
                         ),
@@ -179,7 +179,7 @@ async def upload(event):
                     file=f,
                     name=file_name,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, event, c_time, "**[Upload]**", input_str)
+                        progress(d, t, event, c_time, "**Upload**", input_str)
                     ),
                 )
             up_time = (datetime.now() - start_time).seconds
