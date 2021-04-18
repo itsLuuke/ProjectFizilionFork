@@ -17,6 +17,18 @@ async def md5(fname: str) -> str:
     return hash_md5.hexdigest()
 
 
+async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
+    process = await asyncio.create_subprocess_exec(
+        *cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    out, err = await process.communicate()
+    t_resp = out.strip()
+    e_resp = err.strip()
+    return t_resp, e_resp
+
+
 def humanbytes(size: int) -> str:
     if size is None or isinstance(size, str):
         return ""
@@ -85,13 +97,3 @@ async def check_media(reply_message):
     else:
         return data
 
-async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
-    process = await asyncio.create_subprocess_exec(
-        *cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    out, err = await process.communicate()
-    t_resp = out.strip()
-    e_resp = err.strip()
-    return t_resp, e_resp
