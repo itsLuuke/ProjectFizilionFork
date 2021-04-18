@@ -24,6 +24,7 @@ from telethon.tl.types import DocumentAttributeVideo
 from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 from userbot.utils import humanbytes, progress
+from userbot.utils.FastTelethon import download_file, upload_file
 
 
 @register(pattern=r".download(?: |$)(.*)", outgoing=True)
@@ -56,7 +57,7 @@ async def download(target_file):
             diff = now - c_time
             percentage = downloader.get_progress() * 100
             speed = downloader.get_speed()
-            progress_str = "[{0}{1}] `{2}%`".format(
+            progress_str = "[{}{}] `{}%`".format(
                 "".join(["■" for i in range(math.floor(percentage / 10))]),
                 "".join(["▨" for i in range(10 - math.floor(percentage / 10))]),
                 round(percentage, 2),
@@ -72,7 +73,7 @@ async def download(target_file):
                     f"\n`ETA` -> {estimated_total_time}"
                 )
 
-                if round(diff % 10.00) == 0 and current_message != display_message:
+                if round(diff % 15.00) == 0 and current_message != display_message:
                     await target_file.edit(current_message)
                     display_message = current_message
             except Exception as e:
@@ -86,7 +87,7 @@ async def download(target_file):
     elif target_file.reply_to_msg_id:
         try:
             c_time = time.time()
-            downloaded_file_name = await target_file.client.download_media(
+            downloaded_file_name = await target_file.client.download_file(
                 await target_file.get_reply_message(),
                 TEMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
@@ -128,7 +129,7 @@ async def uploadir(udir_event):
                 caption_rts = os.path.basename(single_file)
                 c_time = time.time()
                 if not caption_rts.lower().endswith(".mp4"):
-                    await udir_event.client.send_file(
+                    await udir_event.client.upload_file(
                         udir_event.chat_id,
                         single_file,
                         caption=caption_rts,
@@ -152,7 +153,7 @@ async def uploadir(udir_event):
                         width = metadata.get("width")
                     if metadata.has("height"):
                         height = metadata.get("height")
-                    await udir_event.client.send_file(
+                    await udir_event.client.upload_file(
                         udir_event.chat_id,
                         single_file,
                         caption=caption_rts,
@@ -189,7 +190,7 @@ async def upload(u_event):
         return await u_event.edit("`That's a dangerous operation! Not Permitted!`")
     if os.path.exists(input_str):
         c_time = time.time()
-        await u_event.client.send_file(
+        await u_event.client.upload_file(
             u_event.chat_id,
             input_str,
             force_document=True,
@@ -295,7 +296,7 @@ async def uploadas(uas_event):
         try:
             if supports_streaming:
                 c_time = time.time()
-                await uas_event.client.send_file(
+                await uas_event.client.upload_file(
                     uas_event.chat_id,
                     file_name,
                     thumb=thumb,
