@@ -17,7 +17,6 @@ from telethon import events
 
 from userbot import LOGSPAMMER, BOTLOG, BOTLOG_CHATID, bot
 
-msg="""`Sed, userbot has crashed.\nCheck Error Logs stored in the userbot's log chat kek.`"""
 
 def register(**args):
     """ Register a new event. """
@@ -141,16 +140,13 @@ def register(**args):
                     file.close()
 
                     if LOGSPAMMER:
-
-                       await check.respond(msg)
-
-                    await sleep(2) 
-    
-                    await check.delete(msg)
-
-                    await check.client.send_file(BOTLOG_CHATID,
-                                                 "Erroooor.log",
-                                                 caption=text)
+                       await check.client.send_file(BOTLOG_CHATID, "Erroooor.log", caption=text)
+                                                 
+                                                 
+                    else: 
+                       await check.client.send_file(BOTLOG_CHATID, "Erroooor.log", caption=text)
+                                                 
+                                                 
                     remove("Erroooor.log")
             else:
                 pass
