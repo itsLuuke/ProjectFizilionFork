@@ -18,9 +18,13 @@ async def help(event):
         return
     if args:
         if args in CMD_HELP:
-            await event.edit(str(CMD_HELP[args]))
+            msg=await event.edit(str(CMD_HELP[args]))
+            await sleep(10)
+            await msg.delete()
         else:
-            await event.edit("Please specify a valid module name.")
+            msg=await event.edit("Please specify a valid module name.")
+            await sleep(10)
+            await msg.delete()
     else:
         final = "**List of all loaded module(s)**\n\
                  \nSpecify which module do you want help for! \
