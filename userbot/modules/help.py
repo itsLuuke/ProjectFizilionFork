@@ -7,8 +7,7 @@
 
 from userbot import CMD_HELP
 from userbot.events import register
-
-
+from asyncio import sleep
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
 async def help(event):
     """ For .help command,"""
@@ -32,4 +31,6 @@ async def help(event):
         for i in temp:
             final += "`" + str(i)
             final += "`\t\t\t•\t\t\t"
-        await event.edit(f"{final[:-5]}")
+        msg=await event.edit(f"{final[:-5]}")
+        await sleep(10)
+        await msg.delete()
