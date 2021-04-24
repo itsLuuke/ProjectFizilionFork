@@ -14,5 +14,9 @@ from .tools import (
     human_to_bytes,
     md5,
     check_media,
-    run_cmd
+    run_cmd,
+    media_to_pic,
+    edit_delete,
+    edit_or_reply,
+    media_type
 )
