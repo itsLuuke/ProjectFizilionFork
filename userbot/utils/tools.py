@@ -14,7 +14,7 @@ import requests
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-
+from typing import Tuple
 
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
