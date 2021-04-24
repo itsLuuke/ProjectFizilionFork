@@ -6,6 +6,7 @@ import os
 import shlex
 import base64
 import textwrap
+import random
 from typing import Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
