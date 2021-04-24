@@ -82,7 +82,6 @@ async def reply_id(event):
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
 
-
 @register(outgoing=True, pattern=r"^\.ascii (.*)")
 async def memes(asci):
     if asci.fwd_from:
