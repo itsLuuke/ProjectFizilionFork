@@ -4,6 +4,7 @@
 import asyncio
 import os
 import shlex
+import base64
 import textwrap
 from typing import Optional, Tuple
 
