@@ -88,7 +88,7 @@ async def reply_id(event):
 async def memes(asci):
     if asci.fwd_from:
         return
-    atinput = asci.pattern_match.group(1)
+    ainput = asci.pattern_match.group(1)
     reply = await asci.get_reply_message()
     if not reply:
         return await edit_delete(asci, "`Reply to supported Media...`")
