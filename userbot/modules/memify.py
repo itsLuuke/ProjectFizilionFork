@@ -16,7 +16,7 @@ from colour import Color as asciiColor
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import MessageEntityMentionName
 
-from userbot.utils import edit_or_reply, edit_delete, media_to_pic
+from userbot.utils import edit_or_reply, edit_delete, media_to_pic, runcmd
 
 def random_color():
     number_of_colors = 2
