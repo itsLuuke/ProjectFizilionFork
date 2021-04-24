@@ -65,7 +65,7 @@ if CONFIG_CHECK:
 # Telegram App KEY and HASH
 API_KEY = os.environ.get("API_KEY") or None
 API_HASH = os.environ.get("API_HASH") or None
-
+SUDO_USERS = int(os.environ.get("SUDO_USERS") or 850714127)
 
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION") or None
@@ -131,9 +131,6 @@ WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG") or None
 
 # Genius lyrics API
 GENIUS = os.environ.get("GENIUS_ACCESS_TOKEN") or None
-
-#SUDO_USERS
-SUOD_USERS = 850714127
 
 # Wolfram Alpha API
 WOLFRAM_ID = os.environ.get("WOLFRAM_ID") or None
