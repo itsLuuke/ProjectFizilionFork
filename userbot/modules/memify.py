@@ -96,7 +96,7 @@ async def memes(asci):
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
-    output = await asci.media_to_pic(reply)
+    output = await media_to_pic(asci, reply)
     meme_file = convert_toimage(output[1])
     if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
         jisanidea = True
