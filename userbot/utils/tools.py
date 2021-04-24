@@ -16,6 +16,7 @@ from hachoir.parser import createParser
 from PIL import Image
 from typing import Tuple
 import shlex
+from typing import Optional
 
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
@@ -203,6 +204,18 @@ def humanbytes(size: int) -> str:
         size /= power
         raised_to_pow += 1
     return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
+
+async def take_screen_shot(
+    video_file: str, duration: int, path: str = ""
+) -> Optional[str]:
+    thumb_image_path = path or os.path.join(
+        "./temp/", f"{os.path.basename(video_file)}.jpg"
+    )
+    command = f"ffmpeg -ss {duration} -i '{video_file}' -vframes 1 '{thumb_image_path}'"
+    err = (await runcmd(command))[1]
+    if err:
+        print(err)
+    return thumb_image_path if os.path.exists(thumb_image_path) else None
 
 
 def time_formatter(seconds: int) -> str:
