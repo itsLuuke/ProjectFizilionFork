@@ -15,6 +15,7 @@ from .tools import (
     md5,
     check_media,
     run_cmd,
+    runcmd,
     media_to_pic,
     edit_delete,
     edit_or_reply,
