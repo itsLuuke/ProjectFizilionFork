@@ -126,7 +126,7 @@ async def memes(asci):
             os.remove(files)
             
 
-@register(outgoing=True, pattern=r"^\.flip")    
+@register(outgoing=True, pattern="^.flip$")    
 async def memes(fp):
     if fp.fwd_from:
         return
@@ -138,7 +138,7 @@ async def memes(fp):
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
-    output = await media_to_pic(fo, reply)
+    output = await media_to_pic(fp, reply)
     meme_file = convert_toimage(output[1])
     if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
         jisanidea = True
