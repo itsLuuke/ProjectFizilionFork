@@ -377,5 +377,9 @@ CMD_HELP.update({
     "memify":
     ">`.mmf <top text>;<bottom text>`"
     "\nUsage: Reply to an image/sticker/gif/video to add text to it."
-    "\nIf it's a video, text will be added to the first frame."
+    "\n\n>`.flip`"
+    "\nUsage: Reply to any media to flip it upside down."
+    "\n\n>`.mirror`"
+    "\nUsage: Reply to any media to get mirror image of that media."
+    
 })
