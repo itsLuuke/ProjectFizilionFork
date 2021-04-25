@@ -11,6 +11,7 @@ import numpy as np
 from typing import Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
+import PIL.ImageOps
 from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY, SUDO_USERS
 from userbot.events import register
 from colour import Color as asciiColor
@@ -125,7 +126,14 @@ async def memes(asci):
         if files and os.path.exists(files):
             os.remove(files)
             
+            
 
+async def flip_image(imagefile, endname):
+    image = Image.open(imagefile)
+    inverted_image = PIL.ImageOps.flip(image)
+    inverted_image.save(endname)
+    
+    
 @register(outgoing=True, pattern="^.flip$")    
 async def memes(fp):
     if fp.fwd_from:
