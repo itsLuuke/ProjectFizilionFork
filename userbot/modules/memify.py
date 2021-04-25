@@ -202,7 +202,7 @@ async def flip_image(imagefile, endname):
 ############################################################################
 
 ##############################  ASCII Media ###############################
-@register(outgoing=True, pattern="^.ascii$")    
+@register(outgoing=True, pattern=r"^\.ascii (.*)")   
 async def memes(asci):
     if asci.fwd_from:
         return
@@ -294,7 +294,7 @@ async def memes(mr):
     if not reply:
         return await edit_delete(cat, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    userid = await reply_id(cmr)
+    userid = await reply_id(mr)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
