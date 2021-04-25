@@ -277,9 +277,9 @@ async def memes(fp):
     for files in (outputfile, meme_file):
         if files and os.path.exists(files):
             os.remove(files)    
- ##################################################################   
+#####################################################################   
     
-#########################  Miror Media  ############################
+#########################  Mirror Media  ############################
 async def mirror_file(imagefile, endname):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.mirror(image)
@@ -321,7 +321,7 @@ async def memes(mr):
             os.remove(files)
 #############################################################################
 
-##########################  Write on Media  ##################################            
+##########################  Write on Media  #################################         
 @register(outgoing=True, pattern=r"^\.mmf (.*)")
 async def memify(event):
     reply_msg = await event.get_reply_message()
