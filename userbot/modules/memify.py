@@ -162,7 +162,7 @@ async def memes(fp):
     )
     await flip_image(meme_file, outputfile)
     await fp.client.send_file(
-        fp.chat_id, outputfile, force_document=False, reply_to=catid
+        fp.chat_id, outputfile, force_document=False, reply_to=userid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
