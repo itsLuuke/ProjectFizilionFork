@@ -380,5 +380,7 @@ CMD_HELP.update({
     "\nUsage: Reply to any media to flip it upside down."
     "\n\n>`.mirror`"
     "\nUsage: Reply to any media to get mirror image of that media."
+    "\n\n>`.ascii`"
+    "\nUsage: Reply to any media with colour code."
     
 })
