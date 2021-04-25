@@ -228,6 +228,7 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^.(alive|on)$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
+    time = 10
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         "` =============================== `\n"
@@ -246,7 +247,7 @@ async def amireallyalive(alive):
             logo = ALIVE_LOGO
             msg = await bot.send_file(alive.chat_id, logo, caption=output, del_in=10)
             await alive.delete()
-            await sleep(10)
+            await sleep(time)
             await msg.delete()
         except BaseException:
             await alive.edit(
@@ -255,7 +256,7 @@ async def amireallyalive(alive):
             )
     else:
         msg=await alive.edit(output)
-        await sleep(10)
+        await sleep(time)
         await msg.delete()
 
 
