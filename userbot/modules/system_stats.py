@@ -228,7 +228,6 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^.(alive|on)$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    time = 10
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         "` =============================== `\n"
@@ -256,7 +255,7 @@ async def amireallyalive(alive):
             )
     else:
         msg=await alive.edit(output)
-        await sleep(time)
+        await sleep(10)
         await msg.delete()
 
 
