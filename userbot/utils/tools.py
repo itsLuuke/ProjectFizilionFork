@@ -175,7 +175,7 @@ async def media_to_pic(event, reply):
             await runcmd(
                 f"lottie_convert.py --frame 0 -if lottie -of png '{media}' '{file}'"
             )
-        elif cmedia.endswith(".webp"):
+        elif media.endswith(".webp"):
             im = Image.open(media)
             im.save(file)
     elif mediatype in ["Round Video", "Video", "Gif"]:
