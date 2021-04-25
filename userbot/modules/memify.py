@@ -202,7 +202,7 @@ async def flip_image(imagefile, endname):
 ############################################################################
 
 ##############################  ASCII Media ###############################
-@register(outgoing=True, pattern=r"^\.ascii (.*)")
+@register(outgoing=True, pattern="^.ascii$")    
 async def memes(asci):
     if asci.fwd_from:
         return
