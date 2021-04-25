@@ -1,6 +1,5 @@
-# Copyright (C) UsergeTeam 2020
-# Licensed under GPLv3
 # Refactored and Modified by @PrajjuS
+
 import asyncio
 import os
 import shlex
