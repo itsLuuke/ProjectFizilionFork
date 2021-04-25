@@ -290,7 +290,7 @@ async def mirror_file(imagefile, endname):
 async def memes(mr):
     if mr.fwd_from:
         return
-    reply = await cmr.get_reply_message()
+    reply = await mr.get_reply_message()
     if not reply:
         return await edit_delete(cat, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
