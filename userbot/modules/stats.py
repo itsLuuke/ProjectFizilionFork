@@ -117,7 +117,7 @@ async def stats(event):
     await stat.edit(response)
 
 
-@register(outgoing=True, pattern=r"^.stats(?: |$)(c|ca|co)?")
+@register(outgoing=True, pattern=r"^.stat(?: |$)(c|ca|co)?")
 async def stats(event):
     if event.fwd_from:
         return
@@ -168,7 +168,7 @@ async def stats(event):
         )
 
 
-@register(outgoing=True, pattern=r"^.stats(?: |$)(g|ga|go)?")
+@register(outgoing=True, pattern=r"^.stat(?: |$)(g|ga|go)?")
 async def stats(event):
     if event.fwd_from:
         return
