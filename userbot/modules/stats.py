@@ -165,8 +165,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
-            output2
-        )
+            output2)
 
 
 @register(outgoing=True, pattern=r"^.statg(?: |$)(g|ga|go)?")
@@ -225,8 +224,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
-            output2
-        )
+            output2)
 
 
 @register(outgoing=True, pattern="^.ustats(?: |$)(.*)")
