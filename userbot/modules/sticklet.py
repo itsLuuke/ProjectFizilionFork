@@ -43,7 +43,7 @@ async def sticklet(event):
     
     await event.edit("Wait Plox.....\nNeed some time")
     
-    FONT_FILE = os.path.exists("/resources/Aerospace.ttf")
+    FONT_FILE = "Fizilion/resources/Aerospace.ttf"
 
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
     
@@ -55,9 +55,6 @@ async def sticklet(event):
 
     width, height = draw.multiline_textsize(sticktext, font=font)
     draw.multiline_text(((512-width)/2,(512-height)/2), sticktext, font=font, fill=(R, G, B))
-    
-
-    
     image_stream = io.BytesIO()
     image_stream.name = "@Fizilion.webp"
     image.save(image_stream, "WebP")
@@ -66,29 +63,11 @@ async def sticklet(event):
     await event.delete()
     # finally, reply the sticker
     await event.reply(file=image_stream)
-
     # cleanup
     try:
         os.remove(FONT_FILE)
     except:
         pass
-
-async def get_font_file(client, channel_id):
-    # first get the font messages
-    font_file_message_s = await client.get_messages(
-        entity=channel_id,
-        filter=InputMessagesFilterDocument,
-        # this might cause FLOOD WAIT,
-        # if used too many times
-        limit=None
-    )
-    
-
-    # get a random font from the list of fonts
-    # https://docs.python.org/3/library/random.html#random.choice
-    font_file_message = random.choice(font_file_message_s)
-    # download and return the file path
-    return await client.download_media(font_file_message)
 
 CMD_HELP.update({
         "sticklet":
