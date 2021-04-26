@@ -157,15 +157,16 @@ async def stats(event):
         await event.client(st)
     except BaseException:
         pass
-    output = f"\n**Time Taken : ** {stop_time:.02f}s"
+    outputf = f"\n**Time Taken : ** {stop_time:.02f}s"
     try:
-        await sevent.edit(output)
+        await sevent.edit(output,outputf)
     except Exception:
         await edit_or_reply(
             sevent,
             output,
             caption=caption,
-            output2)
+            outputf,
+        )
 
 
 @register(outgoing=True, pattern=r"^.statg(?: |$)(g|ga|go)?")
@@ -213,18 +214,19 @@ async def stats(event):
     stop_time = time.time() - start_time
     try:
         st = Get(st)
-        await event.client(cat)
+        await event.client(st)
     except BaseException:
         pass
-    output2 = f"\n**Time Taken : ** {stop_time:.02f}s"
+    outputf = f"\n**Time Taken : ** {stop_time:.02f}s"
     try:
-        await sevent.edit(output)
+        await sevent.edit(output,outputf)
     except Exception:
         await edit_or_reply(
             sevent,
             output,
             caption=caption,
-            output2)
+            outputf,
+        )
 
 
 @register(outgoing=True, pattern="^.ustats(?: |$)(.*)")
