@@ -157,7 +157,7 @@ async def stats(event):
         await event.client(st)
     except BaseException:
         pass
-    output += f"\n**Time Taken : ** {stop_time:.02f}s"
+    output = f"\n**Time Taken : ** {stop_time:.02f}s"
     try:
         await sevent.edit(output)
     except Exception:
@@ -165,6 +165,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
+            output2,
         )
 
 
@@ -216,7 +217,7 @@ async def stats(event):
         await event.client(cat)
     except BaseException:
         pass
-    output += f"\n**Time Taken : ** {stop_time:.02f}s"
+    output2 = f"\n**Time Taken : ** {stop_time:.02f}s"
     try:
         await sevent.edit(output)
     except Exception:
@@ -224,6 +225,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
+            output2,
         )
 
 
