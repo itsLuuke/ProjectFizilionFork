@@ -165,7 +165,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
-            output2,
+            output2
         )
 
 
@@ -225,7 +225,7 @@ async def stats(event):
             sevent,
             output,
             caption=caption,
-            output2,
+            output2
         )
 
 
