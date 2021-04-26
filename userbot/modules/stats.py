@@ -117,7 +117,7 @@ async def stats(event):
     await stat.edit(response)
 
 
-@register(outgoing=True, pattern=r"^.stat2(?: |$)(c|ca|co)?")
+@register(outgoing=True, pattern=r"^.statc(?: |$)(c|ca|co)?")
 async def stats(event):
     if event.fwd_from:
         return
@@ -141,12 +141,12 @@ async def stats(event):
         for k, i in enumerate(hi, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = CHANNELS_STR
-    elif scmd == "ca":
+    elif scmd == "a":
         output = CHANNELS_ADMINSTR
         for k, i in enumerate(hica, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = CHANNELS_ADMINSTR
-    elif scmd == "co":
+    elif scmd == "o":
         output = CHANNELS_OWNERSTR
         for k, i in enumerate(hico, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
@@ -168,7 +168,7 @@ async def stats(event):
         )
 
 
-@register(outgoing=True, pattern=r"^.stat1(?: |$)(g|ga|go)?")
+@register(outgoing=True, pattern=r"^.statg(?: |$)(g|ga|go)?")
 async def stats(event):
     if event.fwd_from:
         return
