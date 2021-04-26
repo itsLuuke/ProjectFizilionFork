@@ -5,7 +5,7 @@ from telethon.tl.custom import Dialog
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import Channel, Chat, User
 from userbot.events import register
-from userbot.utils import edit_or_reply
+from userbot.utils import edit_or_reply, edit_delete
 
 # =========================================================== #
 #                           STRINGS                           #
