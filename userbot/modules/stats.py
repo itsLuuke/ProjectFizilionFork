@@ -168,7 +168,7 @@ async def stats(event):
         )
 
 
-@register(outgoing=True, pattern=r"^.ota(?: |$)(g|ga|go)?")
+@register(outgoing=True, pattern=r"^.stats(?: |$)(g|ga|go)?")
 async def stats(event):
     if event.fwd_from:
         return
