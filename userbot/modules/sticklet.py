@@ -25,7 +25,7 @@ async def sticklet(event):
     font_file_name = event.pattern_match.group(1)
     if not font_file_name:
         font_file_name = ""
-    sticktext = event.pattern_match.group(2)
+    sticktext = event.pattern_match.group(1)
     if not sticktext:
         if event.reply_to_msg_id:
             reply_message = await event.get_reply_message()
@@ -46,7 +46,7 @@ async def sticklet(event):
     image = Image.new("RGBA", (512, 512), (255, 255, 255, 0))
     draw = ImageDraw.Draw(image)
     fontsize = 230
-    FONT_FILE = ("Fizilion/resources/Aerospace.ttf", font_file_name)
+    FONT_FILE = ("Fizilion/resources/Aerospace.ttf")
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
     while draw.multiline_textsize(sticktext, font=font) > (512, 512):
         fontsize -= 3
