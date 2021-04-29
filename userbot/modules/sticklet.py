@@ -14,7 +14,7 @@ def deEmojify(inputString: str) -> str:
     return get_emoji_regexp().sub("", inputString)
 
 
-@register(outgoing=True, pattern=r"stcr ?(?:(.*?) \| )?(.*)")
+@register(outgoing=True, pattern="^.stk(?: |$)(.*)")
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
