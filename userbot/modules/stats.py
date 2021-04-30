@@ -155,6 +155,11 @@ async def _(event):
         response = await conv.get_response()
         await event.client.send_read_acknowledge(conv.chat_id)
         await sevent.edit(response.text)
+        """Cleanup after completed"""
+        await event.client.delete_messages(conv.chat_id, [msg.id, response.id])
+    except TimeoutError:
+        return await event.edit("**Error:** @tgscanrobot **is not responding.**")
+    await event.delete()
         
 CMD_HELP.update({
     "stats":
