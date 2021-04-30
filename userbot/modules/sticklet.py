@@ -16,6 +16,7 @@ def deEmojify(inputString: str) -> str:
 
 @register(outgoing=True, pattern="^.stk(?: |$)(.*)")
 async def sticklet(event):
+    await event.edit("`Processing....`"
     R = random.randint(0, 256)
     G = random.randint(0, 256)
     B = random.randint(0, 256)
