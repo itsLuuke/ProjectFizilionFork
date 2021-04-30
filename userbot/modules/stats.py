@@ -155,8 +155,8 @@ async def _(event):
         
 CMD_HELP.update({
     "stats":
-    "`.stats`"
+    ">`.stats`"
     "\nUsage: Get your full stats."
-    "\n\n`.ustats`"
-    "\nUsage: Reply to a user or give username to get his/her group stats"
+    "\n\n>`.ustats`"
+    "\nUsage: Reply to a user or give username to get his/her group stats."
 })
