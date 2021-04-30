@@ -149,7 +149,7 @@ async def _(event):
     sevent = await edit_or_reply(event, "`Processing...`")
     async with event.client.conversation(chat) as conv:
         try:
-            await conv.send_message(f"{uid}")
+            msg = await conv.send_message(f"{uid}")
         except Exception:
             await edit_delete(sevent, "`unblock `@tgscanrobot` and then try`")
         response = await conv.get_response()
