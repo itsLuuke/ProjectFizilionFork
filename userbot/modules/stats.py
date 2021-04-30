@@ -6,6 +6,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import Channel, Chat, User
 from userbot.events import register
 from userbot.utils import edit_or_reply, edit_delete
+from userbot import CMD_HELP
 
 # =========================================================== #
 #                           STRINGS                           #
@@ -152,3 +153,10 @@ async def _(event):
         await event.client.send_read_acknowledge(conv.chat_id)
         await sevent.edit(response.text)
         
+CMD_HELP.update({
+    "stats":
+    "`.stats`"
+    "\nUsage: Get your full stats."
+    "\n\n`.ustats`"
+    "\nUsage: Reply to a user or give username to get his/her group stats"
+})
