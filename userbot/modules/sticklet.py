@@ -89,3 +89,9 @@ async def get_font_file(client, channel_id, search_kw=""):
     font_file_message = random.choice(font_file_message_s)
     # download and return the file path
     return await client.download_media(font_file_message)
+
+CMD_HELP.update({
+        "sticklet":
+        ".stk \
+            \nUsage: Enhance ur sticker"
+})
