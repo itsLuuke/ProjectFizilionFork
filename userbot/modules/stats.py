@@ -1,3 +1,6 @@
+# Ported from catuserbot 
+# @PrajjuS
+
 import base64
 import time
 
@@ -11,7 +14,7 @@ from userbot import CMD_HELP
 # =========================================================== #
 #                           STRINGS                           #
 # =========================================================== #
-STAT_INDICATION = "`Collecting stats, Wait man`"
+STAT_INDICATION = "`Collecting stats, Plox wait....`"
 CHANNELS_STR = "**The list of channels in which you are their are here **\n\n"
 CHANNELS_ADMINSTR = "**The list of channels in which you are admin are here **\n\n"
 CHANNELS_OWNERSTR = "**The list of channels in which you are owner are here **\n\n"
