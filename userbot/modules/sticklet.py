@@ -8,6 +8,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot.events import register
 from userbot.utils import edit_or_reply
+from userbot import CMD_HELP 
 
 def deEmojify(inputString: str) -> str:
     """Remove emojis and other non-safe characters from string"""
