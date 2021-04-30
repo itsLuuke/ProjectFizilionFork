@@ -32,7 +32,7 @@ async def sticklet(event):
             reply_message = await event.get_reply_message()
             sticktext = reply_message.message
         else:
-            await edit_or_reply(event, "need something, hmm")
+            await edit_or_reply(event, "`Gib text or reply to any text..`")
             return
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
