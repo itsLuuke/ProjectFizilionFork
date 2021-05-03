@@ -1,3 +1,4 @@
+import re
 import asyncio
 from search_engine_parser.core.engines.google import Search as GoogleSearch
 from userbot.events import register
