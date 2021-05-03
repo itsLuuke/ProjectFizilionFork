@@ -16,8 +16,8 @@ async def gsearch(q_event):
     except IndexError:
         page = 1
     search_args = (str(match), int(page))
-    gsearch = GoogleSearch()
     try:
+        gsearch = GoogleSearch()
         gresults = await gsearch.async_search(*search_args)
     except Exception:
         return await q_event.edit(
