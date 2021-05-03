@@ -65,4 +65,3 @@ wget
 validators
 aiofiles
 youtube-dl
-git+https://github.com/code-rgb/search-engine-parser
