@@ -48,7 +48,6 @@ pymongo[srv]
 qrcode
 redis
 requests
-search-engine-parser
 speedtest-cli
 sqlalchemy==1.3.23
 TgCrypto
@@ -65,3 +64,4 @@ wget
 validators
 aiofiles
 youtube-dl
+git+https://github.com/code-rgb/search-engine-parser
