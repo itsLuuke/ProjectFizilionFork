@@ -5,8 +5,7 @@ from search_engine_parser.core.exceptions import NoResultsOrTrafficError
 from userbot.events import register
 from userbot import BOTLOG, BOTLOG_CHATID
 
-
-@register(outgoing=True, pattern=r"^\.gooogle(?: |$)(\d*)? ?(.*)")
+@register(outgoing=True, pattern=r"^.gooogle(?: |$)(.*)")
 async def gsearch(q_event):
     """For .google command, do a Google search."""
     textx = await q_event.get_reply_message()
