@@ -4,7 +4,8 @@ from userbot.events import register
 
 
 @register(outgoing=True, pattern=r"^\.gooogle(?: |$)(\d*)? ?(.*)")
-await q_event.edit("`searching........`")
+async def gsearch(q_event):
+    await q_event.edit("`searching........`")
     match = q_event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
