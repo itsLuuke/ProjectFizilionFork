@@ -12,7 +12,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from sqlalchemy import Column, String
 
-from userbot.plugins.sql_helper import BASE, SESSION
+from userbot.modules.sql_helper import BASE, SESSION
 
 
 class GBan(BASE):
