@@ -16,7 +16,7 @@ from telethon.tl.types import MessageEntityMentionName
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
 from userbot.modules.sql_helper.mute_sql import is_muted, mute, unmute
 
-from userbot import BOTLOG, BOTLOG_CHATID, SUDO_USERS
+from userbot import BOTLOG, BOTLOG_CHATID, SUDO_USERS, CMD_HELP
 from userbot.utils import edit_delete, edit_or_reply
 from userbot.events import register
 
@@ -467,3 +467,22 @@ async def gkick(event):
             )
         if reply:
             await reply.forward_to(BOTLOG_CHATID)
+            
+            
+CMD_HELP.update(
+    {
+        "gban":
+        ">`.gban <username/reply/userid> <reason (optional)>`"
+        "\nUsage: Bans the person in all groups where you are admin .
+        "\n\n>`.ungban <username/reply/userid>`
+        "\nUsage: Reply someone's message with .ungban to remove them from the gbanned list.
+        "\n\n>`.listgban`"
+        "\nUsage: Shows you the gbanned list and reason for their gban."
+        "\n\n>`.gmute <username/reply> <reason (optional)>`"
+        "\nUsage: Mutes the person in all groups you have in common with them."
+        "\n\n>`.ungmute <username/reply>`"
+        "\nUsage: Reply someone's message with .ungmute to remove them from the gmuted list."
+        "\n\n>`.gkick <username/reply/userid> <reason (optional)>`"
+        "\nUsage: Kicks the person in all groups where you are admin."
+    }
+)            
