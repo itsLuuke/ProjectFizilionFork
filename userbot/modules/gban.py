@@ -138,7 +138,7 @@ async def gban(event):
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n**Chat :** {event.chat.title()}(`{event.chat_id}`)\n`For banning here`",
+                f"`You don't have required permission in :`\n**Chat :** (`{event.chat_id}`)\n`For banning here`",
             )
     end = datetime.now()
     timetaken = (end - start).seconds
@@ -215,7 +215,7 @@ async def ungban(event):
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n**Chat : **{event.chat.title()}(`{event.chat_id}`)\n`For unbaning here`",
+                f"`You don't have required permission in :`\n**Chat : **(`{event.chat_id}`)\n`For unbaning here`",
             )
     end = datetime.now()
     timetaken = (end - start).seconds
@@ -429,7 +429,7 @@ async def gkick(event):
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n**Chat :** {event.chat.title}(`{event.chat_id}`)\n`For kicking there`",
+                f"`You don't have required permission in :`\n**Chat :**(`{event.chat_id}`)\n`For kicking there`",
             )
     end = datetime.now()
     timetaken = (end - start).seconds
