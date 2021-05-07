@@ -473,9 +473,9 @@ CMD_HELP.update(
     {
         "gban":
         ">`.gban <username/reply/userid> <reason (optional)>`"
-        "\nUsage: Bans the person in all groups where you are admin .
+        "\nUsage: Bans the person in all groups where you are admin."
         "\n\n>`.ungban <username/reply/userid>`
-        "\nUsage: Reply someone's message with .ungban to remove them from the gbanned list.
+        "\nUsage: Reply someone's message with .ungban to remove them from the gbanned list."
         "\n\n>`.listgban`"
         "\nUsage: Shows you the gbanned list and reason for their gban."
         "\n\n>`.gmute <username/reply> <reason (optional)>`"
