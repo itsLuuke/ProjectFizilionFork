@@ -181,7 +181,7 @@ async def gban(event):
         except BadRequestError:
             pass
 
-@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
 async def ungban(event):
     if event.fwd_from:
         return
