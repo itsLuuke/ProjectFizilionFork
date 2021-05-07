@@ -100,7 +100,7 @@ async def gban(event):
         return
     gbun = await edit_or_reply(event, "`Gbanning.......`")
     start = datetime.now()
-    user, reason = await get_user_from_event(event, cate)
+    user, reason = await get_user_from_event(event, gbun)
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
