@@ -284,7 +284,7 @@ async def startgmute(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-        if user.id == bot.uid:
+        if user.id == (await event.client.get_me()).id:
             return await edit_or_reply(event, "`Sorry, I can't gmute myself`")
         userid = user.id
     try:
@@ -343,7 +343,7 @@ async def endgmute(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-        if user.id == bot.uid:
+        if user.id == (await event.client.get_me()).id:
             return await edit_or_reply(event, "`Sorry, I can't gmute myself`")
         userid = user.id
     try:
