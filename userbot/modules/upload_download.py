@@ -27,7 +27,7 @@ from userbot.events import register
 from userbot.utils import humanbytes, progress, run_cmd
 from userbot.utils.FastTelethon import download_file, upload_file
 
-THUMB = "Fizilion/resources/curved.png"
+THUMB = "resources/curved.png"
 
 @register(pattern=r"\.download(?: |$)(.*)", outgoing=True)
 async def download(target_file):
@@ -185,7 +185,8 @@ async def upload(event):
                 )
             up_time = (datetime.now() - start_time).seconds
             if input_str.lower().endswith(("mp4", "mkv", "webm")):
-                thumb = await get_video_thumb(input_str, "thumb_image.jpg")
+                #thumb = await get_video_thumb(input_str, "thumb_image.jpg")
+                thumb = THUMB
                 metadata = extractMetadata(createParser(input_str))
                 duration = 0
                 width = 0
@@ -206,6 +207,7 @@ async def upload(event):
                     )
                 ]
             elif input_str.lower().endswith(("mp3", "flac", "wav")):
+                thumb = THUMB
                 metadata = extractMetadata(createParser(input_str))
                 duration = 0
                 artist = ""
