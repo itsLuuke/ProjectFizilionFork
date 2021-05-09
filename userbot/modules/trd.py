@@ -1,5 +1,5 @@
 import asyncio
-import random
+from random import choice
 from userbot.events import register
 
 T_R_D = [
