@@ -1,4 +1,4 @@
-from asyncio
+import asyncio
 from userbot.events import register
 
 T_R_D = [
