@@ -15,4 +15,4 @@ async def truthrdare(trd):
     """Truth or Dare"""
     await trd.edit("`Choosing Name...`")
     await sleep(3)
-    await trd.edit("**Name:** ", choice(T_R_D))
+    await trd.edit(choice(T_R_D))
