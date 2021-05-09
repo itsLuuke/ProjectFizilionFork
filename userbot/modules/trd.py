@@ -4,10 +4,10 @@ from random import choice
 from userbot.events import register
 
 T_R_D = [
-    "[Prajwal](https://t.me/PrajjuS)",
-    "[Vinay](https://t.me/Vin02vin)",
-    "[Shara](https://t.me/Iamsaisharan)",
-    "[Srinidh](https://t.me/venomsamurai)",
+    "@PrajjuS[Prajwal]",
+    "@Vin02vin[Vinay]",
+    "@Iamsaisharan[Sharan]",
+    "@venomsamurai[Srinidh]",
 ]
 
 @register(outgoing=True, pattern="^.trd$")
