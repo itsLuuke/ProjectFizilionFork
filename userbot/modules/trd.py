@@ -20,5 +20,5 @@ async def truthrdare(trd):
     msg = await trd.edit("`Name is.....`")
     await sleep(3)
     await trd.delete()
-    await msg.reply("**Truth or Dare\nName:** " + choice(T_R_D))
+    await msg.reply("**Truth or Dare**\n__Name:__ " + choice(T_R_D))
     
