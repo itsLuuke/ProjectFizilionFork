@@ -1,4 +1,5 @@
 import asyncio
+import random
 from userbot.events import register
 
 T_R_D = [
