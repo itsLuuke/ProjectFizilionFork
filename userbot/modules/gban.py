@@ -286,6 +286,8 @@ async def startgmute(event):
             return
         if user.id == (await event.client.get_me()).id:
             return await edit_or_reply(event, "`Sorry, I can't gmute myself`")
+        if user.id in DEVS:
+        return await edit_or_reply("why would I ban my dev")
         userid = user.id
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
