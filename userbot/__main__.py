@@ -7,7 +7,7 @@
 
 from importlib import import_module
 from sys import argv
-
+from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 from userbot import LOGS, bot, BOT_TOKEN, BOT_USERNAME, API_KEY, API_HASH
 from userbot.modules import ALL_MODULES
