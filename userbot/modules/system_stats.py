@@ -255,14 +255,11 @@ async def amireallyalive(alive):
                         output + "\n\n *`The provided logo is invalid."
                         "\nMake sure the link is directed to the logo picture`"
                     )
-            
-            else:
-                msg=await alive.edit(output)
-                await sleep(10)
-                await msg.delete()
-            
-        
-
+        else:
+            msg=await alive.edit(output)
+            await sleep(10)
+            await msg.delete()
+                
     if not TIMEOUT:
         if ALIVE_LOGO:
                 try:
@@ -276,8 +273,8 @@ async def amireallyalive(alive):
                         "\nMake sure the link is directed to the logo picture`"
                     )
             
-            else:
-                msg=await alive.edit(output)
+        else:
+            msg=await alive.edit(output)
           
     
 @register(outgoing=True, pattern="^.aliveu")
