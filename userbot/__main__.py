@@ -9,13 +9,29 @@ from importlib import import_module
 from sys import argv
 
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
-from userbot import LOGS, bot
+from userbot import LOGS, bot, BOT_TOKEN, BOT_USERNAME, API_KEY, API_HASH
 from userbot.modules import ALL_MODULES
 
 
 INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
              '\n Tip: Use Country Code along with number.' \
              '\n or check your phone number and try again !'
+
+bot.tgbot = None
+if BOT_USERNAME is not None:
+        print("Initiating Inline Bot")
+        bot.tgbot = TelegramClient(
+            "BOT_TOKEN",
+            api_id=APP_ID,
+            api_hash=API_HASH
+        ).start(bot_token=BOT_TOKEN)
+        print("SETTING BOT, no errors")
+        print("Starting Userbot")
+        bot.loop.run_until_complete(add_bot(BOT_USERNAME))
+        print("Startup Completed")
+else:
+    print("Inline Failed, Starting anyways")
+    bot.start()
 
 try:
     bot.start()
