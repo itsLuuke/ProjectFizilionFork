@@ -241,24 +241,45 @@ async def amireallyalive(alive):
         f"•`Fizilion       : {USERBOT_VERSION} `\n"
         f"•`Bot Uptime     : {uptime} `\n"
     )
-    if ALIVE_LOGO:
-        try:
-            logo = ALIVE_LOGO
-            msg = await bot.send_file(alive.chat_id, logo, caption=output)
-            await alive.delete()
-            #await sleep(10)
-            #await msg.delete()
-        except BaseException:
-            await alive.edit(
-                output + "\n\n *`The provided logo is invalid."
-                "\nMake sure the link is directed to the logo picture`"
-            )
-    else:
-        msg=await alive.edit(output)
-        #await sleep(10)
-        #await msg.delete()
+    if TIMEOUT:
+        if ALIVE_LOGO:
+                try:
+                    logo = ALIVE_LOGO
+                    msg = await bot.send_file(alive.chat_id, logo, caption=output)
+                    await alive.delete()
+                    await sleep(10)
+                    await msg.delete()
+                    
+                except BaseException:
+                    await alive.edit(
+                        output + "\n\n *`The provided logo is invalid."
+                        "\nMake sure the link is directed to the logo picture`"
+                    )
+            
+            else:
+                msg=await alive.edit(output)
+                await sleep(10)
+                await msg.delete()
+            
+        
 
-
+    if not TIMEOUT:
+        if ALIVE_LOGO:
+                try:
+                    logo = ALIVE_LOGO
+                    msg = await bot.send_file(alive.chat_id, logo, caption=output)
+                    await alive.delete()
+                    
+                except BaseException:
+                    await alive.edit(
+                        output + "\n\n *`The provided logo is invalid."
+                        "\nMake sure the link is directed to the logo picture`"
+                    )
+            
+            else:
+                msg=await alive.edit(output)
+          
+    
 @register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
