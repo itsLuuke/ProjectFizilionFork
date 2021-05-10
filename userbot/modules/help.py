@@ -11,7 +11,7 @@ from asyncio import sleep
 
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
 async def help(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+   if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = BOT_USERNAME
         input_str = event.pattern_match.group(1)
         if tgbotusername is None or input_str == "text":
