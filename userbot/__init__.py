@@ -142,7 +142,8 @@ ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT") or "False")
 
 # Default .alive name
 ALIVE_NAME = os.environ.get("ALIVE_NAME") or None
-
+# .alive and .help timeout
+TIMEOUT = sb(os.environ.get("TIMEOUT") or "True")
 # Default .alive logo
 ALIVE_LOGO = str(os.environ.get("ALIVE_LOGO") or "https://github.com/ElytrA8/ProjectFizilion/raw/dragon/resources/glitch.gif")
 # Time & Date - Country and Time Zone
