@@ -11,6 +11,7 @@ covid
 colour
 cryptg
 dnspython
+distro
 deezloader
 emoji
 gitpython
