@@ -283,6 +283,7 @@ USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
 CMD_HELP = {}
+CMD_LIST = {}
 ZALG_LIST = {}
 ISAFK = False
 AFKREASON = None
