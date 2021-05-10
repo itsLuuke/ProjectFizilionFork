@@ -11,6 +11,7 @@ from asyncio import sleep
 
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
 async def help(event):
+   
    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = BOT_USERNAME
         input_str = event.pattern_match.group(1)
@@ -62,3 +63,7 @@ async def help(event):
                     event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
                 )
                 await event.delete()
+            except BaseException:
+                await event.edit(
+                    f"This bot has inline disabled. TESTFAILED"
+                )
