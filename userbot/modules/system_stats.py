@@ -257,8 +257,7 @@ async def amireallyalive(alive):
             logo = ALIVE_LOGO
             msg = await bot.send_file(alive.chat_id, logo, caption=output, del_in=10)
             await alive.delete()
-            await sleep(15)
-            await msg.delete()
+            await sleep(30)
         except BaseException:
             await alive.edit(
                 output + "\n\n *`The provided logo is invalid."
@@ -266,9 +265,11 @@ async def amireallyalive(alive):
             )
     else:
         msg=await alive.edit(output)
-        await sleep(15)
+        await sleep(30)
+        
+    if TIMEOUT:
         await msg.delete()
-
+        
 
 @register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
