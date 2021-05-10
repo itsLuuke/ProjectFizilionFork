@@ -62,7 +62,7 @@ async def help(event):
                     event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
                 )
                 await event.delete()
-    """ For .help command,"""
+  #  """ For .help command,"""
    # args = event.pattern_match.group(1).lower()
     # Prevent Channel Bug to get any information and command from all modules
   #  if event.is_channel and not event.is_group:
