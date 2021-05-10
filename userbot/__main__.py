@@ -19,18 +19,18 @@ INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
 
 bot.tgbot = None
 if BOT_USERNAME is not None:
-        print("Initiating Inline Bot")
+        LOGS.info("Initiating Inline Bot")
         bot.tgbot = TelegramClient(
             "BOT_TOKEN",
             api_id=APP_ID,
             api_hash=API_HASH
         ).start(bot_token=BOT_TOKEN)
-        print("SETTING BOT, no errors")
-        print("Starting Userbot")
+        LOGS.info("SETTING BOT, no errors")
+        LOGS.info("Starting Userbot")
         bot.loop.run_until_complete(add_bot(BOT_USERNAME))
-        print("Startup Completed")
+        LOGS.info("Startup Completed")
 else:
-    print("Inline Failed, Starting anyways")
+    LOGS.info("Inline Failed, Starting anyways")
     bot.start()
 
 try:
