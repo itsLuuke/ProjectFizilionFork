@@ -22,7 +22,7 @@ if BOT_USERNAME is not None:
         LOGS.info("Initiating Inline Bot")
         bot.tgbot = TelegramClient(
             "BOT_TOKEN",
-            api_id=APP_KEY,
+            api_id=API_KEY,
             api_hash=API_HASH
         ).start(bot_token=BOT_TOKEN)
         LOGS.info("SETTING BOT, no errors")
