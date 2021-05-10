@@ -58,7 +58,8 @@ async def help(event):
             help_string = f"""`Userbot Helper for TEST to reveal all the commands of `**TEST**\n\n"""
             try:
                 results = await bot.inline_query(  # pylint:disable=E0602
-                    tgbotusername, help_string
+                 #   tgbotusername, help_string
+                 senpaitorrentleechbot, help_string  
                 )
                 await results[0].click(
                     event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
