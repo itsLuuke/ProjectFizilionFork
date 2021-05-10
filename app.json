@@ -181,6 +181,10 @@
       "description": "Show Image/Logo in .alive message. Fill value of image your link image, use telegra.ph / i.ibb.co to get your own image",
       "required": false
     },
+    "TIMEOUT": {
+      "description": "Timeout settings for alive and help modules. Setting it to True will delete help and alive msgs after 30secs whenever the command it used.",
+      "value": "True"
+    },
     "G_DRIVE_CLIENT_SECRET": {
       "description": "Enter Your Client Secret for Google Drive.",
       "required": false
