@@ -358,7 +358,7 @@ async def endgmute(event):
 
     if not is_muted(userid, "gmute"):
         return await edit_or_reply(
-            event, f"{_format.mentionuser(user.first_name ,user.id)} `is not gmuted`"
+            event, f"{mentionuser(user.first_name ,user.id)} `is not gmuted`"
         )
     try:
         unmute(userid, "gmute")
@@ -368,26 +368,26 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`\n**Reason :** `{reason}`",
+                f"{mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`\n**Reason :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`",
+                f"{mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`",
             )
     if BOTLOG:
         if reason:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#UNGMUTE\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)} \n"
+                f"**User :** {mentionuser(user.first_name ,user.id)} \n"
                 f"**Reason :** `{reason}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#UNGMUTE\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)} \n",
+                f"**User :** {mentionuser(user.first_name ,user.id)} \n",
             )
 
 
