@@ -233,7 +233,7 @@ async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"'==============================='\n"
+        f"`===============================`\n"
         f"**Fizilion is Running.... **\n"
         f"`=============================== `\n\n"
         f"`**OS Info**`\n"
