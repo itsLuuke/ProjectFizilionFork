@@ -24,7 +24,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
