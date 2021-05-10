@@ -234,17 +234,15 @@ async def amireallyalive(alive):
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         f"`===============================`\n"
-        f"**Fizilion is Up [Premium Edition] **\n"
+        f"**FIZILION IS UP [Premium Edition] **\n"
         f"`=============================== `\n"
         f"**[OS Info]:**\n"
         f"•`Platform Type   : {os.name}`\n"
         f"•`Distro          : {distro.name(pretty=False)} {distro.version(pretty=False, best=False)}`\n"
-        f"`-------------------------------`\n"
         f"**[PYPI Module Versions]:**\n"
         f"•`Python         : v{python_version()} `\n"   
         f"•`Telethon       : v{version.__version__} `\n"
         f"•`PIP            : v{pip.__version__} `\n"
-        f"`-------------------------------`\n"
         f"**[MISC Info]:**\n"
         f"•`User           : {DEFAULTUSER} `\n"
         f"•`Running on     : {repo.active_branch.name} `\n"
