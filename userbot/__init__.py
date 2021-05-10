@@ -27,6 +27,8 @@ load_dotenv("config.env")
 
 STORAGE = (lambda n: Storage(Path("data") / n))
 
+# TG BOT TOKEN
+BOT_TOKEN = os.environ.get("BOT_TOKEN") or None
 StartTime = time.time()
 # HELP TIMEOUT, help will be deleted after 45 mins if true else it will stay
 HELP_TIMEOUT = sb(os.environ.get("HELP_TIMEOUT") or "False")
