@@ -17,7 +17,7 @@ from requests import get
 
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
-from userbot.utils import chrome, human_to_bytes, humanbytes, md5, time_formatter
+from userbot.utils import chrome, human_to_bytes, humanbytes, md5, time_formatter, edit_or_reply
 
 GITHUB = "https://github.com"
 
@@ -226,7 +226,9 @@ async def download_api(dl):
 
 @register(outgoing=True, pattern=r"^.specs(?: |)([\S]*)(?: |)([\s\S]*)")
 async def devices_specifications(request):
-    """ Mobile devices specifications """
+    if request.fwd_from:
+        return
+    # Mobile devices specifications
     textx = await request.get_reply_message()
     brand = request.pattern_match.group(1).lower()
     device = request.pattern_match.group(2).lower()
@@ -236,7 +238,7 @@ async def devices_specifications(request):
         brand = textx.text.split(" ")[0]
         device = " ".join(textx.text.split(" ")[1:])
     else:
-        await request.edit("`Usage: .specs <brand> <device>`")
+        await edit_or_reply(request, "`Usage: .specs <brand> <device>`")
         return
     all_brands = (
         BeautifulSoup(
@@ -251,7 +253,8 @@ async def devices_specifications(request):
             i["href"] for i in all_brands if brand == i.text.strip().lower()
         ][0]
     except IndexError:
-        await request.edit(f"`{brand} is unknown brand!`")
+        await edit_or_reply(request, f"`{brand} is unknown brand!`")
+        return
     devices = BeautifulSoup(get(brand_page_url).content, "lxml").findAll(
         "div", {"class": "model-listing-container-80"}
     )
@@ -263,7 +266,8 @@ async def devices_specifications(request):
             if device in i.text.strip().lower()
         ]
     except IndexError:
-        await request.edit(f"`can't find {device}!`")
+        await edit_or_reply(request, f"`can't find {device}!`")
+        return
     if len(device_page_url) > 2:
         device_page_url = device_page_url[:2]
     reply = ""
@@ -281,8 +285,8 @@ async def devices_specifications(request):
                 .strip()
             )
             reply += f"**{title}**: {data}\n"
-    await request.edit(reply)
-
+    await edit_or_reply(request, reply)
+    
 
 @register(outgoing=True, pattern=r"^.twrp(?: |$)(\S*)")
 async def twrp(request):
