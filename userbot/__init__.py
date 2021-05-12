@@ -308,6 +308,12 @@ output = (
     f"•`Bot started at : {uptime} `\n" 
 )
 ## FOR INLINE FEATURES
+async def add_bot(bot_token):
+    await bot.start(bot_token)
+    bot.me = await bot.get_me()
+    bot.uid = telethon.utils.get_peer_id(bot.me)
+
+
 inlinebot = None
 if BOT_USERNAME is not None:
         LOGS.info("Initiating Inline Bot")
