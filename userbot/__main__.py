@@ -17,12 +17,6 @@ from userbot.modules import ALL_MODULES
 INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
              '\n Tip: Use Country Code along with number.' \
              '\n or check your phone number and try again !'
-async def add_bot(bot_token):
-    await bot.start(bot_token)
-    bot.me = await bot.get_me()
-    bot.uid = telethon.utils.get_peer_id(bot.me)
-
-
 
 
 try:
