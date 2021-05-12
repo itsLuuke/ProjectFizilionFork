@@ -66,7 +66,7 @@ async def boss(e):
   
 async def start(e):
     yourname = await e.client(GetFullUserRequest(e.sender_id))
-    await event.reply(
+    await e.reply(
         f"THIS IS YOUR NAME {yourname.user.first_name} NOW TEST",
         buttons=[
             [Button.inline("TESTBUTTON", data="test")],
