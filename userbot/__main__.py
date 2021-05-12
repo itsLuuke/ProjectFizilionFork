@@ -35,10 +35,16 @@ LOGS.info(
     "Congratulations, your userbot is now running !! Test it by typing .alive / .on in any chat."
     "If you need assistance, head to https://t.me/ProjectFizilionChat")
 OWNER_ID = 1391975600
-# start-others
+async def add_bot(bot_token):
+    await bot.start(bot_token)
+    bot.me = await bot.get_me()
+    bot.uid = telethon.utils.get_peer_id(bot.me)
+# start bot bot not userbot
 try:
     LOGS.info("INITIATING BOT....")
     inlinebot = TelegramClient("inlinebot", API_KEY, API_HASH).start(bot_token=BOT_TOKEN)
+    bot.loop.run_until_complete(add_bot(BOT_USERNAME))
+    LOGS.info("BOT SETUP")
 except Exception as e:
     LOGS.info("INLINEBOT FAILED.")
     LOGS.info("INLINEBOT is quiting...")
