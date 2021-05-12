@@ -7,7 +7,7 @@
 
 from importlib import import_module
 from sys import argv
-from telethon import TelegramClient, events
+from telethon import TelegramClient, events, Button
 import telethon.utils
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
