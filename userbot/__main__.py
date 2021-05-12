@@ -56,7 +56,7 @@ async def start_all(event):
 
 
 @inlinebot.on(events.NewMessage(pattern="/start", from_users=OWNER_ID))
-async def boss(e):   
+async def boss(event):   
     await inlinebot.send_message("YES BOSS")
     await start(e)
 ## TO FORWARD MESSAGES TO OWNER    
