@@ -6,6 +6,7 @@ from telethon import events
 from userbot import BOT_TOKEN, API_KEY, API_HASH, LOGS
 # start-others
 try:
+    LOGS.info("INITIATING BOT....")
     inlinebot = TelegramClient("inlinebot", API_KEY, API_HASH).start(bot_token=BOT_TOKEN)
 except Exception as e:
     LOGS.info("INLINEBOT FAILED.")
