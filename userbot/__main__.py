@@ -46,26 +46,26 @@ except Exception as e:
     exit()
 
 @inlinebot.on(events.NewMessage(pattern="/start"))  # pylint: disable=oof
-async def start_all(event):
+async def start_all(e):
     if event.chat_id == OWNER_ID:
         return
-    await inlinebot.send_message(event.chat_id, "You are not my boss but proceed anyway")  
+    await inlinebot.send_message(e.chat_id, "You are not my boss but proceed anyway")  
     await start(e)
 
 # start-owner
 
 
 @inlinebot.on(events.NewMessage(pattern="/start", from_users=OWNER_ID))
-async def boss(event):   
-    await inlinebot.send_message(event.chat_id, "YES BOSS")
+async def boss(e):   
+    await inlinebot.send_message(e.chat_id, "YES BOSS")
     await start(e)
 ## TO FORWARD MESSAGES TO OWNER    
 #@inlinebot.on(events.NewMessage(incoming=True))
 #async def incoming_messages(e):
 #  await inlinebot.
   
-async def start(event):
-    yourname = await event.client(GetFullUserRequest(event.sender_id))
+async def start(e):
+    yourname = await e.client(GetFullUserRequest(e.sender_id))
     await event.reply(
         f"THIS IS YOUR NAME {yourname.user.first_name} NOW TEST",
         buttons=[
@@ -77,8 +77,8 @@ async def start(event):
         ],
     )
 
-async def test(event):
-    await event.edit(
+async def test(e):
+    await e.edit(
         "SUCCESSFULLY TESTED",
         buttons=[Button.inline("TEST TO GO BACK", data="start")],
     )    
