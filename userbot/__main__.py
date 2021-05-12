@@ -47,7 +47,7 @@ except Exception as e:
 
 @inlinebot.on(events.NewMessage(pattern="/start"))  # pylint: disable=oof
 async def start_all(e):
-    if event.chat_id == OWNER_ID:
+    if e.chat_id == OWNER_ID:
         return
     await inlinebot.send_message(e.chat_id, "You are not my boss but proceed anyway")  
     await start(e)
