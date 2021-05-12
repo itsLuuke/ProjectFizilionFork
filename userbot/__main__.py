@@ -48,16 +48,39 @@ except Exception as e:
 async def start_all(event):
     if event.chat_id == OWNER_ID:
         return
-    await inlinebot.send_message(event.chat_id, "TEST=NOTOWNER")
-      
+    async def start(e):
 
 # start-owner
 
 
-@inlinebot.on(events.NewMessage(pattern="/start",
-                            from_users=OWNER_ID))  # pylint: disable=oof
-async def owner(event):
-    await inlinebot.send_message(event.chat_id, "TEST=OWNER")
+@inlinebot.on(events.NewMessage(pattern="/start", from_users=OWNER_ID))
+async def boss(e):   
+    #await inlinebot.send_message("YES BOSS")
+    async def start(e):
+## TO FORWARD MESSAGES TO OWNER    
+#@inlinebot.on(events.NewMessage(incoming=True))
+#async def incoming_messages(e):
+#  await inlinebot.
+  
+async def start(event):
+    yourname = await event.client(GetFullUserRequest(event.sender_id))
+    await event.reply(
+        f"THIS IS YOUR NAME {yourname.user.first_name} NOW TEST",
+        buttons=[
+            [Button.inline("TESTBUTTON", data="test")],
+            [
+            
+                Button.url("MASTER", url="t.me/senpaiaf"),
+            ],
+        ],
+    )
+
+async def test(event):
+    await event.edit(
+        "SUCCESSFULLY TESTED",
+        buttons=[Button.inline("TEST TO GO BACK", data="start")],
+    )    
+  
 
 
 
