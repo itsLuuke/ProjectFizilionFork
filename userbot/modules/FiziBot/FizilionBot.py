@@ -2,7 +2,7 @@ import re
 import asyncio
 import os
 import requests
-from telethon import events
+from telethon import events, TelegramClient
 from userbot import BOT_TOKEN, API_KEY, API_HASH, LOGS
 # start-others
 try:
