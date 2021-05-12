@@ -307,28 +307,6 @@ output = (
     f"•`Fizilion       : {USERBOT_VERSION} `\n"
     f"•`Bot started at : {uptime} `\n" 
 )
-## FOR INLINE FEATURES
-async def add_bot(bot_token):
-    await bot.start(bot_token)
-    bot.me = await bot.get_me()
-    bot.uid = telethon.utils.get_peer_id(bot.me)
-
-
-inlinebot = None
-if BOT_USERNAME is not None:
-        LOGS.info("Initiating Inline Bot")
-        inlinebot = TelegramClient(
-            "BOT_TOKEN",
-            api_id=API_KEY,
-            api_hash=API_HASH
-        ).start(bot_token=BOT_TOKEN)
-        LOGS.info("SETTING INLINE BOT, no errors")
-        LOGS.info("Starting INLINEBOT")
-        bot.loop.run_until_complete(add_bot(BOT_USERNAME))
-        LOGS.info("INLINE Started Completed")
-else:
-    LOGS.info("Inline Failed, Starting anyways")
-    bot.start()
 
 async def start():
     if BOTLOG:
