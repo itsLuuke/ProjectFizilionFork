@@ -5,7 +5,7 @@
 #
 """ Userbot help command """
 
-from userbot import CMD_HELP, TIMEOUT, BOT_USERNAME, CMD_LIST
+from userbot import CMD_HELP, TIMEOUT, BOT_USERNAME, CMD_LIST, bot
 from userbot.events import register
 from asyncio import sleep
 
