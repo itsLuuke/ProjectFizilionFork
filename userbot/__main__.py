@@ -76,14 +76,32 @@ async def start(e):
             ],
         ],
     )
-
+async def back(e):
+    yourname = await e.client(GetFullUserRequest(e.sender_id))
+    await e.edit(
+        f"THIS IS YOUR NAME {yourname.user.first_name} NOW TEST",
+        buttons=[
+            [Button.inline("TESTBUTTON", data="test")],
+            [
+            
+                Button.url("MASTER", url="t.me/senpaiaf"),
+            ],
+        ],
+    )
 async def test(e):
     await e.edit(
         "SUCCESSFULLY TESTED",
         buttons=[Button.inline("TEST TO GO BACK", data="start")],
     )    
   
-
+## CALLBACKS
+@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"test(.*)")))
+async def _(e):
+    await test(e)
+    
+@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"back(.*)")))
+async def _(e):
+    await back(e)    
 
 
 if len(argv) not in (1, 3, 4):
