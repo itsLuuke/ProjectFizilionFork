@@ -49,7 +49,7 @@ except Exception as e:
 async def start_all(event):
     if event.chat_id == OWNER_ID:
         return
-    await inlinebot.send_message("You are not my boss but proceed anyway")  
+    await inlinebot.send_message(event.chat_id, "You are not my boss but proceed anyway")  
     await start(e)
 
 # start-owner
@@ -57,7 +57,7 @@ async def start_all(event):
 
 @inlinebot.on(events.NewMessage(pattern="/start", from_users=OWNER_ID))
 async def boss(event):   
-    await inlinebot.send_message("YES BOSS")
+    await inlinebot.send_message(event.chat_id, "YES BOSS")
     await start(e)
 ## TO FORWARD MESSAGES TO OWNER    
 #@inlinebot.on(events.NewMessage(incoming=True))
