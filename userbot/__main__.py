@@ -27,7 +27,7 @@ async def add_bot(bot_token):
 bot.tgbot = None
 if BOT_USERNAME is not None:
         LOGS.info("Initiating Inline Bot")
-        bot.tgbot = TelegramClient(
+        inlinebot = TelegramClient(
             "BOT_TOKEN",
             api_id=API_KEY,
             api_hash=API_HASH
