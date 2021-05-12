@@ -91,7 +91,7 @@ async def back(e):
 async def test(e):
     await e.edit(
         "SUCCESSFULLY TESTED",
-        buttons=[Button.inline("TEST TO GO BACK", data="start")],
+        buttons=[Button.inline("TEST TO GO BACK", data="back")],
     )    
   
 ## CALLBACKS
