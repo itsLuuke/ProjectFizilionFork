@@ -27,8 +27,8 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-uptime = await get_readable_time((time.time() - StartTime))
 ALIVE_TEXT = (
+        
         f"`===============================`\n"
         f"**FIZILION IS UP AND RUNNING...**\n"
         f"`=============================== `\n"
@@ -156,6 +156,8 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
+      
+      uptime = await get_readable_time((time.time() - StartTime))  
       result = builder.photo(
                 file=ALIVE_LOGO,
                 text=ALIVE_TEXT,
