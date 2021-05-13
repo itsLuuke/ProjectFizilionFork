@@ -118,7 +118,7 @@ async def handler(event):
    #     builder.article('lowercase', text=event.text.lower()),
    # ])
      builder = event.builder
-     r1 = builder.article('Be nice', text='Have a nice day')
+     r1 = builder.article('Be nice', text='TEST HELP')
      r2 = builder.article('Be bad', text="I don't like you")
      await event.answer([r1, r2])  
 
