@@ -163,9 +163,9 @@ async def handler(event):
    #     builder.article('UPPERCASE', text=event.text.upper()),
    #     builder.article('lowercase', text=event.text.lower()),
    # ])
-    builder = event.builder
-    query = event.text
-    if event.query.user_id == bot.uid:
+      builder = event.builder
+      query = event.text
+   # if event.query.user_id == bot.uid:
       uptime = await get_readable_time((time.time() - StartTime))  
       alive = builder.photo(
                 file=ALIVE_LOGO,
