@@ -165,7 +165,7 @@ async def handler(event):
    # ])
       builder = event.builder
       query = event.text
-   # if event.query.user_id == bot.uid:
+    if event.query.user_id == OWNER_ID:
       uptime = await get_readable_time((time.time() - StartTime))  
       alive = builder.photo(
                 file=ALIVE_LOGO,
