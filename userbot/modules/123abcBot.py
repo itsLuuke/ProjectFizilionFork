@@ -25,7 +25,6 @@ from telethon import __version__, version
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 modules = CMD_HELP
 repo = Repo()
-uptime = await get_readable_time((time.time() - StartTime))
 alive_text = (
         
         f"`===============================`\n"
@@ -136,6 +135,7 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
+      uptime = await get_readable_time((time.time() - StartTime))  
       alive = builder.photo(
                 file=ALIVE_LOGO,
                 text=alive_text,
