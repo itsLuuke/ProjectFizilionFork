@@ -19,7 +19,7 @@ from telethon import TelegramClient, events, Button
 import telethon.utils
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
-from userbot import LOGS, bot, BOT_TOKEN, BOT_USERNAME, API_KEY, API_HASH, ALIVE_LOGO, USERBOT_VERSION, StartTime
+from userbot import LOGS, bot, BOT_TOKEN, BOT_USERNAME, API_KEY, API_HASH, ALIVE_LOGO, USERBOT_VERSION, StartTime, ALIVE_NAME
 from userbot.modules import ALL_MODULES
 from platform import python_version, uname
 from shutil import which
@@ -156,7 +156,7 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
-      
+      DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
       uptime = await get_readable_time((time.time() - StartTime))  
       result = builder.photo(
                 file=ALIVE_LOGO,
