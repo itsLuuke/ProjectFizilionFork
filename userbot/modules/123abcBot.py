@@ -22,7 +22,13 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-OWNER_ID = 1391975600
+
+async def add_bot(bot_token):
+    await bot.start(bot_token)
+    bot.me = await bot.get_me()
+    bot.uid = telethon.utils.get_peer_id(bot.me)
+
+OWNER_ID = bot.uid
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 modules = CMD_HELP
@@ -51,11 +57,6 @@ alive_text = (
 
     )
 
-
-async def add_bot(bot_token):
-    await bot.start(bot_token)
-    bot.me = await bot.get_me()
-    bot.uid = telethon.utils.get_peer_id(bot.me)
 
 async def get_readable_time(seconds: int) -> str:
     count = 0
