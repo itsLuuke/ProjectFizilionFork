@@ -25,10 +25,10 @@ from telethon import __version__, version
 
 async def add_bot(bot_token):
     await bot.start(bot_token)
-    fizibot.me = await bot.get_me()
-    fizibot.uid = telethon.utils.get_peer_id(fizibot.me)
+    bot.me = await bot.get_me()
+    bot.uid = telethon.utils.get_peer_id(bot.me)
 
-OWNER_ID = fizibot.uid
+OWNER_ID = 1391975600
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 modules = CMD_HELP
