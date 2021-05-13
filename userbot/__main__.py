@@ -42,11 +42,11 @@ ALIVE_TEXT = (
         f"•`PIP            : v{pip.__version__} `\n"
         f"`===============================`\n"
         f"**[MISC Info]:**\n"
-        f"•`User           : {DEFAULTUSER} `\n"
+        f"•`User           : TEST `\n"
         f"•`Running on     : {repo.active_branch.name} `\n"
         f"•`Loaded modules : {len(modules)} `\n"
         f"•`Fizilion       : {USERBOT_VERSION} `\n"
-        f"•`Bot Uptime     : {uptime} `\n"
+        f"•`Bot Uptime     : TEST `\n"
         f"`===============================`\n"
 
     )
@@ -156,8 +156,6 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
-      DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
-      uptime = await get_readable_time((time.time() - StartTime))  
       result = builder.photo(
                 file=ALIVE_LOGO,
                 text=ALIVE_TEXT,
