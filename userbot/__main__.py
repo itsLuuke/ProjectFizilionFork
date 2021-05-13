@@ -27,6 +27,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
+repo = Repo()
 ALIVE_TEXT = (
         
         f"`===============================`\n"
