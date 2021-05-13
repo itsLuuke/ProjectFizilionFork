@@ -163,11 +163,12 @@ async def handler(event):
    #     builder.article('UPPERCASE', text=event.text.upper()),
    #     builder.article('lowercase', text=event.text.lower()),
    # ])
-      builder = event.builder
-      query = event.text
+    
     if event.query.user_id == OWNER_ID:
-      uptime = await get_readable_time((time.time() - StartTime))  
-      alive = builder.photo(
+          builder = event.builder
+          query = event.text
+          uptime = await get_readable_time((time.time() - StartTime))  
+          alive = builder.photo(
                 file=ALIVE_LOGO,
                 text=alive_text,
                 buttons=[
@@ -179,9 +180,9 @@ async def handler(event):
                     [Button.inline("BUTTON4", data="four")],
                 ],
             )
-      r1 = builder.article('1. TEST', text="TEST HELP")
-      r2 = builder.article('2. TEST', text="TEST HELP2")
-      await event.answer([alive, r1, r2])
+          r1 = builder.article('1. TEST', text="TEST HELP")
+          r2 = builder.article('2. TEST', text="TEST HELP2")
+          await event.answer([alive, r1, r2])
     else:
-      notmaster = builder.article('Not for you boss', text='You are not my master you bastard')
-      await event.answer([notmaster])    
+          notmaster = builder.article('Not for you boss', text='You are not my master you bastard')
+          await event.answer([notmaster])    
