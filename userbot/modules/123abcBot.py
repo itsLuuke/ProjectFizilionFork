@@ -22,6 +22,8 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
+OWNER_ID = bot.me.id
+
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 modules = CMD_HELP
 repo = Repo()
