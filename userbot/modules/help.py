@@ -65,7 +65,9 @@ async def help(event):
                     event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
                 )
                 await event.delete()
-            except BaseException:
-                await event.edit(
-                    f"This bot has inline disabled. TESTFAILED"
-                )
+            except Exception as e:
+               LOGS.info(str(e))
+         #   except BaseException:
+          #      await event.edit(
+           #         f"This bot has inline disabled. TESTFAILED"
+            #    )
