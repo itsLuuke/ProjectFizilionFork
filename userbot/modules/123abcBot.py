@@ -57,15 +57,15 @@ async def add_bot(bot_token):
     bot.me = await bot.get_me()
     bot.uid = telethon.utils.get_peer_id(bot.me)
 try:
-    LOGS.info("INITIATING BOT....")
+    LOGS.info("INITIATING INLINEBOT....")
     inlinebot = TelegramClient("inlinebot", API_KEY, API_HASH).start(bot_token=BOT_TOKEN)
     bot.loop.run_until_complete(add_bot(BOT_USERNAME))
-    LOGS.info("BOT SETUP")
+    LOGS.info("INLINEBOT IS ONLINE NOW")
 except Exception as e:
     LOGS.info("INLINEBOT FAILED.")
     LOGS.info("INLINEBOT is quiting...")
     LOGS.info(str(e))
-    exit()
+    return
     
 @inlinebot.on(events.NewMessage(pattern="/start"))  # pylint: disable=oof
 async def start_all(e):
