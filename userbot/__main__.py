@@ -117,10 +117,15 @@ async def handler(event):
    #     builder.article('UPPERCASE', text=event.text.upper()),
    #     builder.article('lowercase', text=event.text.lower()),
    # ])
-     builder = event.builder
-     r1 = builder.article('Be nice', text='TEST HELP')
-     r2 = builder.article('Be bad', text="I don't like you")
-     await event.answer([r1, r2])  
+    builder = event.builder
+    query = event.text
+    if event.query.user_id == bot.uid:
+      r1 = builder.article('Be nice', text='TEST HELP')
+      r2 = builder.article('Be bad', text="I don't like you")
+      await event.answer([r1, r2])
+    else:
+      return
+      
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
