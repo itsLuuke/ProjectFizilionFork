@@ -59,7 +59,7 @@ async def help(event):
             try:
                 results = await bot.inline_query(  # pylint:disable=E0602
                  #   tgbotusername, help_string
-                 "@senpaitorrentleechbot", help_string  
+                 "@senpaitorrentleechbot", "TEST HELP2"  
                 )
                 await results[0].click(
                     event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
