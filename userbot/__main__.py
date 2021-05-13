@@ -27,6 +27,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
+modules = CMD_HELP
 repo = Repo()
 ALIVE_TEXT = (
         
