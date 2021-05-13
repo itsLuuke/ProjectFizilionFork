@@ -108,7 +108,15 @@ async def _(e):
 @inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"back(.*)")))
 async def _(e):
     await back(e)    
+@inlinebot.on(events.InlineQuery)
+async def handler(event):
+    builder = event.builder
 
+    # Two options (convert user text to UPPERCASE or lowercase)
+    await event.answer([
+        builder.article('UPPERCASE', text=event.text.upper()),
+        builder.article('lowercase', text=event.text.lower()),
+    ])
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
