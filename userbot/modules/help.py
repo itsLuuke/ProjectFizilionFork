@@ -53,7 +53,7 @@ async def help(event):
                     await event.edit(string)
             else:
                 await event.edit(input_str + " is not a valid plugin!")
-        else:
+       else:
             tgbotusername = BOT_USERNAME
             help_string = "Userbot Helper for TEST to reveal all the commands of TEST"
             try:
