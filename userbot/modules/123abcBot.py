@@ -22,7 +22,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-OWNER_ID = bot.uid
+OWNER_ID = 1391975600
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 modules = CMD_HELP
