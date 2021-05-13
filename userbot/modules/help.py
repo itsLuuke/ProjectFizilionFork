@@ -38,6 +38,7 @@ async def help(event):
                 )
                # await event.answer([results])
             await event.delete()
+            await handler(event)
         except Exception as e:
                LOGS.info(str(e))
          #   except BaseException:
