@@ -120,8 +120,8 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
-      r1 = builder.article('Be nice', text='TEST HELP')
-      r2 = builder.article('Be bad', text="I don't like you")
+      r1 = builder.article('1. TEST', text="TEST HELP")
+      r2 = builder.article('2. TEST', text="TEST HELP2")
       await event.answer([r1, r2])
     else:
       return
