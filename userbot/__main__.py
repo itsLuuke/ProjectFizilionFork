@@ -158,7 +158,7 @@ async def handler(event):
     builder = event.builder
     query = event.text
     if event.query.user_id == bot.uid:
-      result = builder.photo(
+      alive = builder.photo(
                 file=ALIVE_LOGO,
                 text=ALIVE_TEXT,
                 buttons=[
@@ -172,7 +172,7 @@ async def handler(event):
             )
       r1 = builder.article('1. TEST', text="TEST HELP")
       r2 = builder.article('2. TEST', text="TEST HELP2")
-      await event.answer([result, r1, r2])
+      await event.answer([alive, r1, r2])
     else:
       notmaster = builder.article('Not for you boss', text='You are not my master you bastard')
       await event.answer([notmaster])
