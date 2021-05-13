@@ -163,11 +163,11 @@ async def handler(event):
                 text=ALIVE_TEXT,
                 buttons=[
                     [
-                        Button.inline("BUTTON1", data="req"),
-                        Button.inline("BUTTON2", data="chat"),
+                        Button.inline("BUTTON1", data="one"),
+                        Button.inline("BUTTON2", data="two"),
                     ],
-                    [Button.inline("BUTTTON3", data="heheboi")],
-                    [Button.inline("BUTTON4", data="pmclick")],
+                    [Button.inline("BUTTTON3", data="three")],
+                    [Button.inline("BUTTON4", data="four")],
                 ],
             )
       r1 = builder.article('1. TEST', text="TEST HELP")
