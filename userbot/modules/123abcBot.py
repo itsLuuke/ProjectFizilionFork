@@ -93,7 +93,7 @@ except Exception as e:
     LOGS.info("INLINEBOT FAILED.")
     LOGS.info("INLINEBOT is quiting...")
     LOGS.info(str(e))
-    return
+    
     
 @inlinebot.on(events.NewMessage(pattern="/start"))  # pylint: disable=oof
 async def start_all(e):
