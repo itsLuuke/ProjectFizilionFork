@@ -110,13 +110,17 @@ async def _(e):
     await back(e)    
 @inlinebot.on(events.InlineQuery)
 async def handler(event):
-    builder = event.builder
+#    builder = event.builder
 
     # Two options (convert user text to UPPERCASE or lowercase)
-    await event.answer([
-        builder.article('UPPERCASE', text=event.text.upper()),
-        builder.article('lowercase', text=event.text.lower()),
-    ])
+   # await event.answer([
+   #     builder.article('UPPERCASE', text=event.text.upper()),
+   #     builder.article('lowercase', text=event.text.lower()),
+   # ])
+     builder = inline.builder
+     r1 = builder.article('Be nice', text='Have a nice day')
+     r2 = builder.article('Be bad', text="I don't like you")
+     await inline.answer([r1, r2])  
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
