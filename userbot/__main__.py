@@ -124,7 +124,8 @@ async def handler(event):
       r2 = builder.article('2. TEST', text="TEST HELP2")
       await event.answer([r1, r2])
     else:
-      return
+      notmaster = builder.article('Not for you boss', text='You are not my master you bastard')
+      await event.answer([notmaster])
       
 
 if len(argv) not in (1, 3, 4):
