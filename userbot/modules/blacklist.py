@@ -8,6 +8,7 @@
 import io
 import re
 
+from sqlalchemy.exc import IntegrityError
 import userbot.modules.sql_helper.blacklist_sql as sql
 from userbot import CMD_HELP
 from userbot.events import register
