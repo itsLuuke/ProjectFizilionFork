@@ -93,9 +93,9 @@ async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     await gpic.edit("`Processing...`")
     await sleep(1)
-    if not gpic.is_group:
-        await gpic.edit("`I don't think this is a group.`")
-        return
+    #if not gpic.is_group:
+    #    await gpic.edit("`I don't think this is a group.`")
+    #    return
     replymsg = await gpic.get_reply_message()
     chat = await gpic.get_chat()
     admin = chat.admin_rights
