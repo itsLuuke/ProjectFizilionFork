@@ -142,5 +142,18 @@ async def handler(event):
           )
           await event.answer([notmaster])    
         
-@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmpermit"))      
-async def pmpermit(e):              
+#@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmpermit"))      
+#async def pmpermit(e):              
+ #  await e.edit("SET PM PERMIT ON OR OFF",
+  #              button=[
+  #                      [Button.inline("ON", data="pmsecon")],
+  #                      [Button.inline("OFF", data="pmsecoff")]
+  #                      )
+ #               
+#@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmsecon"))              
+              
+              
+              
+              
+              
+#@inlinebot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmsecoff"))                       
