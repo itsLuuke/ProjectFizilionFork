@@ -22,7 +22,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-from userbot.utils import inlinebot
+#from userbot.utils import inlinebot
 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
