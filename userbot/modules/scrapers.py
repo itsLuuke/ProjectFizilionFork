@@ -24,7 +24,7 @@ from gtts.lang import tts_langs
 from requests import get
 from search_engine_parser.core.engines.google import Search as GoogleSearch
 from search_engine_parser.core.exceptions import NoResultsOrTrafficError
-from telethon.tl.types import DocumentAttributeAudio
+from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from wikipedia import summary
 from wikipedia.exceptions import DisambiguationError, PageError
 from yt_dlp import YoutubeDL
