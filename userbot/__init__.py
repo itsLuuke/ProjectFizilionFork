@@ -26,7 +26,7 @@ from telethon import __version__, version
 load_dotenv("config.env")
 
 STORAGE = (lambda n: Storage(Path("data") / n))
-
+OWNER_ID = -1391975600
 # TG BOT TOKEN AND BOT USERNAME
 BOT_TOKEN = os.environ.get("BOT_TOKEN") or None
 BOT_USERNAME = os.environ.get("BOT_USERNAME") or None
