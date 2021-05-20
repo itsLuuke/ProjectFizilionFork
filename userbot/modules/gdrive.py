@@ -951,7 +951,7 @@ async def lists(gdrive):
 
 
 @register(pattern=r"^.gdlist(?: |$)(-l \d+)?(?: |$)?(.*)?(?: |$)", outgoing=True)
-async def lists(gdrive):
+async def gdrivelists(gdrive):
     await gdrive.edit("`Getting information...`")
     await lists(gdrive)
 
