@@ -1501,7 +1501,7 @@ async def g_download(event):
         )
 
 
-@register(pattern="^.gshare (?: |$)(.*)", outgoing=True)
+@register(pattern="^.gshare(?: |$)(.*)", outgoing=True)
 async def gshare(event):
     await event.edit("Gshare in progress...")
     service = await create_app(event)
