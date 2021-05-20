@@ -1457,11 +1457,12 @@ async def check_progress_for_dl(event, gid, previous):
                 )
 
 
-#@register(pattern="^.(gdown|gdown -u)(.*)", outgoing=True)
-@register(pattern="^.gdown (.*)", outgoing=True)
+@register(pattern="^.(gdown|gdown -u)(.*)", outgoing=True)
+#@register(pattern="^.gdown (.*)", outgoing=True)
 async def g_download(event):
   #  if event.fwd_from:
   #      return
+    await event.edit("Gdown in progress...")
     service = await create_app(event)
     if service is False:
         return None
