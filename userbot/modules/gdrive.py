@@ -1492,8 +1492,7 @@ async def g_download(event):
 
 @register(pattern="^.gshare (?: |$)(.*)", outgoing=True)
 async def gshare(event):
-    if event.fwd_from:
-        return
+    await event.edit("Gshare in progress...")
     service = await create_app(event)
     if service is False:
         return None
@@ -1502,12 +1501,6 @@ async def gshare(event):
     await asyncio.sleep(2)
     await share(service, catevent, input_str)
 
-"""
-G-Drive File Downloader Plugin For Userbot. 
-usage: .gdl File-Link
-By: @Zero_cool7870
-
-"""
 async def download_file_from_google_drive(id):
     URL = "https://docs.google.com/uc?export=download"
 
@@ -1578,8 +1571,7 @@ async def get_file_name(content):
 
 @register(pattern="^.gdl (?: |$)(.*)", outgoing=True)
 async def g_download(event):
-    if event.fwd_from:
-        return   
+    await event.edit("gdl in progress....")   
     drive_link = event.text[4:]
     print("Drive Link: "+drive_link)
     file_id = await get_id(drive_link)
