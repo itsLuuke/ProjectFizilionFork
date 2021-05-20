@@ -5,13 +5,12 @@
 #
 """ Userbot help command """
 
-from userbot import CMD_HELP, TIMEOUT, BOT_USERNAME, CMD_LIST, bot, LOGS
+from userbot import CMD_HELP, TIMEOUT
 from userbot.events import register
 from asyncio import sleep
-
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
 async def help(event):
-   
+    """ For .help command,"""
     args = event.pattern_match.group(1).lower()
     # Prevent Channel Bug to get any information and command from all modules
     if event.is_channel and not event.is_group:
@@ -26,22 +25,17 @@ async def help(event):
             msg=await event.edit("Please specify a valid module name.")
             await sleep(15)   
     else:
-        tgbotusername = BOT_USERNAME
-        help_string = "Userbot Helper for TEST to reveal all the commands of TEST"
-        try:
-            results = await bot.inline_query(  # pylint:disable=E0602
-                 #   tgbotusername, help_string
-                 "@senpaitorrentleechbot", help_string  
-                )
-            await results[0].click(
-                    event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-                )
-            #await event.answer([results])
-            await event.delete()
-            #await handler(event)
-        except Exception as e:
-               LOGS.info(str(e))
-         #   except BaseException:
-          #      await event.edit(
-           #         f"This bot has inline disabled. TESTFAILED"
-            #    )
+        final = "**List of all loaded module(s)**\n\
+        \nSpecify which module do you want help for! \
+        \n**Usage:** `.help` <module name>\n\n"
+        temp = "".join(str(i) + " " for i in CMD_HELP)
+        temp = sorted(temp.split())
+        for i in temp:
+            final += "`" + str(i)
+            final += "`\t\t\t•\t\t\t"
+        msg=await event.edit(f"{final[:-5]}")
+        await sleep(45)
+        
+    if TIMEOUT:
+        await msg.delete()
+                
