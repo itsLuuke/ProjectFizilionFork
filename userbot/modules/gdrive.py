@@ -1457,18 +1457,18 @@ async def check_progress_for_dl(event, gid, previous):
                 )
 
 
-@register(pattern="^.(gdown|gdown -u)(.*)", outgoing=True)
+#@register(pattern="^.(gdown|gdown -u)(.*)", outgoing=True)
+@register(pattern="^.gdown (.*)", outgoing=True)
 async def g_download(event):
-    if event.fwd_from:
-        return
+  #  if event.fwd_from:
+  #      return
     service = await create_app(event)
     if service is False:
         return None
     thumb = None
     cmd = event.pattern_match.group(1)
     drive_link = event.pattern_match.group(2)
-    catevent = await edit_or_reply(
-        event, "`Downloading Requested File from G-Drive...`"
+    catevent = await event.edit("`Downloading Requested File from G-Drive...`"
     )
     file_name, catprocess = await gdrive_download(event, catevent, service, drive_link)
     if catprocess is not None:
@@ -1493,7 +1493,7 @@ async def gshare(event):
     if service is False:
         return None
     input_str = event.pattern_match.group(1)
-    catevent = await edit_or_reply(event, "`Creating sharable link...`")
+    catevent = await event.edit("`Creating sharable link...`")
     await asyncio.sleep(2)
     await share(service, catevent, input_str)
 
