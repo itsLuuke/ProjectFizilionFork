@@ -2,6 +2,7 @@ aiohttp[speedups]
 aria2p
 asyncurban
 async_generator
+anime_downloader
 bs4
 cowpy
 lottie
