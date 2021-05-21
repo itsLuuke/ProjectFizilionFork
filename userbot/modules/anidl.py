@@ -4,7 +4,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 @register(outgoing=True, pattern=r"^\.animedl ?(.*)")
-async def _(event):
+async def animedl(event):
     input_str = event.pattern_match.group(1)
     searchthund = await event.reply("Searching Your Anime")
     inptstr = input_str.split(":", 1)
