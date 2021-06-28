@@ -7,7 +7,8 @@ ENV PATH="/Fizilion/bin:$PATH"
 WORKDIR /Fizilion
 
 # clone repo
-RUN git clone https://github.com/AbOuLfOoOoOuF/ProjectFizilion -b pruh /Fizilion
+RUN git clone https://github.com/AbOuLfOoOoOuF/ProjectFizilion -b dev /Fizilion
+#RUN git clone https://github.com/AbOuLfOoOoOuF/ProjectFizilion -b pruh /Fizilion
 #RUN git clone https://github.com/PrajjuS/ProjectFizilion -b demon /Fizilion
 #RUN git clone https://github.com/Senpai-sama-afk/ProjectFizilion -b dragon /Fizilion
 
