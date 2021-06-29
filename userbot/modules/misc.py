@@ -114,7 +114,7 @@ async def repo_is_here(wannasee):
 async def repo_is_heree(wannaseee):
     """ For .repo command, just returns the repo URL. """
     await wannaseee.edit(
-        "[Click here](https://github.com/AbOuLfOoOoOuF/ProjectFizilion) to open my fork of Fizilion's GitHub Repo."
+        "[Click here](https://github.com/AbOuLfOoOoOuF/ProjectFizilion) to open Forkzilion's GitHub Repo."
     )
 
 @register(outgoing=True, pattern="^.deploy$")

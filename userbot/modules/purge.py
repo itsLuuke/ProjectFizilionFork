@@ -85,8 +85,6 @@ async def fastpurger(purg):
     await done.delete()
 
 @register(outgoing=True, pattern="^.pm")
-@register(outgoing=True, pattern="^.pme")
-@register(outgoing=True, pattern="^.purgeme")
 async def purgeme(delme):
     """ For .purgeme, delete x count of your latest message."""
     message = delme.text
@@ -198,7 +196,14 @@ CMD_HELP.update(
 
 CMD_HELP.update(
     {
-        "purgeme": ".purgeme <x>\
+        "purge": ".p\
+        \nUsage: Purges all messages starting from the reply."
+    }
+)
+
+CMD_HELP.update(
+    {
+        "purgeme": ".pm <x>\
         \nUsage: Deletes x amount of your latest messages."
     }
 )
@@ -206,6 +211,13 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "del": ".del\
+\nUsage: Deletes the message you replied to."
+    }
+)
+
+CMD_HELP.update(
+    {
+        "del": ".d\
 \nUsage: Deletes the message you replied to."
     }
 )
