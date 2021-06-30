@@ -887,19 +887,29 @@ async def pero(pru):
         reply_to=message_id
     )
                       
-                      
-@register(outgoing=True, pattern="^.cp(?: |$)(.*)")
-async def copypasta(cp_e):
+                                      
+@register(outgoing=True, pattern="^.cp$")
+async def copypaste(cpst):
+    """ For .cp command, delete the replied message. """
+    if cpst.reply_to_msg_id:
+        textx = await cpst.get_reply_message()
+        await cpst.edit(textx)
+    else:
+        await cpst.edit("`reply to a message to copypaste it`")
+        return
+
+@register(outgoing=True, pattern="^.fn(?: |$)(.*)")
+async def copypasta(fn_e):
     """ Copypasta the famous meme """
-    textx = await cp_e.get_reply_message()
-    message = cp_e.pattern_match.group(1)
+    textx = await fn_e.get_reply_message()
+    message = fn_e.pattern_match.group(1)
 
     if message:
         pass
     elif textx:
         message = textx.text
     else:
-        await cp_e.edit("`😂🅱️IvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!💦`")
+        await fn_e.edit("`😂🅱️IvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!💦`")
         return
 
     reply_text = choice(EMOJIS)
@@ -919,7 +929,7 @@ async def copypasta(cp_e):
             else:
                 reply_text += owo.lower()
     reply_text += choice(EMOJIS)
-    await cp_e.edit(reply_text)
+    await fn_e.edit(reply_text)
 
 
 @register(outgoing=True, pattern="^.vapor(?: |$)(.*)")
@@ -1796,7 +1806,7 @@ CMD_HELP.update(
 \nUsage: Ok...\
 \n\n;_;\
 \nUsage: Like `-_-` but crying.\
-\n\n.cp\
+\n\n.fn\
 \nUsage: Copypasta the famous meme\
 \n\n.vapor\
 \nUsage: Vaporize everything!\
