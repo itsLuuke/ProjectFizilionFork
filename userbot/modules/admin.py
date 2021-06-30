@@ -252,7 +252,7 @@ async def xpromote(promt):
         change_info=False,
         ban_users=False,
         delete_messages=False,
-        pin_messages=False,
+        pin_messages=True,
     )
 
     await promt.edit("`Promoting...`")
