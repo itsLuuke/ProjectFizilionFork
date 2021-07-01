@@ -7,7 +7,7 @@ from telethon import events , client , TelegramClient
 from userbot.modules.admin import get_user_from_event
 
 @register(outgoing=True, pattern="^.hack$")
-async def hack_func(event):
+async def hack_func(hckk):
     animation_chars = [
         "Connecting To Private Server \\",
         "Connecting To Private Server |",
@@ -45,13 +45,77 @@ async def hack_func(event):
     max_ani = len(animation_chars)
     for i in range(max_ani):
         await sleep(0.5)
-        await event.edit(animation_chars[i % max_ani])
-    await event.edit(hecked)
+        await hckk.edit(animation_chars[i % max_ani])
+    await hckk.edit(hecked)
 
-    
-CMD_HELP.update({
-    "hack":
-    "'.hack'"
-    "\nUsage: Hackerman Meme"
-    })
-    
+
+@register(outgoing=True, pattern="^.sadmin$")
+async def sadmin_func(shadm):
+    animation_chars = [
+        "@admin",
+        "@aaddmmiinn",
+        "@aaadddmmmiiinnn",
+        "@aaaaddddmmmmiiiinnnn",
+        "@aaaaadddddmmmmmiiiiinnnnn",
+        "@aaaaaaddddddmmmmmmiiiiiinnnnnn",
+        "@aaaaaaadddddddmmmmmmmiiiiiiinnnnnnn",
+        "@aaaaaaaaddddddddmmmmmmmmiiiiiiiinnnnnnnn",
+        "@aaaaaaaaadddddddddmmmmmmmmmiiiiiiiiinnnnnnnnn",
+        "@aaaaaaaaaaddddddddddmmmmmmmmmmiiiiiiiiiinnnnnnnnnn",
+        "@aaaaaaaaaaadddddddddddmmmmmmmmmmmiiiiiiiiiiinnnnnnnnnnn",
+        "@aaaaaaaaaaaaddddddddddddmmmmmmmmmmmmiiiiiiiiiiiinnnnnnnnnnnn",
+        "@aaaaaaaaaaaaadddddddddddddmmmmmmmmmmmmmiiiiiiiiiiiiinnnnnnnnnnnnn",
+        "@aaaaaaaaaaaaddddddddddddmmmmmmmmmmmmiiiiiiiiiiiinnnnnnnnnnnn",
+        "@aaaaaaaaaaadddddddddddmmmmmmmmmmmiiiiiiiiiiinnnnnnnnnnn",
+        "@aaaaaaaaaaddddddddddmmmmmmmmmmiiiiiiiiiinnnnnnnnnn",
+        "@aaaaaaaaadddddddddmmmmmmmmmiiiiiiiiinnnnnnnnn",
+        "@aaaaaaaaddddddddmmmmmmmmiiiiiiiinnnnnnnn",
+        "@aaaaaaadddddddmmmmmmmiiiiiiinnnnnnn",
+        "@aaaaaaddddddmmmmmmiiiiiinnnnnn",
+        "@aaaaadddddmmmmmiiiiinnnnn",
+        "@aaaaddddmmmmiiiinnnn",
+        "@aaadddmmmiiinnn",
+        "@aaddmmiinn",
+        "@admin",
+        "@aaddmmiinn",
+        "@aaadddmmmiiinnn",
+        "@aaaaddddmmmmiiiinnnn",
+        "@aaaaadddddmmmmmiiiiinnnnn",
+        "@aaaaaaddddddmmmmmmiiiiiinnnnnn",
+        "@aaaaaaadddddddmmmmmmmiiiiiiinnnnnnn",
+        "@aaaaaaaaddddddddmmmmmmmmiiiiiiiinnnnnnnn",
+        "@aaaaaaaaadddddddddmmmmmmmmmiiiiiiiiinnnnnnnnn",
+        "@aaaaaaaaaaddddddddddmmmmmmmmmmiiiiiiiiiinnnnnnnnnn",
+        "@aaaaaaaaaaadddddddddddmmmmmmmmmmmiiiiiiiiiiinnnnnnnnnnn",
+        "@aaaaaaaaaaaaddddddddddddmmmmmmmmmmmmiiiiiiiiiiiinnnnnnnnnnnn",
+        "@aaaaaaaaaaaaadddddddddddddmmmmmmmmmmmmmiiiiiiiiiiiiinnnnnnnnnnnnn",
+        "@aaaaaaaaaaaaddddddddddddmmmmmmmmmmmmiiiiiiiiiiiinnnnnnnnnnnn",
+        "@aaaaaaaaaaadddddddddddmmmmmmmmmmmiiiiiiiiiiinnnnnnnnnnn",
+        "@aaaaaaaaaaddddddddddmmmmmmmmmmiiiiiiiiiinnnnnnnnnn",
+        "@aaaaaaaaadddddddddmmmmmmmmmiiiiiiiiinnnnnnnnn",
+        "@aaaaaaaaddddddddmmmmmmmmiiiiiiiinnnnnnnn",
+        "@aaaaaaadddddddmmmmmmmiiiiiiinnnnnnn",
+        "@aaaaaaddddddmmmmmmiiiiiinnnnnn",
+        "@aaaaadddddmmmmmiiiiinnnnn",
+        "@aaaaddddmmmmiiiinnnn",
+        "@aaadddmmmiiinnn",
+        "@aaddmmiinn",
+    ]
+    sadmeme = (f"@admin")
+    max_ani = len(animation_chars)
+    for i in range(max_ani):
+        await sleep(0.5)
+        await shadm.edit(animation_chars[i % max_ani])
+    await shadm.edit(sadmeme)
+
+
+
+CMD_HELP.update(
+    {
+        "animatedmemes": 
+        "'.hack'"
+        "\nUsage: Hackerman Meme"
+        "'.sadmin'"
+        "\nUsage: Shout @admin"
+    }
+)
