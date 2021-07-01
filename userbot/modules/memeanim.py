@@ -104,7 +104,7 @@ async def sadmin_func(shadm):
     sadmeme = (f"@admin")
     max_ani = len(animation_chars)
     for i in range(max_ani):
-        await sleep(0.5)
+        await sleep(0.1)
         await shadm.edit(animation_chars[i % max_ani])
     await shadm.edit(sadmeme)
 
