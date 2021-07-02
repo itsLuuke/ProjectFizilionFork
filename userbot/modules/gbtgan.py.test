@@ -5,6 +5,8 @@ import asyncio
 import base64
 from datetime import datetime
 
+from sqlalchemy.exc import IntegrityError
+
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
@@ -16,7 +18,7 @@ from telethon.tl.types import MessageEntityMentionName
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
 from userbot.modules.sql_helper.mute_sql import is_muted, mute, unmute
 
-from userbot import BOTLOG, BOTLOG_CHATID, DEVS, CMD_HELP
+from userbot import BOTLOG, BOTLOG_CHATID, DEVS, CMD_HELP, bot, GBANLOG
 from userbot.utils import edit_delete, edit_or_reply
 from userbot.events import register
 
@@ -130,21 +132,54 @@ async def gban(event):
     if fiz == 0:
         await gbun.edit("`you are not admin of atleast one group` ")
         return
-    await gbun.edit(
-        f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
-    )
+    if BOTLOG:
+        await gbun.edit(
+            f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups and by 3 bots`"
+        )
+    else:
+        await gbun.edit(
+            f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
+        )
     for i in range(fiz):
         try:
             await event.client(EditBannedRequest(san[i], user.id, BANNED_RIGHTS))
             await asyncio.sleep(0.5)
+            # if GBANLOG:
+                # gbanidforbot = user.id
+                # nukegrp = GBANLOG_CHATID
+                # await bot.send_message(nukegrp, f"/gban {gbanidforbot} {reason}")
+                # async with bot.conversation(nukegrp) as conv:
+                #    await conv.send_message(f"/geban {gbanidforbot} {reason}")
+            # await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"`You don't have required permission in :`\n**Chat :** (`{event.chat_id}`)\n`For banning here`",
             )
+    try:
+        from userbot.modules.sql_helper.gban_sql_helper import get_gbtgban
+    except IntegrityError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+
+    BOTBAN_LIST = get_gbtgban()
+    if len(BOTBAN_LIST) == 0:
+        return await event.edit("**You haven't connected to any groups yet!**")
+
+    total = 0
+    for i in BOTBAN_LIST:
+        total += 1
+        chat = int(i.chat_id)
+        try:
+            async with bot.conversation(chat) as conv:
+                await conv.send_message(f"/faban {user.id} {reason}")
+        except Exception:
+            failed.append(i.gbtgban_name)
+
     end = datetime.now()
     timetaken = (end - start).seconds
+
     if reason:
         await gbun.edit(
             f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {timetaken} seconds`!!\n**Reason :** `{reason}`"
@@ -184,6 +219,38 @@ async def gban(event):
         except BadRequestError:
             pass
 
+    if BOTLOG and GBANLOG and count != 0:
+        reply = await event.get_reply_message()
+        if reason:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                f"#GBAN\
+                \nGlobal Ban\
+                \n**User : **[{user.first_name}](tg://user?id={user.id})\
+                \n**ID : **`{user.id}`\
+                \n**Reason :** `{reason}`\
+                \n__Banned in {count} groups__\
+                \n__Banned by  3 bots__\
+                \n**Time taken : **`{timetaken} seconds`",
+            )
+        else:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                f"#GBAN\
+                \nGlobal Ban\
+                \n**User : **[{user.first_name}](tg://user?id={user.id})\
+                \n**ID : **`{user.id}`\
+                \n__Banned in {count} groups__\
+                \n__Banned by  3 bots__\
+                \n**Time taken : **`{timetaken} seconds`",
+            )
+        try:
+            if reply:
+                await reply.forward_to(BOTLOG_CHATID)
+                await reply.delete()
+        except BadRequestError:
+            pass
+
 @register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
 async def ungban(event):
     if event.fwd_from:
@@ -207,21 +274,59 @@ async def ungban(event):
     if fiz == 0:
         await ungbun.edit("`you are not even admin of atleast one group `")
         return
-    await ungbun.edit(
-        f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
-    )
+
+    if BOTLOG:
+        await ungbun.edit(
+            f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups and by  3 bots"
+        )
+    else:
+        await ungbun.edit(
+            f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
+        )
+
     for i in range(fiz):
         try:
             await event.client(EditBannedRequest(san[i], user.id, UNBAN_RIGHTS))
             await asyncio.sleep(0.5)
+            #if GBANLOG:
+                # gbanidforbot = user.id
+                # nukegrp = GBANLOG_CHATID
+                # await bot.send_message(nukegrp, f"/gban {gbanidforbot} {reason}")
+                # async with bot.conversation(nukegrp) as conv:
+                #    await conv.send_message(f"/ungeban {gbanidforbot}")
+            # await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"`You don't have required permission in :`\n**Chat : **(`{event.chat_id}`)\n`For unbaning here`",
             )
+
+
+    try:
+        from userbot.modules.sql_helper.gban_sql_helper import get_gbtgban
+    except IntegrityError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+
+    BOTBAN_LIST = get_gbtgban()
+    if len(BOTBAN_LIST) == 0:
+        return await event.edit("**You haven't connected to any groups yet!**")
+
+    total = 0
+    for i in BOTBAN_LIST:
+        total += 1
+        chat = int(i.chat_id)
+        try:
+            async with bot.conversation(chat) as conv:
+                await conv.send_message(f"/faban {user.id} {reason}")
+        except Exception:
+            failed.append(i.gbtgban_name)
+
     end = datetime.now()
     timetaken = (end - start).seconds
+
+            
     if reason:
         await ungbun.edit(
             f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {timetaken} seconds`!!\n**Reason :** `{reason}`"
@@ -254,6 +359,83 @@ async def ungban(event):
                 \n**Time taken : **`{timetaken} seconds`",
             )
 
+    if BOTLOG and GBANLOG and count != 0:
+        if reason:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                f"#UNGBAN\
+                \nGlobal Unban\
+                \n**User : **[{user.first_name}](tg://user?id={user.id})\
+                \n**ID : **`{user.id}`\
+                \n**Reason :** `{reason}`\
+                \n__Unbanned in {count} groups__\
+                \n__Unbanned by  3 bots__\
+                \n**Time taken : **`{timetaken} seconds`",
+            )
+        else:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                f"#UNGBAN\
+                \nGlobal Unban\
+                \n**User : **[{user.first_name}](tg://user?id={user.id})\
+                \n**ID : **`{user.id}`\
+                \n__Unbanned in {count} groups__\
+                \n__Unbanned by 3 bots__\
+                \n**Time taken : **`{timetaken} seconds`",
+            )
+
+@register(outgoing=True, pattern=r"^\.addgb(?: |$)(.*)")
+async def addgb(event):
+    """Adds current chat to connected bot gbans."""
+    try:
+        from userbot.modules.sql_helper.gban_sql_helper import add_gbtgban
+    except IntegrityError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+    gbtgban_name = event.pattern_match.group(1)
+    if not gbtgban_name:
+        return await event.edit("**Pass a name in order connect to this group!**")
+
+    try:
+        add_gbtgban(event.chat_id, gbtgban_name)
+    except IntegrityError:
+        return await event.edit(
+            "**This group is already connected to bot gbans list.**"
+        )
+
+    await event.edit("**Added this group to bot gbans list!**")
+
+
+@register(outgoing=True, pattern=r"^\.delgb$")
+async def delgb(event):
+    """Removes current chat from connected bot gbans."""
+    try:
+        from userbot.modules.sql_helper.gban_sql_helper import del_gbtgban
+    except IntegrityError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+    del_gbtgban(event.chat_id)
+    await event.edit("**Removed this group from bot gbans list!**")
+
+
+@register(outgoing=True, pattern=r"^\.listgb$")
+async def listgb(event):
+    """List all connected bot gbans."""
+    try:
+        from userbot.modules.sql_helper.gban_sql_helper import get_gbtgban
+    except IntegrityError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+    gbtgban_list = get_gbtgban()
+    if len(gbtgban_list) == 0:
+        return await event.edit("**You haven't connected to any bot gbans yet!**")
+
+    msg = "**Connected bot gbans:**\n\n"
+
+    for i in gbtgban_list:
+        msg += f"• {i.gbtgban_name}\n"
+
+    await event.edit(msg)
 
 @register(outgoing=True, pattern="^.listgban$")
 async def gablist(event):
@@ -489,5 +671,12 @@ CMD_HELP.update(
         "\nUsage: Reply someone's message with .ungmute to remove them from the gmuted list."
         "\n\n>`.gkick <username/reply/userid> <reason (optional)>`"
         "\nUsage: Kicks the person in all groups where you are admin."
+        "\n\n>`.addgb <name>`"
+        "\nUsage: Adds current group and stores it as <name> in connected bot gbans."
+        "\nAdding one group is enough for one federation."
+        "\n\n>`.delgb`"
+        "\nUsage: Removes current group from connected bot gbans."
+        "\n\n>`.listgb`"
+        "\nUsage: Lists all connected bot gbans by specified name."
     }
 )            

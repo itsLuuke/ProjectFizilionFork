@@ -84,7 +84,7 @@ if BOTLOG:
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER") or "False")
 else:
     LOGSPAMMER = False
-    
+
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN") or "False")
 
@@ -235,7 +235,6 @@ async def check_botlog_chatid():
             "Your account doesn't have rights to send messages to BOTLOG_CHATID "
             "group. Check if you typed the Chat ID correctly.")
         quit(1)
-
 
 with bot:
     try:
