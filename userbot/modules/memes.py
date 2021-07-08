@@ -1130,8 +1130,14 @@ async def oof(woof):
     for j in range(25):
         t = t[:-1] + "of"
         await woof.edit(t)
-
-
+         
+@register(outgoing=True, pattern="^Ooof$")
+async def oof1(woof1):
+    t = "Ooof"
+    for j in range(25):
+        t = t[:-1] + "of"
+        await woof.edit(t)
+                      
 @register(outgoing=True, pattern="^yeee$")
 async def yeee(plus):
     t = "yeee"
@@ -1163,7 +1169,13 @@ async def hmm(hmmm):
         t = t[:-1] + "mm"
         await hmmm.edit(t)
                       
-                      
+@register(outgoing=True, pattern="^Hmm$")
+async def hmm1(hmmm1):
+    t = "Hmm"
+    for j in range(10):
+        t = t[:-1] + "mm"
+        await hmmm.edit(t)
+                                     
 @register(outgoing=True, pattern="^Noo$")
 async def Noo(nooo):
     t = "Noo"
