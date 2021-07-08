@@ -318,6 +318,41 @@ async def lastname(steal):
             conv.chat_id, [msg.id, r.id, response.id, respond.id]
         )
 
+@register(outgoing=True, pattern="^.binfo(?: |$)(.*)")
+async def infofrombot(binfoo):
+    if binfoo.fwd_from:
+        return
+    if not binfoo.reply_to_msg_id:
+        await binfoo.edit("```Reply to any user message.```")
+        return
+    message = await binfoo.get_reply_message()
+    chat = "@AstrakoBot"
+    user_id = message.sender.id
+    id = f"/info {user_id}"
+    if message.sender.bot:
+        await binfoo.edit("```Reply to actual users message.```")
+        return
+    await binfoo.edit("```Sit tight while I check this user's info```")
+    async with bot.conversation(chat) as conv:
+        try:
+            msg = await conv.send_message(id)
+            r = await conv.get_response()
+            response = await conv.get_response()
+        except YouBlockedUserError:
+            await binfoo.reply("```Please unblock @AstrakoBot and try again```")
+            return
+        if response.text.startswith("I don't seem"):
+            await binfoo.edit("```No records found for this user```")
+            await binfoo.client.delete_messages(
+                conv.chat_id, [msg.id, r.id, response.id]
+            )
+            return
+        else:
+            respond = await conv.get_response()
+            await binfoo.edit(f"{response.message}")
+        await binfoo.client.delete_messages(
+            conv.chat_id, [msg.id, r.id, response.id, respond.id]
+        )
 
 @register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
 async def waifu(animu):

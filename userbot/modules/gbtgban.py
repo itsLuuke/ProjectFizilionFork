@@ -12,6 +12,7 @@ gbtban_replies = [
     "already been",
     "GBan Reason update",
     "GBan reason updated",
+    "user is already",
     "has already been gbanned, with the exact same reason.",
 ]
 
@@ -19,7 +20,7 @@ ungbtban_replies = ["New un-gBan", "I'll give", "Un-gBan" "UnGBan" "Fine"]
 
 @register(outgoing=True, disable_edited=True, pattern=r"^\.(d)?gbtban(?: |$)(.*)")
 async def gbtban(event):
-    """Bans a user from connected gbterations."""
+    """Bans a user from connected group bots."""
     try:
         from userbot.modules.sql_helper.gbtban_sql import get_gbtlist
     except IntegrityError:
@@ -52,11 +53,11 @@ async def gbtban(event):
 
     gbt_list = get_gbtlist()
     if len(gbt_list) == 0:
-        return await event.edit("**You haven't connected to any gbterations yet!**")
+        return await event.edit("**You haven't connected to any group bots yet!**")
 
     user_link = f"[{gbtban_id}](tg://user?id={gbtban_id})"
 
-    await event.edit(f"**gbtbanning** {user_link}...")
+    await event.edit(f"**Globally banning** {user_link}...")
     failed = []
     total = 0
 
@@ -79,20 +80,20 @@ async def gbtban(event):
     reason = reason if reason else "Not specified."
 
     if failed:
-        status = f"Failed to gbtban in {len(failed)}/{total} gbts.\n"
+        status = f"Failed to Global[ly ban in {len(failed)}/{total} gbts.\n"
         for i in failed:
             status += f"• {i}\n"
     else:
-        status = f"Success! gbtbanned in {total} gbts."
+        status = f"Success! Globally banned in {total} gbts."
 
     await event.edit(
-        f"**gbtbanned **{user_link}!\n**Reason:** {reason}\n**Status:** {status}"
+        f"**Globally banned **{user_link}!\n**Reason:** {reason}\n**Status:** {status}"
     )
 
 
 @register(outgoing=True, disable_edited=True, pattern=r"^\.ungbtban(?: |$)(.*)")
 async def ungbtban(event):
-    """Unbans a user from connected gbterations."""
+    """Unbans a user from connected connected bots."""
     try:
         from userbot.modules.sql_helper.gbtban_sql import get_gbtlist
     except IntegrityError:
@@ -117,11 +118,11 @@ async def ungbtban(event):
 
     gbt_list = get_gbtlist()
     if len(gbt_list) == 0:
-        return await event.edit("**You haven't connected to any gbterations yet!**")
+        return await event.edit("**You haven't connected to any group bots yet!**")
 
     user_link = f"[{ungbtban_id}](tg://user?id={ungbtban_id})"
 
-    await event.edit(f"**Un-gbtbanning **{user_link}**...**")
+    await event.edit(f"**Globally unbanning **{user_link}**...**")
     failed = []
     total = 0
 
@@ -144,21 +145,21 @@ async def ungbtban(event):
     reason = reason if reason else "Not specified."
 
     if failed:
-        status = f"Failed to un-gbtban in {len(failed)}/{total} gbts.\n"
+        status = f"Failed to un-ban in {len(failed)}/{total} gbts.\n"
         for i in failed:
             status += f"• {i}\n"
     else:
-        status = f"Success! Un-gbtbanned in {total} gbts."
+        status = f"Success! Globally unbanned in {total} gbts."
 
     reason = reason if reason else "Not specified."
     await event.edit(
-        f"**Un-gbtbanned** {user_link}!\n**Reason:** {reason}\n**Status:** {status}"
+        f"**Globally Un-banned** {user_link}!\n**Reason:** {reason}\n**Status:** {status}"
     )
 
 
 @register(outgoing=True, pattern=r"^\.addgb(?: |$)(.*)")
 async def addf(event):
-    """Adds current chat to connected gbterations."""
+    """Adds current chat to connected global bots."""
     try:
         from userbot.modules.sql_helper.gbtban_sql import add_gbtlist
     except IntegrityError:
@@ -166,16 +167,16 @@ async def addf(event):
 
     gbt_name = event.pattern_match.group(1)
     if not gbt_name:
-        return await event.edit("**Pass a name in order connect to this group!**")
+        return await event.edit("**Pass a name in order connect to this chat!**")
 
     try:
         add_gbtlist(event.chat_id, gbt_name)
     except IntegrityError:
         return await event.edit(
-            "**This group is already connected to gbterations list.**"
+            "**This chat is already connected to group bots list.**"
         )
 
-    await event.edit("**Added this group to gbterations list!**")
+    await event.edit("**Added this chat to group bots list!**")
 
 
 @register(outgoing=True, pattern=r"^\.delgb$")
@@ -192,7 +193,7 @@ async def delf(event):
 
 @register(outgoing=True, pattern=r"^\.listgb$")
 async def listf(event):
-    """List all connected gbterations."""
+    """List all connected group bots."""
     try:
         from userbot.modules.sql_helper.gbtban_sql import get_gbtlist
     except IntegrityError:
@@ -200,9 +201,9 @@ async def listf(event):
 
     gbt_list = get_gbtlist()
     if len(gbt_list) == 0:
-        return await event.edit("**You haven't connected to any gbterations yet!**")
+        return await event.edit("**You haven't connected to any group bots yet!**")
 
-    msg = "**Connected gbterations:**\n\n"
+    msg = "**Connected group bots:**\n\n"
 
     for i in gbt_list:
         msg += f"• {i.gbt_name}\n"
@@ -212,32 +213,32 @@ async def listf(event):
 
 @register(outgoing=True, disable_edited=True, pattern=r"^\.cleargb$")
 async def clearf(event):
-    """Removes all chats from connected gbterations."""
+    """Removes all chats from connected group bots."""
     try:
         from userbot.modules.sql_helper.gbtban_sql import del_gbtlist_all
     except IntegrityError:
         return await event.edit("**Running on Non-SQL mode!**")
 
     del_gbtlist_all()
-    await event.edit("**Disconnected from all connected gbterations!**")
+    await event.edit("**Disconnected from all connected group bots!**")
 
 
 CMD_HELP.update(
     {
         "gbtban": ">`.gbtban <id/username> <reason>`"
-        "\nUsage: Bans user from connected gbterations."
-        "\nYou can reply to the user whom you want to gbtban or manually pass the username/id."
+        "\nUsage: Bans user from connected group bots."
+        "\nYou can reply to the user whom you want to globally ban or manually pass the username/id."
         "\n`.dgbtban` does the same but deletes the replied message."
         "\n\n`>.ungbtban <id/username> <reason>`"
         "\nUsage: Same as gbtban but unbans the user"
         "\n\n>`.addgb <name>`"
-        "\nUsage: Adds current group and stores it as <name> in connected gbterations."
-        "\nAdding one group is enough for one gbteration."
+        "\nUsage: Adds current chat and stores it as <name> in connected group bots to gban."
+        "\nAdding one group is enough for one ban."
         "\n\n>`.delgb`"
-        "\nUsage: Removes current group from connected gbterations."
+        "\nUsage: Removes current group from connected group bots chats."
         "\n\n>`.listgb`"
-        "\nUsage: Lists all connected gbterations by specified name."
+        "\nUsage: Lists all connected group bots chats by specified name."
         "\n\n>`.cleargb`"
-        "\nUsage: Disconnects from all connected gbterations. Use it carefully."
+        "\nUsage: Disconnects from all connected group bots to gban. Use it carefully."
     }
 )
