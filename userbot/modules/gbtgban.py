@@ -13,6 +13,7 @@ gbtban_replies = [
     "GBan Reason update",
     "GBan reason updated",
     "user is already",
+    "has been gbanned",
     "has already been gbanned, with the exact same reason.",
 ]
 
