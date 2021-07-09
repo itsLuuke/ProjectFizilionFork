@@ -14,6 +14,7 @@ gbtban_replies = [
     "GBan reason updated",
     "user is already",
     "has been gbanned",
+    "This user is already",
     "has already been gbanned, with the exact same reason.",
 ]
 
@@ -67,7 +68,7 @@ async def gbtban(event):
         chat = int(i.chat_id)
         try:
             async with bot.conversation(chat) as conv:
-                await conv.send_message(f"/gban {user_link} {reason}")
+                await conv.send_message(f"!gban {user_link} {reason}")
                 reply = await conv.get_response()
                 await bot.send_read_acknowledge(
                     conv.chat_id, message=reply, clear_mentions=True
@@ -132,7 +133,7 @@ async def ungbtban(event):
         chat = int(i.chat_id)
         try:
             async with bot.conversation(chat) as conv:
-                await conv.send_message(f"/ungban {user_link}")
+                await conv.send_message(f"!ungban {user_link}")
                 reply = await conv.get_response()
                 await bot.send_read_acknowledge(
                     conv.chat_id, message=reply, clear_mentions=True
