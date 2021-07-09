@@ -31,7 +31,4 @@ LOGS.info("You are running Project Forkzilion")
 LOGS.info(
     "Congratulations, your userbot is now running !! Test it by typing .alive / .on in any chat.")
 
-if len(argv) not in (1, 3, 4):
-    bot.disconnect()
-else:
-    bot.run_until_disconnected()
+bot.run_until_disconnected()
