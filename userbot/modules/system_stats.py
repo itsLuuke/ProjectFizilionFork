@@ -144,7 +144,7 @@ async def sysdetails(sysd):
             await sysd.edit("`Install neofetch first !!`")
 
 
-@register(outgoing=True, pattern="^.botver$")
+@register(outgoing=True, pattern="^\.botver$")
 async def bot_ver(event):
     """ For .botver command, get the bot version. """
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -180,7 +180,7 @@ async def bot_ver(event):
             )
 
 
-@register(outgoing=True, pattern="^.pip(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.pip(?: |$)(.*)")
 async def pipcheck(pip):
     """ For .pip command, do a pip search. """
     if not pip.text[0].isalpha() and pip.text[0] not in ("/", "#", "@", "!"):
@@ -228,7 +228,7 @@ async def pipcheck(pip):
             await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^.(alive|on)$")
+@register(outgoing=True, pattern=r"^\.(alive|on)$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
@@ -276,7 +276,7 @@ async def amireallyalive(alive):
         await msg.delete()
         
 
-@register(outgoing=True, pattern="^.aliveu")
+@register(outgoing=True, pattern="^\.aliveu")
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
     message = username.text
@@ -289,7 +289,7 @@ async def amireallyaliveuser(username):
     await username.edit("`" f"{output}" "`")
 
 
-@register(outgoing=True, pattern="^.resetalive$")
+@register(outgoing=True, pattern="^\.resetalive$")
 async def amireallyalivereset(ureset):
     """ For .resetalive command, reset the username in the .alive command. """
     global DEFAULTUSER

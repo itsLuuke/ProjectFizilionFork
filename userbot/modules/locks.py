@@ -11,7 +11,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^.lock ?(.*)")
+@register(outgoing=True, pattern=r"^\.lock ?(.*)")
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()
     peer_id = event.chat_id
@@ -98,7 +98,7 @@ async def locks(event):
         return
 
 
-@register(outgoing=True, pattern=r"^.unlock ?(.*)")
+@register(outgoing=True, pattern=r"^\.unlock ?(.*)")
 async def rem_locks(event):
     input_str = event.pattern_match.group(1).lower()
     peer_id = event.chat_id

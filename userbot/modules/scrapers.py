@@ -113,7 +113,7 @@ async def carbon_api(e):
 
 
 
-@register(outgoing=True, pattern="^.img (.*)")
+@register(outgoing=True, pattern="^\.img (.*)")
 async def img_sampler(event):
     """ For .img command, search and return images matching the query. """
     await event.edit("`Processing...\n please wait for a moment...`")
@@ -158,7 +158,7 @@ async def moni(event):
     c_to_val = round(c_from_val * response["rates"][c_to], 2)
     await event.edit(f"`{c_from_val} {c_from} = {c_to_val} {c_to}`")
 
-@register(outgoing=True, pattern=r"^.google(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.google(?: |$)(.*)")
 async def gsearch(q_event):
     """For .google command, do a Google search."""
     textx = await q_event.get_reply_message()
@@ -469,7 +469,7 @@ async def imdb(e):
         await e.edit("Plox enter **Valid movie name** kthx")
 
 
-@register(outgoing=True, pattern=r"^.trt(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^\.trt(?: |$)([\s\S]*)")
 async def translateme(trans):
     """ For .trt command, translate the given text using Google Translate. """
     translator = google_translator()

@@ -45,7 +45,7 @@ async def get_tz(con):
         return
 
 
-@register(outgoing=True, pattern="^.weather(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.weather(?: |$)(.*)")
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
 
@@ -143,7 +143,7 @@ async def get_weather(weather):
     )
 
 
-@register(outgoing=True, pattern="^.wtr(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.wtr(?: |$)(.*)")
 async def get_wtr(wtr):
     """ For .wtr command, gets the current weather of a city. """
 

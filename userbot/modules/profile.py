@@ -35,7 +35,7 @@ USERNAME_TAKEN = "```This username is already taken.```"
 # ===============================================================
 
 
-@register(outgoing=True, pattern="^.reserved$")
+@register(outgoing=True, pattern="^\.reserved$")
 async def mine(event):
     """ For .reserved command, get a list of your reserved usernames. """
     result = await bot(GetAdminedPublicChannelsRequest())
@@ -45,7 +45,7 @@ async def mine(event):
     await event.edit(output_str)
 
 
-@register(outgoing=True, pattern="^.name")
+@register(outgoing=True, pattern="^\.name")
 async def update_name(name):
     """ For .name command, change your name in Telegram. """
     newname = name.text[6:]
@@ -61,7 +61,7 @@ async def update_name(name):
     await name.edit(NAME_OK)
 
 
-@register(outgoing=True, pattern="^.setpfp$")
+@register(outgoing=True, pattern="^\.setpfp$")
 async def set_profilepic(propic):
     """ For .profilepic command, change your profile picture in Telegram. """
     await propic.edit("`Processing...`")
@@ -90,7 +90,7 @@ async def set_profilepic(propic):
             await propic.edit(INVALID_MEDIA)
 
 
-@register(outgoing=True, pattern="^.setbio (.*)")
+@register(outgoing=True, pattern="^\.setbio (.*)")
 async def set_biograph(setbio):
     """ For .setbio command, set a new bio for your profile in Telegram. """
     await setbio.edit("`Processing...`")
@@ -99,7 +99,7 @@ async def set_biograph(setbio):
     await setbio.edit(BIO_SUCCESS)
 
 
-@register(outgoing=True, pattern="^.username (.*)")
+@register(outgoing=True, pattern="^\.username (.*)")
 async def update_username(username):
     """ For .username command, set a new username in Telegram. """
     await username.edit("`Processing...`")
@@ -111,7 +111,7 @@ async def update_username(username):
         await username.edit(USERNAME_TAKEN)
 
 
-@register(outgoing=True, pattern="^.count$")
+@register(outgoing=True, pattern="^\.count$")
 async def count(event):
     """ For .count command, get profile stats. """
     u = 0
@@ -148,7 +148,7 @@ async def count(event):
     await event.edit(result)
 
 
-@register(outgoing=True, pattern=r"^.delpfp")
+@register(outgoing=True, pattern=r"^\.delpfp")
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
     await delpfp.edit("`Processing...`")

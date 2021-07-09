@@ -17,7 +17,7 @@ def deEmojify(inputString: str) -> str:
     return get_emoji_regexp().sub("", inputString)
 
 
-@register(outgoing=True, pattern="^.stk(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.stk(?: |$)(.*)")
 async def sticklet(event):
     await event.edit("`Processing....`")
     R = random.randint(0, 256)

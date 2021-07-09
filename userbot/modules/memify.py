@@ -243,7 +243,7 @@ async def memes(asci):
 ########################################################################           
             
 ##############################  Flip Media  ############################
-@register(outgoing=True, pattern="^.flip$")    
+@register(outgoing=True, pattern="^\.flip$")    
 async def memes(fp):
     if fp.fwd_from:
         return
@@ -285,7 +285,7 @@ async def mirror_file(imagefile, endname):
     inverted_image = PIL.ImageOps.mirror(image)
     inverted_image.save(endname)
     
-@register(outgoing=True, pattern="^.mirror$")
+@register(outgoing=True, pattern="^\.mirror$")
 async def memes(mr):
     if mr.fwd_from:
         return

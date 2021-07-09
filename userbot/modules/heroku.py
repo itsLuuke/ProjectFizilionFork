@@ -34,7 +34,7 @@ else:
 """
 
 
-@register(outgoing=True, pattern=r"^.(get|del) var(?: |$)(\w*)")
+@register(outgoing=True, pattern=r"^\.(get|del) var(?: |$)(\w*)")
 async def variable(var):
     exe = var.pattern_match.group(1)
     if app is None:
@@ -93,7 +93,7 @@ async def variable(var):
             return True
 
 
-@register(outgoing=True, pattern=r"^.set var (\w*) ([\s\S]*)")
+@register(outgoing=True, pattern=r"^\.set var (\w*) ([\s\S]*)")
 async def set_var(var):
     await var.edit("`Setting information...`")
     variable = var.pattern_match.group(1)
@@ -122,8 +122,8 @@ async def set_var(var):
 """
 
 
-@register(outgoing=True, pattern=r"^.dyno(?: |$)")
-@register(outgoing=True, pattern=r"^.usage(?: |$)")
+@register(outgoing=True, pattern=r"^\.dyno(?: |$)")
+@register(outgoing=True, pattern=r"^\.usage(?: |$)")
 async def dyno_usage(dyno):
     """
     Get your account Dyno Usage

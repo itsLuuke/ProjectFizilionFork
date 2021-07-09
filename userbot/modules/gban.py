@@ -97,7 +97,7 @@ async def get_user_from_event(event, uevent=None, secondgroup=None):
 
   
   
-@register(outgoing=True, pattern="^.gban(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.gban(?: |$)(.*)")
 async def gban(event):
     if event.fwd_from:
         return
@@ -184,7 +184,7 @@ async def gban(event):
         except BadRequestError:
             pass
 
-@register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.ungban(?: |$)(.*)")
 async def ungban(event):
     if event.fwd_from:
         return
@@ -255,7 +255,7 @@ async def ungban(event):
             )
 
 
-@register(outgoing=True, pattern="^.listgban$")
+@register(outgoing=True, pattern="^\.listgban$")
 async def gablist(event):
     if event.fwd_from:
         return
@@ -274,7 +274,7 @@ async def gablist(event):
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.gmute(?: |$)(.*)")
 async def startgmute(event):
     if event.fwd_from:
         return
@@ -335,7 +335,7 @@ async def startgmute(event):
             await reply.forward_to(BOTLOG_CHATID)
 
 
-@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.ungmute(?: |$)(.*)")
 async def endgmute(event):
     if event.fwd_from:
         return
@@ -396,7 +396,7 @@ async def watcher(event):
     if is_muted(event.sender_id, "gmute"):
         await event.delete()
 
-@register(outgoing=True, pattern="^.gkick(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.gkick(?: |$)(.*)")
 async def gkick(event):
     if event.fwd_from:
         return

@@ -157,7 +157,7 @@ async def quotess(qotli):
         await qotli.edit()
 
 
-@register(outgoing=True, pattern=r"^.hz(:? |$)(.*)?")
+@register(outgoing=True, pattern=r"^\.hz(:? |$)(.*)?")
 async def hazz(hazmat):
     await hazmat.edit("`Sending information...`")
     level = hazmat.pattern_match.group(2)
@@ -224,7 +224,7 @@ async def hazz(hazmat):
     return os.remove(downloaded_file_name)
 
 
-@register(outgoing=True, pattern=r"^.df(:? |$)([1-8])?")
+@register(outgoing=True, pattern=r"^\.df(:? |$)([1-8])?")
 async def fryerrr(fry):
     await fry.edit("`Sending information...`")
     level = fry.pattern_match.group(2)
@@ -282,7 +282,7 @@ async def fryerrr(fry):
     return os.remove(downloaded_file_name)
 
 
-@register(outgoing=True, pattern="^.sg(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.sg(?: |$)(.*)")
 async def lastname(steal):
     if steal.fwd_from:
         return
@@ -318,7 +318,7 @@ async def lastname(steal):
             conv.chat_id, [msg.id, r.id, response.id, respond.id]
         )
 
-@register(outgoing=True, pattern="^.binfo(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.binfo(?: |$)(.*)")
 async def infofrombot(binfoo):
     if binfoo.fwd_from:
         return
@@ -354,7 +354,7 @@ async def infofrombot(binfoo):
             conv.chat_id, [msg.id, r.id, response.id, respond.id]
         )
 
-@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.waifu(?: |$)(.*)")
 async def waifu(animu):
     text = animu.pattern_match.group(1)
     if not text:

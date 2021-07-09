@@ -6,7 +6,7 @@ from asyncio import sleep
 from telethon import events , client , TelegramClient
 from userbot.modules.admin import get_user_from_event
 
-@register(outgoing=True, pattern="^.hack$")
+@register(outgoing=True, pattern="^\.hack$")
 async def hack_func(hckk):
     animation_chars = [
         "Connecting To Private Server \\",
@@ -49,7 +49,7 @@ async def hack_func(hckk):
     await hckk.edit(hecked)
 
 
-@register(outgoing=True, pattern="^.sadmin$")
+@register(outgoing=True, pattern="^\.sadmin$")
 async def sadmin_func(shadm):
     animation_chars = [
         "@admin",

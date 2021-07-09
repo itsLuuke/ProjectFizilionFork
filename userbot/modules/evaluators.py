@@ -137,7 +137,7 @@ async def run(run_q):
         )
 
 
-@register(outgoing=True, pattern="^.shell(?: |$)(.*)")
+@register(outgoing=True, pattern="^\.shell(?: |$)(.*)")
 async def terminal_runner(term):
     """ For .shell command, runs bash commands and scripts on your server. """
     curruser = USER_TERM_ALIAS
