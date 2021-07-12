@@ -1,5 +1,5 @@
 # Copyright (C) 2021 KenHV
-
+##IDK wat dis means
 from requests import post
 from telethon.tl.types import MessageMediaWebPage
 
