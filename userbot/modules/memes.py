@@ -887,16 +887,6 @@ async def pero(pru):
         reply_to=message_id
     )
                       
-                                      
-@register(outgoing=True, pattern="^\.cp$")
-async def copypaste(cpst):
-    """ For .cp command, delete the replied message. """
-    if cpst.reply_to_msg_id:
-        textx = await cpst.get_reply_message()
-        await cpst.edit(textx)
-    else:
-        await cpst.edit("`reply to a message to copypaste it`")
-        return
 
 @register(outgoing=True, pattern="^\.fn(?: |$)(.*)")
 async def copypasta(fn_e):
