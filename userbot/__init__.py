@@ -207,6 +207,11 @@ BOT_FOR_INFOS = os.environ.get("BOT_FOR_INFOS") or "MissRose_bot"
 # custom triggers
 TRIGGER = os.environ.get("TRIGGER") or "."
 trgg = TRIGGER
+
+# pm logger
+PMLOG = sb(os.environ.get("PMLOG") or "False")
+PMLOG_CHATID = int(os.environ.get("PMLOG_CHATID") or 0)
+
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
 if not os.path.exists("bin"):
