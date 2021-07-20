@@ -205,8 +205,8 @@ SFDIR = os.environ.get("SFDIR") or "null"
 BOT_FOR_INFOS = os.environ.get("BOT_FOR_INFOS") or "MissRose_bot"
 
 # custom triggers
-#trgg = os.environ.get("trgg") or "."
-trgg = "."
+TRIGGER = os.environ.get("TRIGGER") or "."
+trgg = TRIGGER
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
 if not os.path.exists("bin"):
