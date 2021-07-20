@@ -837,7 +837,7 @@ async def fun(idk):
         await idk.edit(t)
 
 
-@register(outgoing=True, pattern="^{trg}fp$".format(trg=trgg)
+@register(outgoing=True, pattern="^{trg}fp$".format(trg=trgg))
 async def facepalm(palm):
     """Facepalm  🤦‍♂"""
     await palm.edit("🤦‍♂")
