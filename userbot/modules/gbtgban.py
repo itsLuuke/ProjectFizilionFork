@@ -2,13 +2,14 @@
 
 from sqlalchemy.exc import IntegrityError
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP, bot, trgg
 from userbot.events import register
 
 
 gbtban_replies = [
     "Banned",
     "On it",
+    "Done!",
     "already been",
     "GBan Reason update",
     "GBan reason updated",
@@ -20,7 +21,7 @@ gbtban_replies = [
 
 ungbtban_replies = ["New un-gBan", "I'll give", "Un-gBan" "UnGBan" "Fine"]
 
-@register(outgoing=True, disable_edited=True, pattern=r"^\.(d)?gbtban(?: |$)(.*)")
+@register(outgoing=True, disable_edited=True, pattern=r"^{trg}(d)?gbtban(?: |$)(.*)".format(trg=trgg))
 async def gbtban(event):
     """Bans a user from connected group bots."""
     try:
@@ -82,18 +83,18 @@ async def gbtban(event):
     reason = reason if reason else "Not specified."
 
     if failed:
-        status = f"Failed to Global[ly ban in {len(failed)}/{total} gbts.\n"
+        status = f"Failed to Globally ban by {len(failed)}/{total} bots.\n"
         for i in failed:
             status += f"• {i}\n"
     else:
-        status = f"Success! Globally banned in {total} gbts."
+        status = f"Success! Globally banned by {total} bots."
 
     await event.edit(
         f"**Globally banned **{user_link}!\n**Reason:** {reason}\n**Status:** {status}"
     )
 
 
-@register(outgoing=True, disable_edited=True, pattern=r"^\.ungbtban(?: |$)(.*)")
+@register(outgoing=True, disable_edited=True, pattern=r"^{trg}ungbtban(?: |$)(.*)".format(trg=trgg))
 async def ungbtban(event):
     """Unbans a user from connected connected bots."""
     try:
@@ -159,7 +160,7 @@ async def ungbtban(event):
     )
 
 
-@register(outgoing=True, pattern=r"^\.addgb(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^{trg}addgb(?: |$)(.*)".format(trg=trgg))
 async def addf(event):
     """Adds current chat to connected global bots."""
     try:
@@ -181,7 +182,7 @@ async def addf(event):
     await event.edit("**Added this chat to group bots list!**")
 
 
-@register(outgoing=True, pattern=r"^\.delgb$")
+@register(outgoing=True, pattern=r"^{trg}delgb$".format(trg=trgg))
 async def delf(event):
     """Removes current chat from connected gbterations."""
     try:
@@ -193,7 +194,7 @@ async def delf(event):
     await event.edit("**Removed this group from gbterations list!**")
 
 
-@register(outgoing=True, pattern=r"^\.listgb$")
+@register(outgoing=True, pattern=r"^{trg}listgb$".format(trg=trgg))
 async def listf(event):
     """List all connected group bots."""
     try:
@@ -213,7 +214,7 @@ async def listf(event):
     await event.edit(msg)
 
 
-@register(outgoing=True, disable_edited=True, pattern=r"^\.cleargb$")
+@register(outgoing=True, disable_edited=True, pattern=r"^{trg}cleargb$".format(trg=trgg))
 async def clearf(event):
     """Removes all chats from connected group bots."""
     try:

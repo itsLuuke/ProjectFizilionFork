@@ -3,11 +3,11 @@
 from requests import post
 from telethon.tl.types import MessageMediaWebPage
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^\.paste(?:\s|$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^{trg}paste(?:\s|$)([\s\S]*)".format(trg=trgg))
 async def paste(event):
     """Pastes given text to Katb.in"""
     await event.edit("**Processing...**")

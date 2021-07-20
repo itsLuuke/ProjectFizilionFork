@@ -4,10 +4,10 @@ from asyncio.exceptions import TimeoutError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import register
+from userbot.events import register, trgg
 
 
-@register(outgoing=True, pattern=r"^\.df(:? |$)([1-8])?")
+@register(outgoing=True, pattern=r"^{trg}df(:? |$)([1-8])?".format(trg=trgg))
 async def _(fry):
     await fry.edit("`Sending information...`")
     level = fry.pattern_match.group(2)

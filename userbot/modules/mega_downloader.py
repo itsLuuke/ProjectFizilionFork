@@ -18,7 +18,7 @@ from urllib.error import HTTPError
 
 from pySmartDL import SmartDL
 
-from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
+from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY, trgg
 from userbot.events import register
 from userbot.utils import humanbytes, time_formatter
 
@@ -38,7 +38,7 @@ async def subprocess_run(megadl, cmd):
     return stdout.decode().strip(), stderr.decode().strip(), exitCode
 
 
-@register(outgoing=True, pattern=r"^\.mega(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^{trg}mega(?: |$)(.*)".format(trg=trgg))
 async def mega_downloader(megadl):
     await megadl.edit("`Collecting information...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
