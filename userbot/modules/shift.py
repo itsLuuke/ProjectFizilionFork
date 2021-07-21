@@ -2,7 +2,7 @@ import asyncio
 from userbot.events import register
 from userbot import CMD_HELP, trgg
 
-@register(pattern=r"^{trg}shift(?: |$)(.*)".format(trg=trgg), outgoing=True)
+@register(pattern=r"^\{trg}shift(?: |$)(.*)".format(trg=trgg), outgoing=True)
 async def _(e):
     x = e.pattern_match.group(1)
     z = await e.edit("`Processing..`")

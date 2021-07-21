@@ -38,7 +38,7 @@ async def subprocess_run(megadl, cmd):
     return stdout.decode().strip(), stderr.decode().strip(), exitCode
 
 
-@register(outgoing=True, pattern=r"^{trg}mega(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}mega(?: |$)(.*)".format(trg=trgg))
 async def mega_downloader(megadl):
     await megadl.edit("`Collecting information...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):

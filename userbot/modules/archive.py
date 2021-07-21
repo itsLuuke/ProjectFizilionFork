@@ -17,7 +17,7 @@ from userbot.events import register
 
 thumb_image_path = os.path.join(TEMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
-@register(outgoing=True, pattern=r"^{trg}zip(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}zip(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -60,7 +60,7 @@ async def _(event):
         await mone.edit("Local file compressed to `{}`".format(input_str + ".zip"))
 
 
-@register(outgoing=True, pattern=r"^{trg}unzip(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}unzip(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -132,7 +132,7 @@ def zipdir(dirName):
     return filePaths
 
 
-@register(outgoing=True, pattern=r"^{trg}rar(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}rar(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -179,7 +179,7 @@ async def _(event):
         await mone.edit("Local file compressed to `{}`".format(directory_name + ".rar"))
 
 
-@register(outgoing=True, pattern=r"^{trg}tar(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}tar(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -258,7 +258,7 @@ async def create_archive(input_directory):
     return return_name
 
 
-@register(outgoing=True, pattern=r"^{trg}unrar(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}unrar(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -346,7 +346,7 @@ async def _(event):
         await mone.delete()
 
 
-@register(outgoing=True, pattern=r"^{trg}untar(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}untar(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return

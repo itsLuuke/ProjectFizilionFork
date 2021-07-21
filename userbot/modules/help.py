@@ -8,7 +8,7 @@
 from userbot import CMD_HELP, TIMEOUT, trgg
 from userbot.events import register
 from asyncio import sleep
-@register(outgoing=True, pattern=r"^{trg}help(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}help(?: |$)(.*)".format(trg=trgg))
 async def help(event):
     """ For .help command,"""
     args = event.pattern_match.group(1).lower()

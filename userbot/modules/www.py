@@ -15,7 +15,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 from userbot.utils import humanbytes
 
-@register(outgoing=True, pattern=r"^{trg}speedtest$".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}speedtest$".format(trg=trgg))
 async def speedtest(event):
     """ For .speed command, use SpeedTest to check server speeds. """
     await event.edit("`Running speed test...`")
@@ -47,7 +47,7 @@ async def speedtest(event):
     await event.delete()
     
 
-@register(outgoing=True, pattern="^{trg}speed$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}speed$".format(trg=trgg))
 async def speedtst(spd):
     """ For .speed command, use SpeedTest to check server speeds. """
     await spd.edit("`Running speed test . . .`")
@@ -88,7 +88,7 @@ def speed_convert(size):
     return f"{round(size, 2)} {units[zero]}"
 
 
-@register(outgoing=True, pattern="^{trg}dc$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}dc$".format(trg=trgg))
 async def neardc(event):
     """ For .dc command, get the nearest datacenter information. """
     result = await event.client(functions.help.GetNearestDcRequest())
@@ -99,7 +99,7 @@ async def neardc(event):
     )
 
 
-@register(outgoing=True, pattern="^{trg}ping$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}ping$".format(trg=trgg))
 async def pingme(pong):
     """ For .ping command, ping the userbot from any chat.  """
     start = datetime.now()

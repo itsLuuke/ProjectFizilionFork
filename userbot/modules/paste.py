@@ -7,7 +7,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^{trg}paste(?:\s|$)([\s\S]*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}paste(?:\s|$)([\s\S]*)".format(trg=trgg))
 async def paste(event):
     """Pastes given text to Katb.in"""
     await event.edit("**Processing...**")

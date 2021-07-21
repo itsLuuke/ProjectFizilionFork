@@ -13,7 +13,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^{trg}invite(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}invite(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return

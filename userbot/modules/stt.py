@@ -7,7 +7,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot import CMD_HELP, bot, trgg
 from userbot.events import register
 
-@register(outgoing=True, pattern=r"^{trg}stt(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}stt(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     "To recognize a image."
     if not event.reply_to_msg_id:

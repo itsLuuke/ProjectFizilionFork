@@ -9,7 +9,7 @@ if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
 
 
-@register(outgoing=True, pattern=r"^{trg}clone ?(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}clone ?(.*)".format(trg=trgg))
 async def clone(event):
     if event.fwd_from:
         return

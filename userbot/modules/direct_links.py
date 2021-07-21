@@ -14,7 +14,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^{trg}direct(?: |$)([\s\S]*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}direct(?: |$)([\s\S]*)".format(trg=trgg))
 async def direct_link_generator(request):
     """direct links generator"""
     await request.edit("`Processing...`")

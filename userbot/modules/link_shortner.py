@@ -13,7 +13,7 @@ from userbot import CMD_HELP, bot, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^{trg}short(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}short(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     await event.edit("`Shortning your link ✂️✂️✂️`")
     if event.fwd_from:

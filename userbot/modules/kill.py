@@ -4,7 +4,7 @@ from asyncio import sleep
 from userbot.events import register
 from userbot import CMD_HELP, trgg
 
-@register(outgoing=True, pattern="^{trg}kill$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}kill$".format(trg=trgg))
 async def kill_func(message):
     animation_chars = [
         "killing...",

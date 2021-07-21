@@ -65,7 +65,7 @@ aria2 = aria2p.API(aria2p.Client(host="http://localhost", port=8210,
 aria2.set_global_options({"dir": download_path})
 
 
-@register(outgoing=True, pattern=r"^{trg}amag(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}amag(?: |$)(.*)".format(trg=trgg))
 async def magnet_download(event):
     magnet_uri = event.pattern_match.group(1)
     # Add Magnet URI Into Queue
@@ -81,7 +81,7 @@ async def magnet_download(event):
     await check_progress_for_dl(gid=new_gid, event=event, previous=None)
 
 
-@register(outgoing=True, pattern=r"^{trg}ator(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}ator(?: |$)(.*)".format(trg=trgg))
 async def torrent_download(event):
     torrent_file_path = event.pattern_match.group(1)
     # Add Torrent Into Queue
@@ -96,7 +96,7 @@ async def torrent_download(event):
     await check_progress_for_dl(gid=gid, event=event, previous=None)
 
 
-@register(outgoing=True, pattern=r"^{trg}aurl(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}aurl(?: |$)(.*)".format(trg=trgg))
 async def aurl_download(event):
     uri = [event.pattern_match.group(1)]
     try:  # Add URL Into Queue
@@ -112,7 +112,7 @@ async def aurl_download(event):
         await check_progress_for_dl(gid=new_gid, event=event, previous=None)
 
 
-@register(outgoing=True, pattern=r"^{trg}aclear(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}aclear(?: |$)(.*)".format(trg=trgg))
 async def remove_all(event):
     try:
         removed = aria2.remove_all(force=True)
@@ -127,7 +127,7 @@ async def remove_all(event):
     await sleep(2.5)
 
 
-@register(outgoing=True, pattern=r"^{trg}apause(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}apause(?: |$)(.*)".format(trg=trgg))
 async def pause_all(event):
     # Pause ALL Currently Running Downloads.
     await event.edit("`Pausing downloads...`")
@@ -137,7 +137,7 @@ async def pause_all(event):
     await sleep(2.5)
 
 
-@register(outgoing=True, pattern=r"^{trg}aresume(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}aresume(?: |$)(.*)".format(trg=trgg))
 async def resume_all(event):
     await event.edit("`Resuming downloads...`")
     aria2.resume_all()
@@ -147,7 +147,7 @@ async def resume_all(event):
     await event.delete()
 
 
-@register(outgoing=True, pattern=r"^{trg}ashow(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}ashow(?: |$)(.*)".format(trg=trgg))
 async def show_all(event):
     downloads = aria2.get_downloads()
     msg = ""

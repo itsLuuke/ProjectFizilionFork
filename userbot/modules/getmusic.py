@@ -47,7 +47,7 @@ def getmusicvideo(cat):
     os.system(command)
 
 
-@register(outgoing=True, pattern=r"^{trg}songn (?:(now)|(.*) - (.*))".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}songn (?:(now)|(.*) - (.*))".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -88,7 +88,7 @@ async def _(event):
         return await event.edit("`Error: `@WooMaiBot` is not responding!.`")
 
 
-@register(outgoing=True, pattern=r"^{trg}songl(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}songl(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -120,7 +120,7 @@ async def _(event):
         return await event.edit("`Error: `@MusicsHunterBot` is not responding!.`")
 
 
-@register(outgoing=True, pattern=r"^{trg}songf (?:(now)|(.*) - (.*))".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}songf (?:(now)|(.*) - (.*))".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return
@@ -164,7 +164,7 @@ async def _(event):
         )
 
 
-@register(outgoing=True, pattern=r"^{trg}vsong(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}vsong(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:

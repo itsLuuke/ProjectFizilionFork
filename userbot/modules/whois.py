@@ -18,7 +18,7 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, trgg
 from userbot.events import register
 
 
-@register(pattern="^{trg}whois(?: |$)(.*)".format(trg=trgg), outgoing=True)
+@register(pattern="^\{trg}whois(?: |$)(.*)".format(trg=trgg), outgoing=True)
 async def who(event):
 
     await event.edit(

@@ -16,7 +16,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^{trg}pic(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}pic(?: |$)(.*)".format(trg=trgg))
 async def on_file_to_photo(pics):
     await pics.edit("Converting Document image to Full Size Image\nPlease wait...")
     await sleep(1.5)

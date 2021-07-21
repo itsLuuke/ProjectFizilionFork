@@ -43,7 +43,7 @@ async def on_snip(event):
             await event.delete()
 
 
-@register(outgoing=True, pattern=r"^{trg}snip (\w*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}snip (\w*)".format(trg=trgg))
 async def on_snip_save(event):
     """ For .snip command, saves snips for future use. """
     try:
@@ -86,7 +86,7 @@ async def on_snip_save(event):
             f"**Error: Snip** `{keyword}` **already exists.**")
 
 
-@register(outgoing=True, pattern=r"^{trg}snips$".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}snips$".format(trg=trgg))
 async def on_snip_list(event):
     """ For .snips command, lists snips saved by you. """
     try:
@@ -103,7 +103,7 @@ async def on_snip_list(event):
     await event.edit(message)
 
 
-@register(outgoing=True, pattern=r"^{trg}remsnip (\w*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}remsnip (\w*)".format(trg=trgg))
 async def on_snip_delete(event):
     """ For .remsnip command, deletes a snip. """
     try:

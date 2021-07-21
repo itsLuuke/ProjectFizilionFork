@@ -15,7 +15,7 @@ from userbot.events import register
 from userbot.utils import chrome, options
 
 
-@register(pattern="^{trg}ss (.*)".format(trg=trgg), outgoing=True)
+@register(pattern="^\{trg}ss (.*)".format(trg=trgg), outgoing=True)
 async def capture(url):
     """ For .ss command, capture a website's screenshot and send the photo. """
     await url.edit("`Processing...`")

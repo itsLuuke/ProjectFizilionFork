@@ -104,7 +104,7 @@ async def log_tagged_messages(event):
 
 
 @register(
-    outgoing=True, pattern="^{trg}log$".format(trg=trgg),
+    outgoing=True, pattern="^\{trg}log$".format(trg=trgg),
 
 )
 async def set_no_log_p_m(setnologpmm):
@@ -124,7 +124,7 @@ async def set_no_log_p_m(setnologpmm):
 
 
 @register(
-    outgoing=True, pattern="^{trg}nolog$".format(trg=trgg),
+    outgoing=True, pattern="^\{trg}nolog$".format(trg=trgg),
 )
 async def set_no_log_p_m(setlogpmm):
     "To turn off logging of messages from that chat."
@@ -142,7 +142,7 @@ async def set_no_log_p_m(setlogpmm):
                 )
 
 @register(
-    outgoing=True, pattern="^{trg}pmlog (on|off)$".format(trg=trgg),
+    outgoing=True, pattern="^\{trg}pmlog (on|off)$".format(trg=trgg),
 )
 async def set_pmlog(event):
     "To turn on or turn off logging of Private messages"
@@ -181,7 +181,7 @@ async def set_pmlog(event):
 
 
 @register(
-    outgoing=True, pattern="^{trg}grplog (on|off)$".format(trg=trgg),
+    outgoing=True, pattern="^\{trg}grplog (on|off)$".format(trg=trgg),
 )
 async def set_grplog(event):
     "To turn on or turn off group tags logging"

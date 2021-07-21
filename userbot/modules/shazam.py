@@ -8,7 +8,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^{trg}shazam(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}shazam(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     "To reverse search music by bot."
     if not event.reply_to_msg_id:

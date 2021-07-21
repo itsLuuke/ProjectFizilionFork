@@ -5,8 +5,8 @@
 from userbot import CMD_HELP, trgg
 from userbot.events import register
 
-@register(outgoing=True, pattern=r"^{trg}d(p|isplaypic)(?: |$)(.*)".format(trg=trgg))
-@register(outgoing=True, pattern=r"^{trg}p(p|profilepic)(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}d(p|isplaypic)(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}p(p|profilepic)(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     "To get user or group profile pic"
     uid = "".join(event.raw_text.split(maxsplit=1)[1:])

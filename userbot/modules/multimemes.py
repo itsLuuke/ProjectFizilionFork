@@ -43,7 +43,7 @@ EMOJI_PATTERN = re.compile(
 )
 
 
-@register(outgoing=True, pattern=r"^{trg}glitch(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}glitch(?: |$)(.*)".format(trg=trgg))
 async def glitch(event):
     if not event.reply_to_msg_id:
         await event.edit("`I Wont Glitch A Ghost!`")
@@ -118,7 +118,7 @@ async def glitch(event):
     os.remove(glitch_file)
 
 
-@register(outgoing=True, pattern=r"^{trg}q".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}q".format(trg=trgg))
 async def quotess(qotli):
     if qotli.fwd_from:
         return
@@ -157,7 +157,7 @@ async def quotess(qotli):
         await qotli.edit()
 
 
-@register(outgoing=True, pattern=r"^{trg}hz(:? |$)(.*)?".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}hz(:? |$)(.*)?".format(trg=trgg))
 async def hazz(hazmat):
     await hazmat.edit("`Sending information...`")
     level = hazmat.pattern_match.group(2)
@@ -224,7 +224,7 @@ async def hazz(hazmat):
     return os.remove(downloaded_file_name)
 
 
-@register(outgoing=True, pattern=r"^{trg}df(:? |$)([1-8])?".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}df(:? |$)([1-8])?".format(trg=trgg))
 async def fryerrr(fry):
     await fry.edit("`Sending information...`")
     level = fry.pattern_match.group(2)
@@ -282,7 +282,7 @@ async def fryerrr(fry):
     return os.remove(downloaded_file_name)
 
 
-@register(outgoing=True, pattern="^{trg}sg(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}sg(?: |$)(.*)".format(trg=trgg))
 async def lastname(steal):
     if steal.fwd_from:
         return
@@ -318,7 +318,7 @@ async def lastname(steal):
             conv.chat_id, [msg.id, r.id, response.id, respond.id]
         )
 
-@register(outgoing=True, pattern="^{trg}binfo(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}binfo(?: |$)(.*)".format(trg=trgg))
 async def infofrombot(binfoo):
     if binfoo.fwd_from:
         return
@@ -354,7 +354,7 @@ async def infofrombot(binfoo):
             conv.chat_id, [msg.id, r.id, response.id, respond.id]
         )
 
-@register(outgoing=True, pattern="^{trg}waifu(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}waifu(?: |$)(.*)".format(trg=trgg))
 async def waifu(animu):
     text = animu.pattern_match.group(1)
     if not text:

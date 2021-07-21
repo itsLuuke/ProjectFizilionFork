@@ -51,7 +51,7 @@ async def get_entity(msg):
     return bold, mono, italic, link
 ##############################################################################
 
-@register(outgoing=True, pattern="^{trg}stats$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}stats$".format(trg=trgg))
 async def stats(event):
     stat = await edit_or_reply(event, STAT_INDICATION)
     start_time = time.time()
@@ -114,7 +114,7 @@ async def stats(event):
     await stat.edit(response)
 
 
-@register(outgoing=True, pattern="^{trg}ustats(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}ustats(?: |$)(.*)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return

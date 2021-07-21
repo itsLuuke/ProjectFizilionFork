@@ -5,7 +5,7 @@ from userbot.events import register
 import os
 import json
 
-@register(pattern="^{trg}webupload ?(.+?|) (?:)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles|openload|file.io|vshare|0x0|letsupload)".format(trg=trgg))
+@register(pattern="^\{trg}webupload ?(.+?|) (?:)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles|openload|file.io|vshare|0x0|letsupload)".format(trg=trgg))
 async def webupload(event):
     await event.edit("**Processing...**")
     input_str = event.pattern_match.group(1)

@@ -11,7 +11,7 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^{trg}cspam (.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}cspam (.*)".format(trg=trgg))
 async def leter_spam(cspammer):
     cspam = str(cspammer.pattern_match.group(1))
     message = cspam.replace(" ", "")
@@ -24,7 +24,7 @@ async def leter_spam(cspammer):
         )
 
 
-@register(outgoing=True, pattern="^{trg}wspam (.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}wspam (.*)".format(trg=trgg))
 async def word_spam(wspammer):
     wspam = str(wspammer.pattern_match.group(1))
     message = wspam.split()
@@ -37,7 +37,7 @@ async def word_spam(wspammer):
         )
 
 
-@register(outgoing=True, pattern="^{trg}spam (.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}spam (.*)".format(trg=trgg))
 async def spammer(spamm):
     counter = int(spamm.pattern_match.group(1).split(" ", 1)[0])
     textx = await spamm.get_reply_message()
@@ -58,7 +58,7 @@ async def spammer(spamm):
             )
 
 
-@register(outgoing=True, pattern="^{trg}picspam".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}picspam".format(trg=trgg))
 async def tiny_pic_spam(pspam):
     message = pspam.text
     text = message.split()
@@ -73,7 +73,7 @@ async def tiny_pic_spam(pspam):
         )
 
 
-@register(outgoing=True, pattern="^{trg}delayspam (.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}delayspam (.*)".format(trg=trgg))
 async def dspammer(dspam):
     spamDelay = float(dspam.pattern_match.group(1).split(" ", 2)[0])
     counter = int(dspam.pattern_match.group(1).split(" ", 2)[1])

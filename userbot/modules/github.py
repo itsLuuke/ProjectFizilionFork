@@ -17,7 +17,7 @@ from userbot.events import register
 GIT_TEMP_DIR = "/One4uBot/temp/"
 
 
-@register(outgoing=True, pattern=r"^{trg}git (.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}git (.*)".format(trg=trgg))
 async def github(event):
     username = event.pattern_match.group(1)
     URL = f"https://api.github.com/users/{username}"
@@ -62,7 +62,7 @@ async def github(event):
                 await event.edit(REPLY)
 
 
-@register(outgoing=True, pattern="^{trg}commit(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}commit(?: |$)(.*)".format(trg=trgg))
 async def download(event):
     if event.fwd_from:
         return

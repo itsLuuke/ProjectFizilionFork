@@ -17,7 +17,7 @@ fban_replies = [
 unfban_replies = ["New un-FedBan", "I'll give", "Un-FedBan"]
 
 
-@register(outgoing=True, disable_edited=True, pattern=r"^{trg}(d)?fban(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, disable_edited=True, pattern=r"^\{trg}(d)?fban(?: |$)(.*)".format(trg=trgg))
 async def fban(event):
     """Bans a user from connected federations."""
     try:
@@ -90,7 +90,7 @@ async def fban(event):
     )
 
 
-@register(outgoing=True, disable_edited=True, pattern=r"^{trg}unfban(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, disable_edited=True, pattern=r"^\{trg}unfban(?: |$)(.*)".format(trg=trgg))
 async def unfban(event):
     """Unbans a user from connected federations."""
     try:
@@ -156,7 +156,7 @@ async def unfban(event):
     )
 
 
-@register(outgoing=True, pattern=r"^{trg}addf(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}addf(?: |$)(.*)".format(trg=trgg))
 async def addf(event):
     """Adds current chat to connected federations."""
     try:
@@ -178,7 +178,7 @@ async def addf(event):
     await event.edit("**Added this group to federations list!**")
 
 
-@register(outgoing=True, pattern=r"^{trg}delf$".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}delf$".format(trg=trgg))
 async def delf(event):
     """Removes current chat from connected federations."""
     try:
@@ -190,7 +190,7 @@ async def delf(event):
     await event.edit("**Removed this group from federations list!**")
 
 
-@register(outgoing=True, pattern=r"^{trg}listf$".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}listf$".format(trg=trgg))
 async def listf(event):
     """List all connected federations."""
     try:
@@ -210,7 +210,7 @@ async def listf(event):
     await event.edit(msg)
 
 
-@register(outgoing=True, disable_edited=True, pattern=r"^{trg}clearf$".format(trg=trgg))
+@register(outgoing=True, disable_edited=True, pattern=r"^\{trg}clearf$".format(trg=trgg))
 async def clearf(event):
     """Removes all chats from connected federations."""
     try:

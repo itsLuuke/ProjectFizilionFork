@@ -41,7 +41,7 @@ async def get_tz(con):
         return
 
 
-@register(outgoing=True, pattern="^{trg}time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?".format(trg=trgg))
 async def time_func(tdata):
     """For .time command, return the time of
     1. The country passed as an argument,
@@ -104,7 +104,7 @@ async def time_func(tdata):
         return
 
 
-@register(outgoing=True, pattern="^{trg}date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?".format(trg=trgg))
 async def date_func(dat):
     """For .date command, return the date of
     1. The country passed as an argument,

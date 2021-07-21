@@ -10,7 +10,7 @@ from userbot import CMD_HELP, trgg
 from userbot.events import register
 
 
-@register(pattern="^{trg}transfer ?(.+?|) (?:)(arp|bit|cat|cow|gof|tmp|vim|wss|wet|flk|trs|lzs)".format(trg=trgg))
+@register(pattern="^\{trg}transfer ?(.+?|) (?:)(arp|bit|cat|cow|gof|tmp|vim|wss|wet|flk|trs|lzs)".format(trg=trgg))
 async def _(event):
     if event.fwd_from:
         return

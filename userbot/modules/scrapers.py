@@ -54,13 +54,13 @@ TRT_LANG = os.environ.get("TRT_LANG") or "en"
 TEMP_DOWNLOAD_DIRECTORY = "/Fizilion/.bin/"
 
 
-@register(outgoing=True, pattern=r"^{trg}crblang (.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}crblang (.*)".format(trg=trgg))
 async def setlang(prog):
     global CARBONLANG
     CARBONLANG = prog.pattern_match.group(1)
     await prog.edit(f"Language for carbon.now.sh set to {CARBONLANG}")
 
-@register(outgoing=True, pattern=r"^{trg}carbon".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}carbon".format(trg=trgg))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing...`")
@@ -115,7 +115,7 @@ async def carbon_api(e):
 
 
 
-@register(outgoing=True, pattern="^{trg}img (.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}img (.*)".format(trg=trgg))
 async def img_sampler(event):
     """ For .img command, search and return images matching the query. """
     await event.edit("`Processing...\n please wait for a moment...`")
@@ -139,7 +139,7 @@ async def img_sampler(event):
         await event.delete()
         os.system("rm -rf /tmp/out/images")
 
-@register(outgoing=True, pattern=r"^{trg}currency ([\d\.]+) ([a-zA-Z]+) ([a-zA-Z]+)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}currency ([\d\.]+) ([a-zA-Z]+) ([a-zA-Z]+)".format(trg=trgg))
 async def moni(event):
     c_from_val = float(event.pattern_match.group(1))
     c_from = (event.pattern_match.group(2)).upper()
@@ -160,7 +160,7 @@ async def moni(event):
     c_to_val = round(c_from_val * response["rates"][c_to], 2)
     await event.edit(f"`{c_from_val} {c_from} = {c_to_val} {c_to}`")
 
-@register(outgoing=True, pattern=r"^{trg}google(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}google(?: |$)(.*)".format(trg=trgg))
 async def gsearch(q_event):
     """For .google command, do a Google search."""
     textx = await q_event.get_reply_message()
@@ -207,7 +207,7 @@ async def gsearch(q_event):
             "Google Search query `" + query + "` was executed successfully",
         )
 
-@register(outgoing=True, pattern=r"^{trg}wiki(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}wiki(?: |$)(.*)".format(trg=trgg))
 async def wiki(wiki_q):
     """ For .wiki command, fetch content from Wikipedia. """
 
@@ -247,7 +247,7 @@ async def wiki(wiki_q):
             BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully"
         )
 
-@register(outgoing=True, pattern=r"^{trg}ipinfo(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}ipinfo(?: |$)(.*)".format(trg=trgg))
 async def ipinfo(event):
     #Thanks to https://ipinfo.io for this api
     ip = event.pattern_match.group(1)
@@ -279,7 +279,7 @@ async def ipinfo(event):
     else:
         await event.edit("Invalid Information Provided")
         
-@register(outgoing=True, pattern=r"^{trg}ud(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}ud(?: |$)(.*)".format(trg=trgg))
 async def urban_dict(event):
     """Output the definition of a word from Urban Dictionary"""
 
@@ -329,7 +329,7 @@ async def urban_dict(event):
         return await event.edit(result)
 
 
-@register(outgoing=True, pattern=r"^{trg}tts(?: |$)([\s\S]*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}tts(?: |$)([\s\S]*)".format(trg=trgg))
 async def text_to_speech(query):
     """ For .tts command, a wrapper for Google Text-to-Speech. """
 
@@ -376,7 +376,7 @@ async def text_to_speech(query):
 
 
 # kanged from Blank-x ;---;
-@register(outgoing=True, pattern=r"^{trg}imdb (.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}imdb (.*)".format(trg=trgg))
 async def imdb(e):
     try:
         movie_name = e.pattern_match.group(1)
@@ -542,7 +542,7 @@ async def translateme(trans):
             BOTLOG_CHATID,
             f"Translated some {source_lan.title()} stuff to {LANGUAGES[TRT_LANG].title()} just now.",
         )
-@register(outgoing=True, pattern=r"^{trg}yt(?: |$)(\d*)? ?(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}yt(?: |$)(\d*)? ?(.*)".format(trg=trgg))
 async def yt_search(event):
     """ For .yt command, do a YouTube search from Telegram. """
 
@@ -593,7 +593,7 @@ async def yt_search(event):
 
 
 
-@register(outgoing=True, pattern=r"^{trg}r(a|v)(?: |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern=r"^\{trg}r(a|v)(?: |$)(.*)".format(trg=trgg))
 async def download_video(v_url):
     """For media downloader command, download media from YouTube and many other sites."""
 
