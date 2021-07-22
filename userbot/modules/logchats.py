@@ -29,7 +29,7 @@ def htmlmentionuser(name, userid):
 async def monito_p_m_s(event):  # sourcery no-metrics
     if PMLOG_CHATID == -100:
         return
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "false":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
         return
     sender = await event.get_sender()
     if not sender.bot:
@@ -69,7 +69,7 @@ async def monito_p_m_s(event):  # sourcery no-metrics
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
 
-    if gvarstatus("GRPLOG") and gvarstatus("GRPLOG") == "false":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
         return
     if (
         (pm_permit_sql.is_approved(hmm.id))
@@ -151,7 +151,7 @@ async def set_pmlog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "false":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
         PMLOG = False
     else:
         PMLOG = True
@@ -190,7 +190,7 @@ async def set_grplog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if gvarstatus("GRPLOG") and gvarstatus("GRPLOG") == "false":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
         GRPLOG = False
     else:
         GRPLOG = True
