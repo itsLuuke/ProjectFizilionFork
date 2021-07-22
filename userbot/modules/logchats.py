@@ -1,7 +1,8 @@
 # pm and tagged messages logger for catuserbot by @mrconfused (@sandy1709)
+'''
 import asyncio, re
 
-from userbot import bot, PMLOG, PMLOG_CHATID, CMD_HELP, LOGS, ISAFK, BOTLOG, BOTLOG_CHATID, trgg
+from userbot import bot, PMLOG, PMLOG_CHATID, CMD_HELP, LOGS, ISAFK, BOTLOG, BOTLOG_CHATID, trgg, tgbott
 
 from userbot.modules.sql_helper import pm_permit_sql
 from userbot.modules.sql_helper.no_log_pms_sql import gvarstatus, addgvar
@@ -236,3 +237,6 @@ CMD_HELP.update(
 \nUsage: To turn on or turn off group tags logging in pmlogger group."
     }
 )
+
+
+'''
