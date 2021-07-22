@@ -1,5 +1,7 @@
 # pm and tagged messages logger for catuserbot by @mrconfused (@sandy1709)
-'''
+# imported from catuserbot 
+# modified by @AbOuLfOoOoOuF for fizilion
+
 import asyncio, re
 
 from userbot import bot, PMLOG, PMLOG_CHATID, CMD_HELP, LOGS, ISAFK, BOTLOG, BOTLOG_CHATID, trgg, tgbott
@@ -30,10 +32,10 @@ def htmlmentionuser(name, userid):
 async def monito_p_m_s(event):  # sourcery no-metrics
     if PMLOG_CHATID == -100:
         return
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "False":
         return
     sender = await event.get_sender()
-    if not sender.bot:
+    if not sender.bot and not sender.tgbott:
         chat = await event.get_chat()
         if not pm_permit_sql.is_approved(chat.id) and chat.id != 777000:
             if LOG_CHATS_.RECENT_USER != chat.id:
@@ -52,7 +54,7 @@ async def monito_p_m_s(event):  # sourcery no-metrics
                             )
                         )
                     LOG_CHATS_.COUNT = 0
-                LOG_CHATS_.NEWPM = await event.client.send_message(
+                LOG_CHATS_.NEWPM = await tgbott.send_message(
                     PMLOG_CHATID,
                     f"👤{mentionuser(sender.first_name , sender.id)} has sent a new message \nId : `{chat.id}`",
                 )
@@ -70,7 +72,7 @@ async def monito_p_m_s(event):  # sourcery no-metrics
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
 
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "False":
         return
     if (
         (pm_permit_sql.is_approved(hmm.id))
@@ -96,7 +98,7 @@ async def log_tagged_messages(event):
         resalt += f"\n<b>Message : </b>{event.message.message}"
     resalt += f"\n<b>Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
     if not event.is_private:
-        await event.client.send_message(
+        await tgbott.send_message(
             PMLOG_CHATID,
             resalt,
             parse_mode="html",
@@ -238,5 +240,3 @@ CMD_HELP.update(
     }
 )
 
-
-'''
