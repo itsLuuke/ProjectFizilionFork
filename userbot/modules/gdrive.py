@@ -42,6 +42,7 @@ from userbot import (
     LOGS,
     TEMP_DOWNLOAD_DIRECTORY,
     trgg,
+    GDRIVE_INDEX_URL,
 )
 from userbot.events import register
 from userbot.modules.aria import aria2, check_metadata
@@ -215,6 +216,7 @@ async def get_mimeType(name):
 
 async def download(gdrive, service, uri=None):
     global is_cancelled
+    global GDRIVE_INDEX_URL
     reply = ""
     """ - Download files to local then upload - """
     if not isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -286,13 +288,24 @@ async def download(gdrive, service, uri=None):
                 )
                 return reply
             else:
-                reply += (
-                    f"`{status}`\n\n"
-                    f"`Name   :` `{file_name}`\n"
-                    f"`Size   :` `{humanbytes(result[0])}`\n"
-                    f"`Link   :` [{file_name}]({result[1]})\n"
-                    "`Status :` **OK** - Successfully uploaded.\n\n"
-                )
+                if GDRIVE_INDEX_URL:
+                    gurl = requests.utils.requote_uri(f'{GDRIVE_INDEX_URL}{file_name}')
+                    reply += (
+                        f"`{status}`\n\n"
+                        f"`Name   :` `{file_name}`\n"
+                        f"`Size   :` `{humanbytes(result[0])}`\n"
+                        f"`Link   :` [{file_name}]({result[1]})\n"
+                        f"`Index  :` [here]({gurl})\n"
+                        "`Status :` **OK** - Successfully uploaded.\n\n"
+                        )
+                else:
+                    reply += (
+                        f"`{status}`\n\n"
+                        f"`Name   :` `{file_name}`\n"
+                        f"`Size   :` `{humanbytes(result[0])}`\n"
+                        f"`Link   :` [{file_name}]({result[1]})\n"
+                        "`Status :` **OK** - Successfully uploaded.\n\n"
+                    )
                 return reply
         else:
             status = status.replace("[FILE", "[FOLDER")
@@ -1129,13 +1142,25 @@ async def google_drive(gdrive):
             "`[FILE - CANCELLED]`\n\n" "`Status` : **OK** - received signal cancelled."
         )
     if result:
-        await gdrive.respond(
-            "`[FILE - UPLOAD]`\n\n"
-            f"`Name   :` `{file_name}`\n"
-            f"`Size   :` `{humanbytes(result[0])}`\n"
-            f"`Link   :` [{file_name}]({result[1]})\n"
-            "`Status :` **OK** - Successfully uploaded.\n",
-            link_preview=False,
+        if GDRIVE_INDEX_URL:
+            gurl = requests.utils.requote_uri(f'{GDRIVE_INDEX_URL}{file_name}')
+            await gdrive.respond(
+                f"`[FILE - UPLOAD]`\n\n"
+                f"`Name   :` `{file_name}`\n"
+                f"`Size   :` `{humanbytes(result[0])}`\n"
+                f"`Link   :` [{file_name}]({result[1]})\n"
+                f"`Index  :` [here]({gurl})\n"
+                f"`Status :` **OK** - Successfully uploaded.\n\n",
+                link_preview=False
+                    )
+        else:
+            await gdrive.respond(
+                "`[FILE - UPLOAD]`\n\n"
+                f"`Name   :` `{file_name}`\n"
+                f"`Size   :` `{humanbytes(result[0])}`\n"
+                f"`Link   :` [{file_name}]({result[1]})\n"
+                "`Status :` **OK** - Successfully uploaded.\n",
+                link_preview=False,
         )
     await gdrive.delete()
     return
