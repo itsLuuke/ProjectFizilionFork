@@ -84,7 +84,7 @@ async def fastpurger(purg):
     await sleep(.5)
     await done.delete()
 
-@register(outgoing=True, pattern="^\{trg}pm".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}pme".format(trg=trgg))
 async def purgeme(delme):
     """ For .purgeme, delete x count of your latest message."""
     message = delme.text
