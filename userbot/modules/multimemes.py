@@ -20,7 +20,7 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon import events, functions, types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot, trgg
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot, trgg, BOT_FOR_INFOS
 from userbot.events import register
 from userbot.utils import check_media, progress
 
@@ -326,7 +326,7 @@ async def infofrombot(binfoo):
         await binfoo.edit("```Reply to any user message.```")
         return
     message = await binfoo.get_reply_message()
-    chat = "@AstrakoBot"
+    chat = BOT_FOR_INFOS
     user_id = message.sender.id
     id = f"/info {user_id}"
     if message.sender.bot:
@@ -339,7 +339,7 @@ async def infofrombot(binfoo):
             r = await conv.get_response()
             response = await conv.get_response()
         except YouBlockedUserError:
-            await binfoo.reply("```Please unblock @AstrakoBot and try again```")
+            await binfoo.reply(f"```Please unblock {binf} and try again```".format(binf=BOT_FOR_INFOS))
             return
         if response.text.startswith("I don't seem"):
             await binfoo.edit("```No records found for this user```")

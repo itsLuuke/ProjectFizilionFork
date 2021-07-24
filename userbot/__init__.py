@@ -203,7 +203,7 @@ SFPASS = os.environ.get("SFPASS") or "null"
 SFDIR = os.environ.get("SFDIR") or "null"
 
 # the bot where /info command will be sent
-BOT_FOR_INFOS = os.environ.get("BOT_FOR_INFOS") or "MissRose_bot"
+BOT_FOR_INFOS = os.environ.get("BOT_FOR_INFOS") or "@MissRose_bot"
 
 # custom triggers
 TRIGGER = os.environ.get("TRIGGER") or "."
