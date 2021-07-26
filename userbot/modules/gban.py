@@ -16,7 +16,7 @@ from telethon.tl.types import MessageEntityMentionName
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
 from userbot.modules.sql_helper.mute_sql import is_muted, mute, unmute
 
-from userbot import BOTLOG, BOTLOG_CHATID, DEVS, CMD_HELP, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, DEVS, CMD_HELP, trgg, tgbott
 from userbot.utils import edit_delete, edit_or_reply
 from userbot.events import register
 
@@ -157,7 +157,7 @@ async def gban(event):
     if BOTLOG and count != 0:
         reply = await event.get_reply_message()
         if reason:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#GBAN\
                 \nGlobal Ban\
@@ -168,7 +168,7 @@ async def gban(event):
                 \n**Time taken : **`{timetaken} seconds`",
             )
         else:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#GBAN\
                 \nGlobal Ban\
@@ -233,7 +233,7 @@ async def ungban(event):
 
     if BOTLOG and count != 0:
         if reason:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#UNGBAN\
                 \nGlobal Unban\
@@ -244,7 +244,7 @@ async def ungban(event):
                 \n**Time taken : **`{timetaken} seconds`",
             )
         else:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#UNGBAN\
                 \nGlobal Unban\
@@ -319,14 +319,14 @@ async def startgmute(event):
     if BOTLOG:
         reply = await event.get_reply_message()
         if reason:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#GMUTE\n"
                 f"**User :** {mentionuser(user.first_name ,user.id)} \n"
                 f"**Reason :** `{reason}`",
             )
         else:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#GMUTE\n"
                 f"**User :** {mentionuser(user.first_name ,user.id)} \n",
@@ -377,14 +377,14 @@ async def endgmute(event):
             )
     if BOTLOG:
         if reason:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#UNGMUTE\n"
                 f"**User :** {mentionuser(user.first_name ,user.id)} \n"
                 f"**Reason :** `{reason}`",
             )
         else:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#UNGMUTE\n"
                 f"**User :** {mentionuser(user.first_name ,user.id)} \n",
@@ -450,7 +450,7 @@ async def gkick(event):
     if BOTLOG and count != 0:
         reply = await event.get_reply_message()
         if reason:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#GKICK\
                 \nGlobal Kick\
@@ -461,7 +461,7 @@ async def gkick(event):
                 \n**Time taken : **`{timetaken} seconds`",
             )
         else:
-            await event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 f"#GKICK\
                 \nGlobal Kick\

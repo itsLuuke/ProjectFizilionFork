@@ -7,7 +7,7 @@
 
 from asyncio import sleep
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, trgg, tgbott
 from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 
@@ -65,7 +65,7 @@ async def log(log_text):
         elif log_text.pattern_match.group(1):
             user = f"#LOG / Chat ID: {log_text.chat_id}\n\n"
             textx = user + log_text.pattern_match.group(1)
-            await bot.send_message(BOTLOG_CHATID, textx)
+            await tgbott.send_message(BOTLOG_CHATID, textx)
         else:
             await log_text.edit("`What am I supposed to log?`")
             return
@@ -111,7 +111,7 @@ async def mute_chat(mute_e):
     await sleep(2)
     await mute_e.delete()
     if BOTLOG:
-        await mute_e.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, str(mute_e.chat_id) + " was silenced."
         )
 

@@ -19,6 +19,7 @@ from userbot import (
     CMD_HELP,
     bot,
     trgg,
+    tgbott,
 )
 
 
@@ -179,7 +180,7 @@ async def ANTI_SPAMBOTS(welcm):
 
                 if BOTLOG:
                     if kicked or reported:
-                        await welcm.client.send_message(
+                        await tgbott.send_message(
                             BOTLOG_CHATID,
                             "#ANTI_SPAMBOT REPORT\n"
                             f"USER: [{check_user.first_name}](tg://user?id={check_user.id})\n"

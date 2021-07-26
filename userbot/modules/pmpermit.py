@@ -19,6 +19,7 @@ from userbot import (
     LOGS,
     PM_AUTO_BAN,
     trgg,
+    tgbott,
 )
 from userbot.events import register
 
@@ -96,7 +97,7 @@ async def permitpm(event):
                     del LASTMSG[event.chat_id]
                 except KeyError:
                     if BOTLOG:
-                        await event.client.send_message(
+                        await tgbott.send_message(
                             BOTLOG_CHATID,
                             "Count PM is seemingly going retard, plis restart bot!",
                         )
@@ -109,7 +110,7 @@ async def permitpm(event):
                 if BOTLOG:
                     name = await event.client.get_entity(event.chat_id)
                     name0 = str(name.first_name)
-                    await event.client.send_message(
+                    await tgbott.send_message(
                         BOTLOG_CHATID,
                         "["
                         + name0
@@ -162,7 +163,7 @@ async def auto_accept(event):
                         return
 
                 if is_approved(event.chat_id) and BOTLOG:
-                    await event.client.send_message(
+                    await tgbott.send_message(
                         BOTLOG_CHATID,
                         "#AUTO-APPROVED\n"
                         + "User: "
@@ -236,7 +237,7 @@ async def approvepm(apprvpm):
     await apprvpm.edit(f"[{name0}](tg://user?id={uid}) `approved to PM!`")
 
     if BOTLOG:
-        await apprvpm.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             "#APPROVED\n" + "User: " + f"[{name0}](tg://user?id={uid})",
         )
@@ -265,7 +266,7 @@ async def disapprovepm(disapprvpm):
     )
 
     if BOTLOG:
-        await disapprvpm.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={disapprvpm.chat_id})"
             " was disapproved to PM you.",
@@ -298,7 +299,7 @@ async def blockpm(block):
         pass
 
     if BOTLOG:
-        await block.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             "#BLOCKED\n" + "User: " + f"[{name0}](tg://user?id={uid})",
         )
@@ -315,7 +316,7 @@ async def unblockpm(unblock):
         await unblock.edit("`You have been unblocked.`")
 
     if BOTLOG:
-        await unblock.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={replied_user.id})" " was unblocc'd!.",
         )
@@ -358,7 +359,7 @@ async def add_pmsg(cust_msg):
         await cust_msg.edit("`Message saved as unapproved message`")
 
         if BOTLOG:
-            await cust_msg.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID, f"***{status} Unapproved message :*** \n\n{msg}"
             )
 

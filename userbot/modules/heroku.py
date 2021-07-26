@@ -17,7 +17,7 @@ import aiohttp
 import heroku3
 import requests
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME, trgg, tgbott
 from userbot.events import register
 
 heroku_api = "https://api.heroku.com"
@@ -46,7 +46,7 @@ async def variable(var):
         if variable != "":
             if variable in heroku_var:
                 if BOTLOG:
-                    await var.client.send_message(
+                    await tgbott.send_message(
                         BOTLOG_CHATID,
                         "#CONFIGVAR\n\n"
                         "**ConfigVar**:\n"
@@ -66,7 +66,7 @@ async def variable(var):
             if BOTLOG:
                 for item in configvars:
                     msg += f"`{item}` = `{configvars[item]}`\n"
-                await var.client.send_message(
+                await tgbott.send_message(
                     BOTLOG_CHATID, "#CONFIGVARS\n\n" "**ConfigVars**:\n" f"{msg}"
                 )
                 await var.edit("`Received to BOTLOG_CHATID...`")
@@ -82,7 +82,7 @@ async def variable(var):
             return False
         if variable in heroku_var:
             if BOTLOG:
-                await var.client.send_message(
+                await tgbott.send_message(
                     BOTLOG_CHATID,
                     "#DELCONFIGVAR\n\n" "**Delete ConfigVar**:\n" f"`{variable}`",
                 )
@@ -100,7 +100,7 @@ async def set_var(var):
     value = var.pattern_match.group(2)
     if variable in heroku_var:
         if BOTLOG:
-            await var.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#SETCONFIGVAR\n\n"
                 "**Change ConfigVar**:\n"
@@ -109,7 +109,7 @@ async def set_var(var):
         await var.edit("`Information sets...`")
     else:
         if BOTLOG:
-            await var.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "#ADDCONFIGVAR\n\n" "**Add ConfigVar**:\n" f"`{variable}` = `{value}`",
             )

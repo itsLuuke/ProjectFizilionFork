@@ -42,7 +42,7 @@ from yt_dlp.utils import (
 )
 from youtube_search import YoutubeSearch
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, trgg, tgbott
 from userbot.events import register
 from userbot.modules.upload_download import get_video_thumb
 from userbot.utils import chrome, duckduckgoscraper, progress
@@ -197,12 +197,12 @@ async def gsearch(q_event):
         )
     except NoResultsOrTrafficError as error:
         if BOTLOG:
-            await q_event.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID, f"`GoogleSearch error: {error}`"
             )
         return
     if BOTLOG:
-        await q_event.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             "Google Search query `" + query + "` was executed successfully",
         )
@@ -243,7 +243,7 @@ async def wiki(wiki_q):
             return os.remove("output.txt")
     await wiki_q.edit("**Search:**\n`" + match + "`\n\n**Result:**\n" + result)
     if BOTLOG:
-        await wiki_q.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully"
         )
 
@@ -369,7 +369,7 @@ async def text_to_speech(query):
         await query.client.send_file(query.chat_id, "k.mp3", voice_note=True)
         os.remove("k.mp3")
         if BOTLOG:
-            await query.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID, "Text to Speech executed successfully !"
             )
     await query.delete()
@@ -501,7 +501,7 @@ async def lang(value):
             )
     await value.edit(f"`Language for {scraper} changed to {LANG.title()}.`")
     if BOTLOG:
-        await value.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
         )
 
@@ -538,7 +538,7 @@ async def translateme(trans):
 
     await trans.edit(reply_text)
     if BOTLOG:
-        await trans.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             f"Translated some {source_lan.title()} stuff to {LANGUAGES[TRT_LANG].title()} just now.",
         )

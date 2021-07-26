@@ -10,7 +10,7 @@ import re
 from os import remove
 from sys import executable
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, USER_TERM_ALIAS, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, USER_TERM_ALIAS, trgg, tgbott
 from userbot.events import register
 
 
@@ -63,7 +63,7 @@ async def evaluate(query):
         )
 
     if BOTLOG:
-        await query.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, f"Eval query {expression} was executed successfully."
         )
 
@@ -132,7 +132,7 @@ async def run(run_q):
         )
 
     if BOTLOG:
-        await run_q.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, "Exec query " + codepre + " was executed successfully."
         )
 
@@ -183,7 +183,7 @@ async def terminal_runner(term):
         await term.edit("`" f"{curruser}:~$ {command}" f"\n{result}" "`")
 
     if BOTLOG:
-        await term.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, "Shell command " + command + " was executed sucessfully.",
         )
 

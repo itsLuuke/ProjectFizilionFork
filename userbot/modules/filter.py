@@ -8,7 +8,7 @@
 from asyncio import sleep
 from re import IGNORECASE, escape, search
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg, tgbott
 from userbot.events import register
 
 
@@ -122,7 +122,7 @@ async def kick_marie_filter(event):
         await sleep(0.3)
     await event.respond("```Successfully purged bots filters yaay!```\n Gimme cookies!")
     if BOTLOG:
-        await event.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID, "I cleaned all filters at " + str(event.chat_id)
         )
 

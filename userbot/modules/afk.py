@@ -11,7 +11,7 @@ from random import choice, randint
 from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, BOTLOG, BOTLOG_CHATID, CMD_HELP, COUNT_MSG,
-                     ISAFK, PM_AUTO_BAN, USERS, trgg)
+                     ISAFK, PM_AUTO_BAN, USERS, trgg, tgbott)
 from userbot.events import register
 
 # ========================= CONSTANTS ============================
@@ -130,7 +130,7 @@ async def set_afk(afk_e):
     else:
         await afk_e.edit("Going AFK!")
     if BOTLOG:
-        await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nYou went AFK!")
+        await tgbott.send_message(BOTLOG_CHATID, "#AFK\nYou went AFK!")
     ISAFK = True
     raise StopPropagation
 
@@ -148,7 +148,7 @@ async def type_afk_is_not_true(notafk):
         await sleep(2)
         await msg.delete()
         if BOTLOG:
-            await notafk.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "You've recieved "
                 + str(COUNT_MSG)
@@ -159,7 +159,7 @@ async def type_afk_is_not_true(notafk):
             for i in USERS:
                 name = await notafk.client.get_entity(i)
                 name0 = str(name.first_name)
-                await notafk.client.send_message(
+                await tgbott.send_message(
                     BOTLOG_CHATID,
                     "["
                     + name0
