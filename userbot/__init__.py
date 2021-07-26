@@ -310,15 +310,14 @@ modules = CMD_HELP
 uptime = time.strftime('%X')
 ##
 output = (
-    "` =============================== `\n"
-    f"`Fizilion dev is Up and Running.... `\n"
-    f"`=============================== `\n"
+    "` ==================================== `\n"
+    f"`Forkzilion dev is Up and Running.... `\n"
+    f"`==================================== `\n"
     f"•`Telethon       : v{version.__version__} `\n"
     f"•`Python         : v{python_version()} `\n"
     f"•`User           : {DEFAULTUSER} `\n"
     f"•`Running on     : {repo.active_branch.name} `\n"
-    f"•`Loaded modules : {len(modules)} `\n"
-    f"•`Fizilion       : {USERBOT_VERSION} `\n"
+    f"•`Forkzilion     : {USERBOT_VERSION} `\n"
     f"•`Bot started at : {uptime} `\n" 
 )
 
