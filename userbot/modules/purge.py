@@ -49,7 +49,7 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@register(outgoing=True, pattern="^\{trg}p$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}(p| P)$".format(trg=trgg))
 async def fastpurger(purg):
     """ For .purge command, purge all messages starting from the reply. """
     chat = await purg.get_input_chat()
@@ -129,7 +129,7 @@ async def delete_it(delme):
                     BOTLOG_CHATID, "Well, I can't delete a message"
                 )
 
-@register(outgoing=True, pattern="^\{trg}d$".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}(d| D)$".format(trg=trgg))
 async def delete_it(delme):
     """ For .del command, delete the replied message. """
     msg_src = await delme.get_reply_message()
