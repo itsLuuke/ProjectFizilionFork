@@ -10,6 +10,7 @@ import json
 import math
 import multiprocessing
 import os
+from os.path import isfile
 import re
 import time
 from asyncio import create_subprocess_shell as asyncSubprocess
@@ -18,7 +19,7 @@ from urllib.error import HTTPError
 
 from pySmartDL import SmartDL
 
-from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY, trgg
+from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY, MEGA_EMAIL, MEGA_PASSWORD, trgg
 from userbot.events import register
 from userbot.utils import humanbytes, time_formatter
 
@@ -168,11 +169,44 @@ async def decrypt_file(megadl, file_path, temp_file_path, hex_key, hex_raw_key):
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file_path)
     return
 
+@register(pattern="^\{trg}megaput(?: |$)(.*)", outgoing=True)
+async def megaput(event):
+    file = event.pattern_match.group(1)
+    if MEGA_EMAIL and MEGA_PASSWORD:
+        if isfile(file):
+            await event.edit(f"`Uploading file {file} to mega, this may take some time depending on file size`")
+            uploader = os.popen(f"megaput -u {MEGA_EMAIL} -p {MEGA_PASSWORD} {file}")
+            output = uploader.readlines()
+            print(output)
+            try:
+                out = f'{output[-2]}\n{output[-1]}\nto Mega'
+            except IndexError:
+                out = f'{output},\nAn error has occured'
+            await event.edit(out)
+        else:
+            await event.edit(f"Please check if {file} exists in userbot's server")
+    else:
+        await event.edit("`Mega credentials empty, add those to config env`")
+
+@register(pattern="^\{trg}megareg(?: |$)(.*)", outgoing=True)
+async def megareg(event):
+    inp = event.pattern_match.group(1)
+    if ";" in inp:
+        await event.edit("`Registering your account on mega.nz`")
+        email,passwd = inp.split(";", 1)
+        os.system(f"megareg --register --name FiziDrive --email {email} --password {passwd}")
+        await event.edit("`Verification link sent to your email successfully... Please verify your email ID to use your account`")
+    else:
+        await event.edit("Please put email and password in format:\n`.megareg youremail@example.com;password-you-want`")
 
 CMD_HELP.update(
     {
         "mega": ".mega <MEGA.nz link>"
         "\nUsage: Reply to a MEGA.nz link or paste your MEGA.nz link to "
         "download the file into your userbot server."
-    }
+        "\n\n.megaput <file_path>"
+	"\nUsage: Upload files to your mega.nz drive"
+        "\n\n.megareg youremail@example.com;password-you-want"
+        "\nUsage: Register mega account with your userbot, Make sure you make account with this or megareg in terminal to use userbot's megaput function without errors"
+	}
 )

@@ -215,6 +215,9 @@ PMLOG_CHATID = int(os.environ.get("PMLOG_CHATID") or 0)
 
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN") or False
+#Mega
+MEGA_EMAIL = os.environ.get("MEGA_EMAIL") or None
+MEGA_PASSWORD = os.environ.get("MEGA_PASSWORD") or None
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
