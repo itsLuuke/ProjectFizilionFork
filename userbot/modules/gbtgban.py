@@ -8,6 +8,7 @@ from userbot.events import register
 
 gbtban_replies = [
     "Banned",
+    "Global Ban",
     "On it",
     "Done!",
     "Blowing the dust off the BANHAMMER",
