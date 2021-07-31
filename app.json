@@ -140,6 +140,10 @@
       "description": "Enter Your Client ID for Google Drive.",
       "required": false
     },
+    "GDRIVE_INDEX_URL": {
+      "description": "If you have a cloudflare worker for your google drive, put it here. Example: https://tdrive.derpsakura.workers.dev/0:/",
+      "required": false
+    },
     "G_DRIVE_DATA": {
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
       "required": false
@@ -200,6 +204,14 @@
     },
     "USR_TOKEN_UPTOBOX": {
       "description": "API for direct link uptobox, https://docs.uptobox.com/#how-to-find-my-api-token",
+      "required": false
+    },
+    "MEGA_EMAIL": {
+      "description": "mega.nz email to upload files to mega",
+      "required": false
+    },
+    "MEGA_PASSWORD": {
+      "description": "mega.nz password to upload files to mega",
       "required": false
     },
     "LOGSPAMMER": {

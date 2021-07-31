@@ -190,6 +190,7 @@ G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID") or None
 G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET") or None
 G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA") or None
 G_DRIVE_FOLDER_ID = os.environ.get("G_DRIVE_FOLDER_ID") or None
+GDRIVE_INDEX_URL = os.environ.get("GDRIVE_INDEX_URL") or None
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get(
     "TMP_DOWNLOAD_DIRECTORY") or "./downloads/"
 
@@ -200,6 +201,10 @@ USR_TOKEN = os.environ.get("USR_TOKEN_UPTOBOX", None)
 SFUSER = os.environ.get("SFUSER") or "null"
 SFPASS = os.environ.get("SFPASS") or "null"
 SFDIR = os.environ.get("SFDIR") or "null"
+
+#Mega
+MEGA_EMAIL = os.environ.get("MEGA_EMAIL") or None
+MEGA_PASSWORD = os.environ.get("MEGA_PASSWORD") or None
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
