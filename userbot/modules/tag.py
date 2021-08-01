@@ -18,6 +18,7 @@ from userbot.events import register
 
 
 @register(
+    outgoing=True,
     pattern="^\{trg}tag(on|off|all|bots|rec|admins|owner) ?(.*)".format(trg=trgg),
     groups_only=True,
 )
