@@ -57,6 +57,12 @@ async def spammer(spamm):
                 BOTLOG_CHATID, "#SPAM\n" "Spam was executed successfully"
             )
 
+@register(outgoing=True, pattern="^\{trg}rp$".format(trg=trgg))
+async def repeattt(event):
+    textx = await event.get_reply_message()
+    await event.delete()
+    await event.respond(textx)
+
 
 @register(outgoing=True, pattern="^\{trg}picspam".format(trg=trgg))
 async def tiny_pic_spam(pspam):
@@ -94,6 +100,8 @@ CMD_HELP.update(
 \nUsage: Spam the text letter by letter.\
 \n\n.spam <count> <text>\
 \nUsage: Floods text in the chat !!\
+\n\n.rp\
+\nUsage: Repeats the replier message!!\
 \n\n.wspam <text>\
 \nUsage: Spam the text word by word.\
 \n\n.picspam <count> <link to image/gif>\
