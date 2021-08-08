@@ -88,21 +88,6 @@ async def guidee(event):
 )
 
 
-# Copyright (c) Gegham Zakaryan | 2019
-@register(outgoing=True, pattern="^.repeat (.*)")
-async def repeat(rep):
-    cnt, txt = rep.pattern_match.group(1).split(" ", 1)
-    replyCount = int(cnt)
-    toBeRepeated = txt
-
-    replyText = toBeRepeated + "\n"
-
-    for i in range(0, replyCount - 1):
-        replyText += toBeRepeated + "\n"
-
-    await rep.edit(replyText)
-
-
 @register(outgoing=True, pattern="^.repoo$")
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
@@ -166,8 +151,6 @@ CMD_HELP.update(
 "\nUsage: Provide links to setup the userbot and it's modules\nAnd .support for support group\n\n"
 ".guide"
 "\nUsage: Provides Full guide to setup Fizilion Userbot.\n\n"
-".repeat <no.> <text>"
-"\nUsage: Repeats the text for a number of times. Don't confuse this with spam tho.\n\n"
 ".restart"
 "\nUsage: Restarts the bot !!\n\n"
 ".raw"

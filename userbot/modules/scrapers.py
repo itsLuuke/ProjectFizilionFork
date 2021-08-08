@@ -45,7 +45,7 @@ from youtube_search import YoutubeSearch
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 from userbot.modules.upload_download import get_video_thumb
-from userbot.utils import chrome, duckduckgoscraper, progress
+from userbot.utils import chrome, progress
 from userbot.utils.FastTelethon import upload_file
 
 CARBONLANG = "auto"
@@ -114,30 +114,6 @@ async def carbon_api(e):
     await e.delete()  # Deleting msg
 
 
-
-@register(outgoing=True, pattern="^.img (.*)")
-async def img_sampler(event):
-    """ For .img command, search and return images matching the query. """
-    await event.edit("`Processing...\n please wait for a moment...`")
-    query = event.pattern_match.group(1)
-    scraper = duckduckgoscraper.DuckDuckGoScraper()
-    
-    #The out directory
-    os.system("mkdir -p /tmp/out/images")
-    out = ("/tmp/out/images")
-    
-    if 'query' not in locals():
-        await event.edit("Please specify a query to get images,\n like .img duck")
-    else:
-        #TODO: add a limit to the images being downloaded
-        scraper.scrape(query,1,out)
-        await asyncio.sleep(4)
-        files = glob.glob("/tmp/out/images/*.jpg")
-        await event.client.send_file(
-            await event.client.get_input_entity(event.chat_id), files
-                )
-        await event.delete()
-        os.system("rm -rf /tmp/out/images")
 
 @register(outgoing=True, pattern=r"^\.currency ([\d\.]+) ([a-zA-Z]+) ([a-zA-Z]+)")
 async def moni(event):

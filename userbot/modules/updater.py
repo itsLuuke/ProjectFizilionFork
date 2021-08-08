@@ -21,7 +21,6 @@ from userbot import (
     CMD_HELP,
     HEROKU_API_KEY,
     HEROKU_APP_NAME,
-    UPDATER_ALIAS,
     UPSTREAM_REPO_BRANCH,
     UPSTREAM_REPO_URL,
 )

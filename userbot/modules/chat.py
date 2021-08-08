@@ -130,34 +130,6 @@ async def keep_read(message):
                 await message.client.send_read_acknowledge(message.chat_id)
 
 
-# Regex-Ninja module by @Kandnub
-regexNinja = False
-
-
-@register(outgoing=True, pattern="^s/")
-async def sedNinja(event):
-    """For regex-ninja module, auto delete command starting with s/"""
-    if regexNinja:
-        await sleep(0.5)
-        await event.delete()
-
-
-@register(outgoing=True, pattern="^.regexninja (on|off)$")
-async def sedNinjaToggle(event):
-    """ Enables or disables the regex ninja module. """
-    global regexNinja
-    if event.pattern_match.group(1) == "on":
-        regexNinja = True
-        await event.edit("`Successfully enabled ninja mode for Regexbot.`")
-        await sleep(1)
-        await event.delete()
-    elif event.pattern_match.group(1) == "off":
-        regexNinja = False
-        await event.edit("`Successfully disabled ninja mode for Regexbot.`")
-        await sleep(1)
-        await event.delete()
-
-
 CMD_HELP.update(
     {
         "chat": ".chatid\
@@ -173,9 +145,6 @@ CMD_HELP.update(
 \n\n.mutechat\
 \nUsage: Allows you to mute any chat.\
 \n\n.link <username/userid> : <optional text> (or) reply to someone's message with .link <optional text>\
-\nUsage: Generate a permanent link to the user's profile with optional custom text.\
-\n\n.regexninja on/off\
-\nUsage: Globally enable/disables the regex ninja module.\
-\nRegex Ninja module helps to delete the regex bot's triggering messages."
+\nUsage: Generate a permanent link to the user's profile with optional custom text."
     }
 )

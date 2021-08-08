@@ -24,14 +24,14 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot
+from userbot import CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
+DEFAULTUSER = uname().node
 repo = Repo()
 modules = CMD_HELP
-# ============================================
+# ==================================================
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -233,44 +233,24 @@ async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"`===================================`\n"
-        f"**FIZILION IS UP** [Premium Edition]\n"
-        f"`=================================== `\n"
-        f"**Hello  {DEFAULTUSER} **\n"
-        f"`=================================== `\n"
-        f"**[OS Info]:**\n"
-        f"•`Platform Type    : {os.name}`\n"
-        f"•`Distro           : {distro.name(pretty=False)} {distro.version(pretty=False, best=False)}`\n"
-        f"`===================================`\n"
-        f"**[PYPI Module Versions]:**\n"
-        f"•`Python          : v{python_version()} `\n"   
-        f"•`Telethon        : v{version.__version__} `\n"
-        f"•`PIP             : v{pip.__version__} `\n"
-        f"`===================================`\n"
-        f"**[MISC Info]:**\n"
-        f"•`User            : {DEFAULTUSER} `\n"
-        f"•`Branch          : {repo.active_branch.name} `\n"
-        f"•`Fork status     : Connected `\n"
-        f"•`Loaded modules  : {len(modules)} `\n"
-        f"•`Release         : {USERBOT_VERSION} `\n"
-        f"•`Bot Uptime      : {uptime} `\n"
-        f"`===================================`\n"
+        f"`=========================================`\n"
+        f"**FORKZILION IS UP** [_SuperLight_ Edition]\n"
+        f"`========================================= `\n"
+        f"•`Platform Type   :  {os.name}`\n"
+        f"•`Distro          :  {distro.name(pretty=False)}`\n"
+        f"•`Distro ver      :  {distro.version(pretty=False, best=False)}`\n"
+        f"•`Python          :  {python_version()} `\n"   
+        f"•`Telethon        :  {version.__version__} `\n"
+        f"•`PIP             :  {pip.__version__} `\n"
+        f"•`Branch          :  {repo.active_branch.name} `\n"
+        f"•`Loaded modules  :  {len(modules)} `\n"
+        f"•`Release         :  {USERBOT_VERSION} `\n"
+        f"•`Bot Uptime      :  {uptime} `\n"
+        f"`=========================================`\n"
 
     )
-    if ALIVE_LOGO:
-        try:
-            logo = ALIVE_LOGO
-            msg = await bot.send_file(alive.chat_id, logo, caption=output, del_in=10)
-            await alive.delete()
-            await sleep(30)
-        except BaseException:
-            await alive.edit(
-                output + "\n\n *`The provided logo is invalid."
-                "\nMake sure the link is directed to the logo picture`"
-            )
-    else:
-        msg=await alive.edit(output)
-        await sleep(30)
+    msg = await alive.edit(output)
+    await sleep(30)
         
     if TIMEOUT:
         await msg.delete()
@@ -293,25 +273,15 @@ async def amireallyaliveuser(username):
 async def amireallyalivereset(ureset):
     """ For .resetalive command, reset the username in the .alive command. """
     global DEFAULTUSER
-    DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
+    DEFAULTUSER = uname().node
     await ureset.edit("`" "Successfully reset user for alive!" "`")
 
 @register(outgoing=True, pattern="^.changelog$")
 async def chnglogg(event):
     await event.edit(
         "In the latest update, these are the changes:\
-        \nAdded pmlog feature from cat\
-        \nnow u can enable pm logging and tags logging\
-        \nthese can be enabled by setting 'PMLOG' to 'True'\
-        \nand setting the 'PMLOG_CHATID' variables.\
-        \n\nAdded tag feature from ultroid\
-        \nsend .help tags to see the available commands\
-        \n\nAdded a bot mode but its still not used in all modules yet,\
-        \nit's used for now in pm log (all messages sent to BOTLOG will be sent by the bot in the future to avoid spam)\
-        \nbut this is optional and u can still use everything normally if u don't set it up\
-        \nHowever if u want to setup the bot, go to @botfather and create a new bot, then set the variable BOT_TOKEN as the token u got.\
-        \n\nAdded custom trigger (custom command handler) but its not fully implemented yet son its not recommended to change.\
-        \n\nThis changelog is valid for the last update to forkzilion (ProjectFizilion fork by AbOuLfOoOoOuF) only.")
+        \n Inital release kek\
+        \n\nThis changelog is valid for the last update to forkzilion pruhsuperlight (ProjectFizilion fork by AbOuLfOoOoOuF) only.")
 
 CMD_HELP.update(
     {
