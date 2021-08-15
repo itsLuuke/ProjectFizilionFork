@@ -4,7 +4,7 @@
    <br>
 </p>
 
-# Fork of Project Fizilion *SuperLight edition*
+# Fork of Project Fizilion *superlite edition*
 
 ```
 #include <std/disclaimer.h>
@@ -64,7 +64,7 @@ wget https://raw.githubusercontent.com/PrajjuS/ProjectFizilion/demon/terminal_ge
 ### Deploy on Heroku
 Make sure you have an account of heroku and follow all the steps required.
 
-<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork/tree/pruhsuperlight"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
+<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork/tree/pruhsuperlite"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
 
 ### Deploy on Railway
 Make Sure to Do your repo private

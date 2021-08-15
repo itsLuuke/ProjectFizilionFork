@@ -91,7 +91,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY") or None
 # Custom (forked) repo URL and BRANCH for updater.
 UPSTREAM_REPO_URL = (os.environ.get("UPSTREAM_REPO_URL")
                      or "https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork.git")
-UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH") or "pruhsuperlight"
+UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH") or "pruhsuperlite"
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = "False"
@@ -110,7 +110,7 @@ TIMEOUT = sb(os.environ.get("TIMEOUT") or "True")
 COUNTRY = str(os.environ.get("COUNTRY") or "")
 TZ_NUMBER = os.environ.get("TZ_NUMBER") or 1
 
-# Version of Fizisuperlight
+# Version of Fizisuperlite
 USERBOT_VERSION = os.environ.get("USERBOT_VERSION") or "production 3.1+"
 
 # User Terminal alias

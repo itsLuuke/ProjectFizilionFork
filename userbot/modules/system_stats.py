@@ -234,7 +234,7 @@ async def amireallyalive(alive):
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         f"`=========================================`\n"
-        f"**FORKZILION IS UP** [_SuperLight_ Edition]\n"
+        f"**FORKZILION IS UP** [superlite Edition]\n"
         f"`========================================= `\n"
         f"•`Platform Type   :  {os.name}`\n"
         f"•`Distro          :  {distro.name(pretty=False)}`\n"
@@ -281,7 +281,7 @@ async def chnglogg(event):
     await event.edit(
         "In the latest update, these are the changes:\
         \n Inital release kek\
-        \n\nThis changelog is valid for the last update to forkzilion pruhsuperlight (ProjectFizilion fork by AbOuLfOoOoOuF) only.")
+        \n\nThis changelog is valid for the last update to forkzilion pruhsuperlite (ProjectFizilion fork by AbOuLfOoOoOuF) only.")
 
 CMD_HELP.update(
     {

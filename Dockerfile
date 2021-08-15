@@ -8,7 +8,7 @@ WORKDIR /Fizilion
 RUN apk add megatools
 
 # clone repo
-RUN git clone https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork -b pruhsuperlight /Fizilion
+RUN git clone https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork -b pruhsuperlite /Fizilion
 
 # Copies session and config(if it exists)
 COPY ./sample_config.env ./userbot.session* ./config.env* /Fizilion/
