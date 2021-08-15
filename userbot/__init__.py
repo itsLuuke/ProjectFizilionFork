@@ -211,7 +211,7 @@ LASTMSG = {}
 CMD_HELP = {}
 
 ##Constants
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
+DEFAULTUSER = uname().node
 repo = Repo()
 modules = CMD_HELP
 uptime = time.strftime('%X')
