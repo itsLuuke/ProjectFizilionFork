@@ -240,6 +240,7 @@ INSULT_STRINGS = [
     "Try to spend one day in a coffin and it will be yours forever.",
     "Hit Uranium with a slow moving neutron in your presence. It will be a worthwhile experience.",
     "You can be the first person to step on sun. Have a try.",
+     "You deserve to drink hot water.",
 ]
 
 UWUS = [
