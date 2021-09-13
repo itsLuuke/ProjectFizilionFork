@@ -62,10 +62,10 @@ urbandict
 wikipedia
 PyGithub
 python-dateutil
-youtube_search
-google_trans_new
-wget
-validators
+youtube_search==2.1.0
+google_trans_new==1.1.9
+wget=3.2
+validators==0.18.2
 aiofiles
 git+https://github.com/code-rgb/search-engine-parser
 patool
