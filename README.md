@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="https://github.com/PrajjuS/ProjectFizilion"><img src="https://github.com/PrajjuS/ProjectFizilion/raw/dragon/resources/IMG_20201109_130207_262.jpg" alt="Fizi Logo" width=600px></a>
+   <a href="https://github.com/FrosT2k5/ProjectFizilion"><img src="https://github.com/FrosT2k5/ProjectFizilion/raw/dragon/resources/IMG_20201109_130207_262.jpg" alt="Fizi Logo" width=600px></a>
    <br>
    <br>
 </p>
@@ -24,9 +24,9 @@
 [![Build](https://img.shields.io/github/workflow/status/AbOuLfOoOoOuF/ProjectFizilionFork/FailedChecker?style=for-the-badge)](https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork/actions "build")
 [![Build](https://img.shields.io/github/workflow/status/PrajjuS/ProjectFizilion/FailedChecker?style=for-the-badge)](https://github.com/PrajjuS/ProjectFizilion/actions "build")
 
-![Docker_Size](https://img.shields.io/docker/image-size/elytra8/fizfed?style=for-the-badge)
+![Docker_Size](https://img.shields.io/docker/image-size/frost2k5/dragonheart?style=for-the-badge)
 
-![Docker_Pulls](https://img.shields.io/docker/pulls/elytra8/fizfed?style=for-the-badge)
+![Docker_Pulls](https://img.shields.io/docker/pulls/frost2k5/dragonheart?style=for-the-badge)
 
 ![Spec](https://img.shields.io/badge/Made%20with-LOVE-black?style=for-the-badge)
 
@@ -74,7 +74,7 @@ Make Sure to Do your repo private
 ## Groups and Support
 
 For discussion, bug reporting, and help, you can join [Project Fizilion](https://t.me/ProjectFizilionChat) support group.
-For further guide you can read this [Guide](https://telegra.ph/How-to-host-a-Telegram-Userbot-07-01-2).
+For further guide you can read this [Guide](https://frost2k5.games/ProjectFizilion).
 
 
 ## Credits
@@ -89,7 +89,7 @@ Thanks:
 * [Mkaraniya](https://github.com/mkaraniya) & [Dev73](https://github.com/Devp73) - OpenUserBot
 * [MoveAngel](https://github.com/MoveAngel) - One4U
 
-and many more people who aren't mentioned here, but may be found in [Contributors](https://github.com/PrajjuS/ProjectFizilion/graphs/contributors).
+and many more people who aren't mentioned here, but may be found in [Contributors](https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork/graphs/contributors).
 
 ## License
 

@@ -75,7 +75,7 @@ async def killdabot(reboot):
 async def reedme(event):
     await event.edit(
         "Here's something for you to read:\n"
-        "\n[Fizilions README.md file](https://github.com/PrajjuS/ProjectFizilion/blob/demon/README.md)"
+        "\n[Fizilions README.md file](https://github.com/FrosT2k5/ProjectFizilion/blob/demon/README.md)"
 )
 
 
@@ -107,7 +107,7 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
-        "[Click here](https://github.com/PrajjuS/ProjectFizilion) to open Fizilion's GitHub Repo."
+        "[Click here](https://github.com/FrosT2k5/ProjectFizilion) to open Fizilion's GitHub Repo."
     )
 
 @register(outgoing=True, pattern="^\{trg}repo$".format(trg=trgg))
