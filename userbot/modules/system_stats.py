@@ -24,7 +24,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot, trgg
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -62,7 +62,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@register(outgoing=True, pattern=r"^\.spc")
+@register(outgoing=True, pattern="^\{trg}spc".format(trg=trgg))
 async def psu(event):
     uname = platform.uname()
     softw = "**System Information**\n"
@@ -124,7 +124,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 
-@register(outgoing=True, pattern=r"^\.sysd$")
+@register(outgoing=True, pattern="^\{trg}sysd$".format(trg=trgg))
 async def sysdetails(sysd):
     """ For .sysd command, get system info using neofetch. """
     if not sysd.text[0].isalpha() and sysd.text[0] not in ("/", "#", "@", "!"):
@@ -144,7 +144,7 @@ async def sysdetails(sysd):
             await sysd.edit("`Install neofetch first !!`")
 
 
-@register(outgoing=True, pattern="^.botver$")
+@register(outgoing=True, pattern="^\{trg}botver$".format(trg=trgg))
 async def bot_ver(event):
     """ For .botver command, get the bot version. """
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -178,31 +178,35 @@ async def bot_ver(event):
             await event.edit(
                 "Shame that you don't have git, you're running - 'v2.5' anyway!"
             )
-
-@register(outgoing=True, pattern=r"^.(alive|on)$")
+            
+@register(outgoing=True, pattern=r"^\{trg}(alive|on)$".format(trg=trgg))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"`===============================`\n"
-        f"**FIZILION IS UP AND RUNNING...**\n"
-        f"`=============================== `\n"
+        f"`===================================`\n"
+        f"**FIZILION IS UP** [Premium Edition]\n"
+        f"`=================================== `\n"
+        f"**Hello  {DEFAULTUSER} **\n"
+        f"`=================================== `\n"
         f"**[OS Info]:**\n"
-        f"•`Platform Type   : {os.name}`\n"
-        f"•`Distro          : {distro.name(pretty=False)} {distro.version(pretty=False, best=False)}`\n"
-        f"`===============================`\n"
+        f"• `Platform Type   :  {os.name}`\n"
+        f"• `Distro          :  {distro.name(pretty=False)}`\n"
+        f"• `Distro ver      :  {distro.major_version(best=True)}`\n"
+        f"`===================================`\n"
         f"**[PYPI Module Versions]:**\n"
-        f"•`Python         : v{python_version()} `\n"   
-        f"•`Telethon       : v{version.__version__} `\n"
-        f"•`PIP            : v{pip.__version__} `\n"
-        f"`===============================`\n"
+        f"• `Python          :  {python_version()} `\n"   
+        f"• `Telethon        :  {version.__version__} `\n"
+        f"• `PIP             :  {pip.__version__} `\n"
+        f"`===================================`\n"
         f"**[MISC Info]:**\n"
-        f"•`User           : {DEFAULTUSER} `\n"
-        f"•`Running on     : {repo.active_branch.name} `\n"
-        f"•`Loaded modules : {len(modules)} `\n"
-        f"•`Fizilion       : {USERBOT_VERSION} `\n"
-        f"•`Bot Uptime     : {uptime} `\n"
-        f"`===============================`\n"
+        f"• `User            :  {DEFAULTUSER} `\n"
+        f"• `Branch          :  {repo.active_branch.name} `\n"
+        f"• `Fork status     :  Connected `\n"
+        f"• `Loaded modules  :  {len(modules)} `\n"
+        f"• `Release         :  {USERBOT_VERSION} `\n"
+        f"• `Bot Uptime      :  {uptime} `\n"
+        f"`===================================`\n"
 
     )
     if ALIVE_LOGO:
@@ -224,7 +228,7 @@ async def amireallyalive(alive):
         await msg.delete()
         
 
-@register(outgoing=True, pattern="^.aliveu")
+@register(outgoing=True, pattern="^\{trg}aliveu".format(trg=trgg))
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
     message = username.text
@@ -237,13 +241,22 @@ async def amireallyaliveuser(username):
     await username.edit("`" f"{output}" "`")
 
 
-@register(outgoing=True, pattern="^.resetalive$")
+@register(outgoing=True, pattern="^\{trg}resetalive$".format(trg=trgg))
 async def amireallyalivereset(ureset):
     """ For .resetalive command, reset the username in the .alive command. """
     global DEFAULTUSER
     DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
     await ureset.edit("`" "Successfully reset user for alive!" "`")
 
+@register(outgoing=True, pattern="^\{trg}changelog$".format(trg=trgg))
+async def chnglogg(event):
+    await event.edit(
+        "In the latest update, these are the changes:\
+        \n\nAdded silent old kang\
+        \nuse it by replying to a sticker and sending .ok\
+        \n\nAdded afk by bot, to setup u need to make a group and add bots to it then add its id as AFK_CHATID.\nTo go afk by bots send .afk-b. it takes a reason too like the normal afk and removes afk when u send any message.\
+        \n\nAdded purge from and to but its not complete yet so not recommended to use.\
+        \n\nThis changelog is valid for the last update to forkzilion (ProjectFizilion fork by AbOuLfOoOoOuF) only.")
 
 CMD_HELP.update(
     {
@@ -267,5 +280,11 @@ CMD_HELP.update(
     \nUsage: Changes the 'user' in alive to the text you want.\
     \n\n.resetalive\
     \nUsage: Resets the user to default."
+    }
+)
+CMD_HELP.update(
+    {
+        "changelog": ".changelog\
+    \nUsage: Check the last changes done to the userbot"
     }
 )

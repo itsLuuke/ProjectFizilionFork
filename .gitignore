@@ -9,3 +9,8 @@ userbot/modules/sql_helper/__pycache__/*
 .progress
 .vscode/*
 bin/*
+newbott.session
+*.pyc
+newbott.session-journal
+start.sh
+stop.sh
