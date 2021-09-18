@@ -7,7 +7,7 @@
 import asyncio
 from asyncio import sleep
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg, tgbott
 from userbot.events import register
 
 
@@ -19,7 +19,7 @@ async def leter_spam(cspammer):
     for letter in message:
         await cspammer.respond(letter)
     if BOTLOG:
-        await cspammer.client.send_message(
+        await tgbott.client.send_message(
             BOTLOG_CHATID, "#CSPAM\n" "TSpam was executed successfully"
         )
 
@@ -32,7 +32,7 @@ async def word_spam(wspammer):
     for word in message:
         await wspammer.respond(word)
     if BOTLOG:
-        await wspammer.client.send_message(
+        await tgbott.client.send_message(
             BOTLOG_CHATID, "#WSPAM\n" "WSpam was executed successfully"
         )
 
