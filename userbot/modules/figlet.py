@@ -16,21 +16,22 @@ async def figlet(fg):
     if fg.fwd_from:
         return
     CMD_FIG = {
-        "slant": "slant",
+        "SLANT": "slant",
         "3D": "3-d",
-        "5line": "5lineoblique",
-        "alpha": "alphabet",
-        "banner": "banner3-D",
-        "doh": "doh",
-        "iso": "isometric1",
-        "letter": "letters",
-        "allig": "alligator",
-        "dotm": "dotmatrix",
-        "bubble": "bubble",
-        "bulb": "bulbhead",
-        "digi": "digital",
+        "5LINE": "5lineoblique",
+        "ALPHA": "alphabet",
+        "BANNER": "banner3-D",
+        "DOH": "doh",
+        "ISO": "isometric1",
+        "LETTER": "letters",
+        "ALLIG": "alligator",
+        "DOTM": "dotmatrix",
+        "BUBBLE": "bubble",
+        "BULB": "bulbhead",
+        "DIGI": "digital",
     }
-    input_str = fg.pattern_match.group(1)
+    ip = fg.pattern_match.group(1)
+    input_str = ip.upper()
     if "." in input_str:
         text, cmd = input_str.split(".", maxsplit=1)
     elif input_str is not None:
@@ -56,7 +57,7 @@ CMD_HELP.update(
     {
         "figlet": ".figlet"
         "\nUsage: Enhance ur text to strip line with anvil."
-        "\n\nExample: `.figlet <Text Style>`"
+        "\n\nExample: `.figlet <Text> .<style>`"
         "\nSTYLE LIST: `slant`, `3D`, `5line`, `alpha`, `banner`, `doh`, `iso`, `letter`, `allig`, `dotm`, `bubble`, `bulb`, `digi`"
     }
 )
