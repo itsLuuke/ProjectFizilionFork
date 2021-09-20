@@ -149,7 +149,6 @@ async def set_afk(afk_e):
         else:
             await afk_e.edit("Going AFK!")
         if BOTLOG:
-            BOTAFK = True
             ISAFK = True
             await tgbott.send_message(BOTLOG_CHATID, afkmsg)
         raise StopPropagation
