@@ -37,6 +37,7 @@ KANGING_STR = [
     "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
     "Imprisoning this sticker...",
     "Mr.Steal Your Sticker is stealing this sticker... ",
+    "Hey! look the other way while i kang your sticker... ",
 ]
 
 
@@ -135,10 +136,10 @@ async def kang(args):
                 x = await conv.get_response()
                 while "120" in x.text:
                     pack += 1
-                    packname = f"a{user.id}_1by_fiz_{pack}"
-                    packnick = f"kanged stickers Vol.{pack}"
+                    packname = f"a{user.id}_by_{user.username}_{pack}"
+                    packnick = f"@{user.username}'s kang pack Vol.{pack}"
                     await args.edit(
-                        "**Switching to Pack "
+                        "**Switching to a New Pack "
                         + str(pack)
                         + " due to insufficient space...**"
                     )
