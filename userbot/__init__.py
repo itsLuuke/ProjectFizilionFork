@@ -141,6 +141,9 @@ ALIVE_NAME = os.environ.get("ALIVE_NAME") or None
 # Default .alive logo
 ALIVE_LOGO = str(os.environ.get("ALIVE_LOGO") or "https://github.com/AbOuLfOoOoOuF/ProjectFizilionFork/raw/pruh/resources/fizsmall.png")
 
+# Custom Alive Message
+ALIVE_MESSAGE = str(os.environ.get("ALIVE_MESSAGE") or "")
+
 # .alive and .help timeout
 TIMEOUT = sb(os.environ.get("TIMEOUT") or "True")
 
@@ -148,8 +151,8 @@ TIMEOUT = sb(os.environ.get("TIMEOUT") or "True")
 COUNTRY = str(os.environ.get("COUNTRY") or "")
 TZ_NUMBER = os.environ.get("TZ_NUMBER") or 1
 
-# Version of One4uBot
-USERBOT_VERSION = os.environ.get("USERBOT_VERSION") or "production 3.1+"
+# Version of Project Fizilion
+USERBOT_VERSION = "4.0"
 
 # User Terminal alias
 USER_TERM_ALIAS = os.environ.get("USER_TERM_ALIAS") or "dem0n"

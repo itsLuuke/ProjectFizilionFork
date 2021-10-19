@@ -295,7 +295,7 @@ async def download(gdrive, service, uri=None):
                         f"`Name   :` `{file_name}`\n"
                         f"`Size   :` `{humanbytes(result[0])}`\n"
                         f"`Link   :` [{file_name}]({result[1]})\n"
-                        f"`Index  :` [here]({gurl})\n"
+                        f"`Index  :` {gurl}\n"
                         "`Status :` **OK** - Successfully uploaded.\n\n"
                         )
                 else:
@@ -1148,7 +1148,7 @@ async def google_drive(gdrive):
                 f"`Name   :` `{file_name}`\n"
                 f"`Size   :` `{humanbytes(result[0])}`\n"
                 f"`Link   :` [{file_name}]({result[1]})\n"
-                f"`Index  :` [here]({gurl})\n"
+                f"`Index  :` {gurl}\n"
                 f"`Status :` **OK** - Successfully uploaded.\n\n",
                 link_preview=False
                     )

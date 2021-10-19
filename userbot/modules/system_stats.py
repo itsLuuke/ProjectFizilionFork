@@ -24,7 +24,7 @@ import psutil
 from git import Repo
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot, trgg
+from userbot import ALIVE_LOGO, ALIVE_MESSAGE, ALIVE_NAME, CMD_HELP, TIMEOUT, USERBOT_VERSION, StartTime, bot, trgg
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -183,32 +183,18 @@ async def bot_ver(event):
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
-    output = (
-        f"`===================================`\n"
-        f"**FIZILION IS UP** [Premium Edition]\n"
-        f"`=================================== `\n"
-        f"**Hello  {DEFAULTUSER} **\n"
-        f"`=================================== `\n"
-        f"**[OS Info]:**\n"
-        f"• `Platform Type   :  {os.name}`\n"
-        f"• `Distro          :  {distro.name(pretty=False)}`\n"
-        f"• `Distro ver      :  {distro.major_version(best=True)}`\n"
-        f"`===================================`\n"
-        f"**[PYPI Module Versions]:**\n"
-        f"• `Python          :  {python_version()} `\n"   
-        f"• `Telethon        :  {version.__version__} `\n"
-        f"• `PIP             :  {pip.__version__} `\n"
-        f"`===================================`\n"
-        f"**[MISC Info]:**\n"
-        f"• `User            :  {DEFAULTUSER} `\n"
-        f"• `Branch          :  {repo.active_branch.name} `\n"
-        f"• `Fork status     :  Connected `\n"
-        f"• `Loaded modules  :  {len(modules)} `\n"
-        f"• `Release         :  {USERBOT_VERSION} `\n"
-        f"• `Bot Uptime      :  {uptime} `\n"
-        f"`===================================`\n"
-
-    )
+    DEFAULT_MESSAGE = (
+        f"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+        f"**Fizilion** is up [--Premium]\n"
+        f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n"
+        f"• `Owner          : {DEFAULTUSER} `\n"
+        f"• `Loaded modules : {len(modules)} `\n"
+        f"• `Branch         : {repo.active_branch.name} `\n"
+        f"• `Bot Version    : {USERBOT_VERSION} `\n"
+        f"• `Bot Uptime     : {uptime} `\n\n"
+        f"Use `.help` for more info\n"
+        )
+    output = ALIVE_MESSAGE or DEFAULT_MESSAGE
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -223,10 +209,10 @@ async def amireallyalive(alive):
     else:
         msg=await alive.edit(output)
         await sleep(30)
-        
+
     if TIMEOUT:
         await msg.delete()
-        
+
 
 @register(outgoing=True, pattern="^\{trg}aliveu".format(trg=trgg))
 async def amireallyaliveuser(username):
