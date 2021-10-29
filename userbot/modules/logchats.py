@@ -20,6 +20,11 @@ class LOG_CHATS:
         self.COUNT = 0
 
 
+def do_log():
+    return bool(gvarstatus("PMLOG") \
+        and gvarstatus("PMLOG") == "True"\
+            and PMLOG_CHATID in [-100, 0])
+
 LOG_CHATS_ = LOG_CHATS()
 
 def mentionuser(name, userid):
@@ -30,9 +35,7 @@ def htmlmentionuser(name, userid):
 
 @register(incoming=True, func=lambda e: e.is_private, disable_edited=False)
 async def monito_p_m_s(event):  # sourcery no-metrics
-    if PMLOG_CHATID == -100:
-        return
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "False":
+    if not do_log():
         return
     sender = await event.get_sender()
     if not sender.bot:
@@ -73,11 +76,9 @@ async def monito_p_m_s(event):  # sourcery no-metrics
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
 
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "False":
-        return
     if (
-        (pm_permit_sql.is_approved(hmm.id))
-        or (PMLOG_CHATID == -100)
+        not do_log()
+        or (pm_permit_sql.is_approved(hmm.id))
         or (ISAFK == True)
         or (await event.get_sender() and (await event.get_sender()).bot)
     ):
@@ -122,7 +123,7 @@ async def log_tagged_messages(event):
 )
 async def set_no_log_p_m(setnologpmm):
     "To turn on logging of messages from that chat."
-    if PMLOG_CHATID != -100:
+    if PMLOG_CHATID not in [-100, 0]:
         chat = await setnologpmm.get_chat()
         if pm_permit_sql.is_approved(chat.id):
             pm_permit_sql.dissprove(chat.id)
@@ -141,7 +142,7 @@ async def set_no_log_p_m(setnologpmm):
 )
 async def set_no_log_p_m(setlogpmm):
     "To turn off logging of messages from that chat."
-    if PMLOG_CHATID != -100:
+    if PMLOG_CHATID not in [-100, 0]:
         chat = await setlogpmm.get_chat()
         if not pm_permit_sql.is_approved(chat.id):
             pm_permit_sql.approve(chat.id)
@@ -164,10 +165,7 @@ async def set_pmlog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
-        PMLOG = False
-    else:
-        PMLOG = True
+    PMLOG = bool(do_log())
     if PMLOG:
         if h_type:
             await event.edit("`Pm logging is already enabled`")
@@ -203,10 +201,7 @@ async def set_grplog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if gvarstatus("PMLOG") and gvarstatus("PMLOG") != "True":
-        GRPLOG = False
-    else:
-        GRPLOG = True
+    GRPLOG = bool(do_log())
     if GRPLOG:
         if h_type:
             await event.edit("`Group logging is already enabled`")
