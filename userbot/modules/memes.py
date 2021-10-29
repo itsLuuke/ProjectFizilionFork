@@ -1313,7 +1313,7 @@ async def bluetext(bt_e):
             "/ARE /YOU /A /STUPID /ANIMAL /WHICH /IS /ATTRACTED /TO /COLOURS?"
         )
 
-@register(outgoing=True, pattern=".fakepromote")
+@register(outgoing=True, pattern="^\{trg}fakepromote".format(trg=trgg))
 async def fprom(event):
     await event.edit("`Promoting...`")
     time.sleep(3.0)
