@@ -625,7 +625,7 @@ async def _(event):
     chat = await event.get_input_chat()
     async for x in event.client.iter_participants(chat, 100):
         mentions += f"[\u2063](tg://user?id={x.id})"
-    await event.edit(mentions)
+    await event.reply(mentions)
     await event.delete()
 
 
