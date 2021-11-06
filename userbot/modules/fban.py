@@ -216,7 +216,7 @@ async def listf(event):
     await event.edit(msg)
 
 
-@register(outgoing=True, disable_edited=True, pattern="^\{trg}delf$".format(trg=trgg))
+@register(outgoing=True, disable_edited=True, pattern="^\{trg}clearf$".format(trg=trgg))
 async def clearf(event):
     """Removes all chats from connected federations."""
     try:
@@ -241,5 +241,7 @@ CMD_HELP.update(
         "\nUsage: Removes current group from connected federations."
         "\n\n.listf"
         "\nUsage: Lists all connected federations by specified name."
+        "\n\n.clearf"
+        "\nUsage: Removes ALL connected federations from userbot."
     }
 )
