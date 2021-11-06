@@ -128,9 +128,11 @@ async def set_afk(afk_e):
             global BOTAFK
             afkmsg += " on bots"
             if string:
+                await afk_e.edit("Going AFK on bots!" f"\nReason: `{string}`")
                 afkmsg += f"\n**Reason:**\n{string}"
                 aa = await bot.send_message(AFK_CHATID, f"/afk {string}")
             else:
+                await afk_e.edit("Going AFK on bots!")
                 aa = await bot.send_message(AFK_CHATID, "/afk")
             BOTAFK = True
             await tgbott.send_message(BOTLOG_CHATID, afkmsg)
@@ -168,7 +170,7 @@ async def type_afk_is_not_true(notafk):
         await sleep(2)
         await msg.delete()
         if BOTLOG:
-            await notafk.client.send_message(
+            await tgbott.send_message(
                 BOTLOG_CHATID,
                 "You've recieved "
                 + str(COUNT_MSG)
@@ -179,7 +181,7 @@ async def type_afk_is_not_true(notafk):
             for i in USERS:
                 name = await notafk.client.get_entity(i)
                 name0 = str(name.first_name)
-                await notafk.client.send_message(
+                await tgbott.send_message(
                     BOTLOG_CHATID,
                     "["
                     + name0
@@ -202,7 +204,31 @@ async def type_afk_is_not_true(notafk):
         await msg.delete()
         await aa.delete()
         if BOTLOG:
-            '#no longer afk'
+            await tgbott.send_message(
+                BOTLOG_CHATID,
+                "You've recieved "
+                + str(COUNT_MSG)
+                + " messages from "
+                + str(len(USERS))
+                + " chats while you were away",
+            )
+            for i in USERS:
+                name = await notafk.client.get_entity(i)
+                name0 = str(name.first_name)
+                await tgbott.send_message(
+                    BOTLOG_CHATID,
+                    "["
+                    + name0
+                    + "](tg://user?id="
+                    + str(i)
+                    + ")"
+                    + " sent you "
+                    + "`"
+                    + str(USERS[i])
+                    + " messages`",
+                )
+        COUNT_MSG = 0
+        USERS = {}
         AFKREASON = None
 
 CMD_HELP.update(
