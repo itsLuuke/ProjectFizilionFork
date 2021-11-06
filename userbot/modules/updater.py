@@ -207,7 +207,7 @@ async def upstream(event):
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     else:
-        await event.edit("`Updating Fizilion, please wait....`")
+        await event.edit("`Updating Fizilion, this may take a minute or to, please be patient....`")
     if conf == "deploy":
         await deploy(event, repo, ups_rem, ac_br, txt)
     return
