@@ -7,7 +7,7 @@ import asyncio, re
 from userbot import bot, PMLOG, PMLOG_CHATID, CMD_HELP, LOGS, ISAFK, BOTLOG, BOTLOG_CHATID, trgg, tgbott, bot
 
 from userbot.modules.sql_helper import pm_permit_sql
-from userbot.modules.sql_helper.no_log_pms_sql import gvarstatus, addgvar
+from userbot.modules.sql_helper.globals import gvarstatus, addgvar
 from userbot.events import register
 from telethon import events
 from telethon.utils import get_display_name
@@ -22,8 +22,8 @@ class LOG_CHATS:
 
 def do_log():
     return bool(gvarstatus("PMLOG") \
-        and gvarstatus("PMLOG") == "True"\
-            and PMLOG_CHATID in [-100, 0])
+        and gvarstatus("PMLOG") == "true"\
+            and PMLOG_CHATID not in [-100, 0])
 
 LOG_CHATS_ = LOG_CHATS()
 
