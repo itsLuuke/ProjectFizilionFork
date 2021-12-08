@@ -12,7 +12,7 @@ from userbot.events import register
 from telethon import events
 from telethon.utils import get_display_name
 from userbot.utils.tools import media_type
-
+from telethon.tl.types import User
 class LOG_CHATS:
     def __init__(self):
         self.RECENT_USER = None
@@ -27,11 +27,17 @@ def do_log():
 
 LOG_CHATS_ = LOG_CHATS()
 
+def mentionchannel(name, uname):
+    return f"[{name}](https://t.me/{uname})"
+
 def mentionuser(name, userid):
     return f"[{name}](tg://user?id={userid})"
 
 def htmlmentionuser(name, userid):
     return f"<a href='tg://user?id={userid}'>{name}</a>"
+
+def htmlmentionchannel(name, uname):
+    return f"<a href='https://t.me/{uname}'>{name}</a>"
 
 @register(incoming=True, func=lambda e: e.is_private, disable_edited=False)
 async def monito_p_m_s(event):  # sourcery no-metrics
@@ -76,11 +82,17 @@ async def monito_p_m_s(event):  # sourcery no-metrics
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
 
+    if gvarstatus("PMLOG") and gvarstatus("PMLOG") == "False":
+        return
+    try:
+        sendr = await event.get_sender()
+    except:
+        return
     if (
-        not do_log()
-        or (pm_permit_sql.is_approved(hmm.id))
+        (pm_permit_sql.is_approved(hmm.id))
+        or (PMLOG_CHATID == -100)
         or (ISAFK == True)
-        or (await event.get_sender() and (await event.get_sender()).bot)
+        or (isinstance(sendr, User) and sendr.bot)
     ):
         return
     full = None
@@ -91,9 +103,10 @@ async def log_tagged_messages(event):
     messaget = media_type(event)
     resalt = f"#TAGS \n<b>Group : </b><code>{hmm.title}</code>"
     if full is not None:
-        resalt += (
-            f"\n<b>From : </b> 👤{htmlmentionuser(full.first_name , full.id)}"
-        )
+        if isinstance(full, User):
+            resalt += f"\n<b>From : </b> 👤{htmlmentionuser(full.first_name, full.id)}"
+        else:
+            resalt += f"\n<b>From : </b> 📣{htmlmentionchannel(full.title, full.username)}" # cant be without username
     if messaget is not None:
         resalt += f"\n<b>Message type : </b><code>{messaget}</code>"
     else:
