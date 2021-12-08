@@ -88,8 +88,8 @@ async def log_tagged_messages(event):
         sendr = await event.get_sender()
     except:
         return
-    if (
-        (pm_permit_sql.is_approved(hmm.id))
+    if ( not do_log()
+        or (pm_permit_sql.is_approved(hmm.id))
         or (PMLOG_CHATID == -100)
         or (ISAFK == True)
         or (isinstance(sendr, User) and sendr.bot)
