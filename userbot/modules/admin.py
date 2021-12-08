@@ -39,6 +39,7 @@ from telethon.tl.types import (
     ChatBannedRights,
     MessageEntityMentionName,
     MessageMediaPhoto,
+    User,
 )
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, trgg
@@ -377,24 +378,28 @@ async def ban(bon):
     # Delete message and then tell that the command
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
+    if isinstance(user, User):
+        name = f'User {user.first_name}'
+    else:
+        name = f"Channel {user.title}"
     if reason:
         await bon.edit(
-            f"{user.first_name} was banned !!\
+            f"{name} was banned !!\
         \nID: `{str(user.id)}`\
         \nReason: {reason}"
         )
     else:
         await bon.edit(
-            f"{user.first_name} was banned !!\
+            f"{name} was banned !!\
         \nID: `{str(user.id)}`"
         )
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
-        await bon.client.send_message(
+        await tgbott.send_message(
             BOTLOG_CHATID,
             "#BAN\n"
-            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            f"USER: [{name}](tg://user?id={user.id})\n"
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)",
         )
 
