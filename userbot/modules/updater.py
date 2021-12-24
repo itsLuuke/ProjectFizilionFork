@@ -126,7 +126,7 @@ async def update(event, repo, ups_rem, ac_br):
     return
 
 
-@register(outgoing=True, pattern="^\{trg}ota(?: |$)(now|deploy)?".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}ota(?: |$)(now|deploy|force)?".format(trg=trgg))
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     await event.edit("`Checking for updates, please wait....`")
@@ -177,7 +177,10 @@ async def upstream(event):
 
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
 
-    if changelog == "" and force_update is False:
+    if conf == "force":
+        await deploy(event, repo, ups_rem, ac_br, txt)
+        return
+    elif changelog == "" and force_update is False:
         await event.edit(
             f"\nYou are running the latest version of `Fizilion`\n"
         )
@@ -200,7 +203,7 @@ async def upstream(event):
             remove("output.txt")
         else:
             await event.edit(changelog_str)
-        return await event.respond('`do ".ota deploy" to update`')
+        return await event.respond('do " `.ota deploy` " to update')
 
     if force_update:
         await event.edit(
@@ -219,5 +222,7 @@ CMD_HELP.update(
         "\nUsage: Checks if the main userbot repository has any updates and shows a changelog if so."
         "\n\n.ota deploy"
         "\nUsage: Deploy your userbot at heroku, if there are any updates in your userbot repository."
+        "\n\n.ota force"
+        "\nUsage: Forcefully deploy the dyno regardless of updates, useful for testing, updating docker image, etc."
     }
 )
