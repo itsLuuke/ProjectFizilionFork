@@ -272,7 +272,7 @@ async def urban_dict(event):
     try:
         definition = await ud.get_word(query)
     except asyncurban.UrbanException as e:
-        return await event.edit("**Error:** {e}.")
+        return await event.edit(f"**Error:** {e}.")
 
     result = template.format(
         definition.word,
