@@ -75,6 +75,9 @@ def register(**args):
             if check.via_bot_id and not insecure and check.out:
                 return
 
+            if '#noub' in check.chat.title.lower() and not (check.chat.creator or check.chat.admin_rights):
+                return
+
             try:
                 await func(check)
 
