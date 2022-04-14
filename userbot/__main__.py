@@ -26,14 +26,21 @@ except PhoneNumberInvalidError:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
+cust_modules = []
 try:
     from userbot.custom_modules import CUSTOM_MODULES
     if len(CUSTOM_MODULES) > 0:
         for module_name in CUSTOM_MODULES:
             try:
                 imported_module = import_module("userbot.custom_modules." + module_name)
+                cust_modules.append(module_name)
             except ImportError:
                 LOGS.warning("failed to import custom module %s", module_name)
+            except Exception as e:
+                LOGS.error("Unable to load module %s because of %s", module_name, str(e))
+                continue
+    if len(cust_modules) > 0:
+        LOGS.info("Custom modules successfully loaded: %s", cust_modules)
 except Exception:
     pass
 
