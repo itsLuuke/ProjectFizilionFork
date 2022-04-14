@@ -26,13 +26,16 @@ except PhoneNumberInvalidError:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-from userbot.custom_modules import CUSTOM_MODULES
-if len(CUSTOM_MODULES) > 0:
-    for module_name in CUSTOM_MODULES:
-        try:
-            imported_module = import_module("userbot.custom_modules." + module_name)
-        except ImportError:
-            LOGS.warning("failed to import custom module %s", module_name)
+try:
+    from userbot.custom_modules import CUSTOM_MODULES
+    if len(CUSTOM_MODULES) > 0:
+        for module_name in CUSTOM_MODULES:
+            try:
+                imported_module = import_module("userbot.custom_modules." + module_name)
+            except ImportError:
+                LOGS.warning("failed to import custom module %s", module_name)
+except Exception:
+    pass
 
 LOGS.info(f"You are running Project Fizilion on {repo_lenk}")
 
