@@ -254,7 +254,7 @@ else:
 # custom plugins repo
 CUSTOM_MODULES_REPO = os.environ.get("CUSTOM_MODULES_REPO") or None
 if CUSTOM_MODULES_REPO:
-    from .custom_modules import load_custom_modules
+    from userbot.custom_modules_helper import load_custom_modules
     load_custom_modules(CUSTOM_MODULES_REPO)
 
 NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
