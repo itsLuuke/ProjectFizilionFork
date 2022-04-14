@@ -16,3 +16,6 @@ start.sh
 stop.sh
 venv
 .idea/*
+error.log
+custom_modules/*
+custom_modules

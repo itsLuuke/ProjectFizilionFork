@@ -6,9 +6,8 @@
 """ Userbot initialization. """
 
 import os
-import platform
-import re
 import time
+from pathlib import Path
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
@@ -16,12 +15,10 @@ from .storage import Storage
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from dotenv import load_dotenv
-from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 from git import Repo
-from platform import python_version, uname
-from telethon import __version__, version
+from platform import uname
 
 load_dotenv("config.env")
 
@@ -253,6 +250,16 @@ if BOT_TOKEN:
 else:
     tgbott = bot
 
+
+# custom plugins repo
+CUSTOM_MODULES_REPO = os.environ.get("CUSTOM_MODULES_REPO") or None
+if CUSTOM_MODULES_REPO:
+    from .custom_modules import load_custom_modules
+    load_custom_modules(CUSTOM_MODULES_REPO)
+
+NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
+
+
 async def check_botlog_chatid():
     if not BOTLOG:
         return
@@ -308,6 +315,7 @@ USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
 CMD_HELP = {}
+CUST_CMD_HELP = {}
 ZALG_LIST = {}
 ISAFK = False
 AFKREASON = None
