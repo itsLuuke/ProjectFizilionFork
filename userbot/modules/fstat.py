@@ -3,22 +3,28 @@ from userbot.events import register
 from telethon.events import NewMessage
 
 
-@register(outgoing=True, pattern="^\{trg}fstat(:? |$)(.*)".format(trg=trgg))
+@register(outgoing=True, pattern="^\{trg}fstat(?: |$)(.*)".format(trg=trgg))
 async def fstat(e: NewMessage.Event):
+	tmsg = await e.reply("Checking...")
+	try:
+		rep = await e.get_reply_message()
+	except:
+		rep = None
 	inp = e.pattern_match.group(1)
-	tmsg = await e.edit("Checking fstat...")
-
-	rep_user = rep.from_id if (rep := await e.get_reply_messgage()) else None
-
-	user = inp.split(" ")[0] if not inp else ((await e.client.get_me()).id if not rep_user else rep_user)
-	fed = inp.split(" ")[1] if inp and len(inp.split(" ")) > 1 else ""
-
+	if rep:
+		user = rep.sender_id
+		if inp:
+			user = f"{rep.sender_id} {inp}"
+	else:
+		user = inp
 	async with bot.conversation("@MissRose_bot") as conv:
 		try:
-			await conv.send_message(f"/fstat {user} {fed}")
+			await conv.send_message(f"/fstat {user}")
 		except Exception as err:
 			await tmsg.edit(f"Cannot check the fstat\nReason:{err}")
 		resp = await conv.get_response()
+		if resp.message.startswith("Checking fbans for"):
+			resp = await conv.get_edit()
 		if resp.reply_markup:
 			await resp.click(0)
 			resp2 = await conv.get_response()
