@@ -7,7 +7,7 @@
 import asyncio
 from asyncio import sleep
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, trgg, tgbott
 from userbot.events import register
 
 
