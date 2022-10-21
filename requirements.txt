@@ -8,7 +8,7 @@ covid
 colour
 distro
 duckduckgo_search
-emoji
+emoji==1.7.0
 gitpython
 glitch_this
 google-api-python-client
