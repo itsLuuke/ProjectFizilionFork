@@ -69,7 +69,7 @@ Then enter a pass when prompted and remeber it
 Look for Authentication section then password_encryption and set it to md5 (it was scram-sha-256) and uncomment the line if commented
 
 ```sh
-sudo vim /etc/postgresql/13/master/postgresql.conf
+sudo vim /etc/postgresql/14/master/postgresql.conf
 ```
 
 ### Edit the pg_hba.conf and switch the authentication to md5
@@ -100,6 +100,15 @@ createdb -O $PGUSER fizi
 database url will be `postgresql://$PGUSER:$PASS@localhost:5432/fizi`
 
 replace `$PASS` and `$PGUSER` with the ones you chose
+
+
+### If you want to migrate a remote database to the local instance
+
+```sh
+pg_dump $REMOTE_URL --format=tar > database.tar
+pg_restore -p 5432 -h localhost -U $PGUSER -d fizi --no-owner --no-privileges database.tar
+```
+
 
 ### then switch back to your user (press ctrl + d)
 
