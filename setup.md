@@ -19,7 +19,7 @@ npm install pm2@latest -g
 
 <details>
     <summary>
-    If the above commang gives an error
+    If the above command gives an error
     </summary>
 
 ```sh
